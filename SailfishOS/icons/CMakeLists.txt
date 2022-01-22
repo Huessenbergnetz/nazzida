@@ -1,0 +1,32 @@
+function(hbn_gen_sfos_icons _icon _scales _sizes)
+    find_program(RSVGCONV rsvg-convert)
+    if (NOT RSVGCONV)
+        message(FATAL_ERROR "Can not find rsvg-convert esxecutable.")
+    endif (NOT RSVGCONV)
+
+    find_program(PRINTFEXE printf)
+    if(NOT PRINTFEXE)
+        message(FATAL_ERROR "Can not find printf esxecutable.")
+    endif(NOT PRINTFEXE)
+
+    find_program(BCEXE bc)
+    if (NOT BCEXE)
+        message(FATAL_ERROR "Can not find printf esxecutable.")
+    endif(NOT BCEXE)
+
+    foreach(_scale ${_scales})
+        foreach(_size ${_sizes})
+            file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${_scale}/${_size})
+            execute_process(COMMAND bash "-c" "${PRINTFEXE} %.0f $(echo '${_scale} * ${_size}' | ${BCEXE})" OUTPUT_VARIABLE _scaledSize)
+            if (NOT EXISTS ${CMAKE_CURRENT_BINARY_DIR}/${_scale}/${_size}/${_icon}.png)
+                message(STATUS "Creating icon ${_icon}.png for scale ${_scale} and size ${_size} scaled to ${_scaledSize}")
+                execute_process(COMMAND ${RSVGCONV} --width=${_scaledSize} --height=${_scaledSize} --keep-aspect-ratio --output=${CMAKE_CURRENT_BINARY_DIR}/${_scale}/${_size}/${_icon}.png ${CMAKE_CURRENT_SOURCE_DIR}/${_icon}.svg)
+            endif (NOT EXISTS ${CMAKE_CURRENT_BINARY_DIR}/${_scale}/${_size}/${_icon}.png)
+        endforeach(_size)
+    endforeach(_scale)
+endfunction(hbn_gen_sfos_icons)
+
+set(LAUNCHERICONSIZES 86 108 128 150 172)
+set(LAUNCHERICONSCALES 1.0)
+
+hbn_gen_sfos_icons(harbour-nazzida ${LAUNCHERICONSCALES} ${LAUNCHERICONSIZES})
