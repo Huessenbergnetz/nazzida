@@ -1,3 +1,6 @@
 [submodule "SailfishOS/HBN_SFOS_Cmake"]
 	path = SailfishOS/HBN_SFOS_Cmake
 	url = git@github.com:Huessenbergnetz/HBN_SFOS_Cmake.git
+[submodule "3rdparty/HBN_SFOS_Components"]
+	path = 3rdparty/HBN_SFOS_Components
+	url = git@github.com:Huessenbergnetz/HBN_SFOS_Components.git
