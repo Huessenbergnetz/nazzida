@@ -15,6 +15,7 @@ target_link_libraries(harbour-nazzida
         Qt5::Network
         Qt5::Sql
         PkgConfig::Sailfish
+        HbnSfosComponentsQt5::Core
 )
 
 install(TARGETS harbour-nazzida

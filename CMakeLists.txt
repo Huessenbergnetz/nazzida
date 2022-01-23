@@ -18,6 +18,11 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(TARGETSYSTEM "sfos" CACHE STRING "Target system to build the application for, currently supported: sfos")
 
 if (${TARGETSYSTEM} STREQUAL "sfos")
+    set(HBNSC_LIBDIR ${CMAKE_INSTALL_DATADIR}/harbour-nazzida/lib)
+    set(HBNSC_I18NDIR ${CMAKE_INSTALL_DATADIR}/harbour-nazzida/translations)
+    set(HBNSC_ICONSDIR ${CMAKE_INSTALL_DATADIR}/harbour-nazzida/icons)
+    set(HBNSC_QMLDIR ${CMAKE_INSTALL_DATADIR}/harbour-nazzida)
+
     add_subdirectory(3rdparty)
     add_subdirectory(SailfishOS)
 

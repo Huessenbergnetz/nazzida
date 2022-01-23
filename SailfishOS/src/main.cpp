@@ -1,20 +1,33 @@
+/*
+ * SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 #ifdef QT_QML_DEBUG
 #include <QtQuick>
 #endif
 
+#include <QGuiApplication>
+#include <QQuickView>
+
 #include <sailfishapp.h>
+#include <memory>
+
+#include <hbnsc.h>
+#include <hbnsciconprovider.h>
+#include <hbnsclicensemodel.h>
 
 int main(int argc, char *argv[])
 {
-    // SailfishApp::main() will display "qml/nazzida.qml", if you need more
-    // control over initialization, you can use:
-    //
-    //   - SailfishApp::application(int, char *[]) to get the QGuiApplication *
-    //   - SailfishApp::createView() to get a new QQuickView * instance
-    //   - SailfishApp::pathTo(QString) to get a QUrl to a resource file
-    //   - SailfishApp::pathToMainQml() to get a QUrl to the main QML file
-    //
-    // To display the view, call "show()" (will show fullscreen on device).
+    std::unique_ptr<QGuiApplication> app(SailfishApp::application(argc, argv));
 
-    return SailfishApp::main(argc, argv);
+    std::unique_ptr<QQuickView> view(SailfishApp::createView());
+
+    auto hbnscIconProvider = Hbnsc::HbnscIconProvider::createProvider(view->engine());
+
+    view->setSource(SailfishApp::pathToMainQml());
+
+    view->showFullScreen();
+
+    return app->exec();
 }
