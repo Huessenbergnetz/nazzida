@@ -1,3 +1,6 @@
+include(FindPkgConfig)
+pkg_search_module(Sailfish sailfishapp REQUIRED IMPORTED_TARGET)
+
 add_executable(harbour-nazzida main.cpp)
 
 target_compile_definitions(harbour-nazzida PRIVATE
@@ -5,17 +8,13 @@ target_compile_definitions(harbour-nazzida PRIVATE
     NAZZIDA_VERSION="${PROJECT_VERSION}"
 )
 
-target_include_directories(harbour-nazzida PRIVATE
-    $<BUILD_INTERFACE:
-    ${SAILFISH_INCLUDE_DIRS}
->)
-
 target_link_libraries(harbour-nazzida
-    Qt5::Core
-    Qt5::Quick
-    Qt5::Network
-    Qt5::Sql
-    ${SAILFISH_LDFLAGS}
+    PRIVATE
+        Qt5::Core
+        Qt5::Quick
+        Qt5::Network
+        Qt5::Sql
+        PkgConfig::Sailfish
 )
 
 install(TARGETS harbour-nazzida
