@@ -1,21 +1,11 @@
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/HBN_SFOS_Cmake)
+
 add_subdirectory(src)
 add_subdirectory(qml)
 add_subdirectory(icons)
 
 install(FILES harbour-nazzida.desktop
     DESTINATION ${CMAKE_INSTALL_DATADIR}/applications
-)
-install(FILES icons/86x86/harbour-nazzida.png
-    DESTINATION share/icons/hicolor/86x86/apps
-)
-install(FILES icons/108x108/harbour-nazzida.png
-    DESTINATION share/icons/hicolor/108x108/apps
-)
-install(FILES icons/128x128/harbour-nazzida.png
-    DESTINATION share/icons/hicolor/128x128/apps
-)
-install(FILES icons/172x172/harbour-nazzida.png
-    DESTINATION share/icons/hicolor/172x172/apps
 )
 
 # Get the other files reachable from the project tree in Qt Creator
