@@ -10,8 +10,6 @@ project(nazzida
 find_package (Qt5 COMPONENTS Core Network Qml Gui Quick Sql REQUIRED)
 
 include(FindPkgConfig)
-pkg_search_module(SAILFISH sailfishapp REQUIRED)
-
 include(GNUInstallDirs)
 
 set(CMAKE_AUTOMOC ON)
@@ -20,6 +18,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(TARGETSYSTEM "sfos" CACHE STRING "Target system to build the application for, currently supported: sfos")
 
 if (${TARGETSYSTEM} STREQUAL "sfos")
+    add_subdirectory(3rdparty)
     add_subdirectory(SailfishOS)
 
     add_custom_target(specfiles
