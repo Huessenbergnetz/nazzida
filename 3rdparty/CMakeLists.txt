@@ -1,3 +1,4 @@
 if (${TARGETSYSTEM} STREQUAL "sfos")
+    add_subdirectory(HBN_SFOS_Cmake)
     add_subdirectory(HBN_SFOS_Components)
 endif(${TARGETSYSTEM} STREQUAL "sfos")
