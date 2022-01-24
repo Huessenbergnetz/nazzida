@@ -28,6 +28,7 @@ BuildRequires:  pkgconfig(sailfishsilica)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  librsvg-tools
 BuildRequires:  bc
+BuildRequires:  qt5-qttools-linguist
 BuildRequires:  desktop-file-utils
 BuildRequires:  cmake
 
