@@ -3,6 +3,9 @@ set(QMLSRCS
     cover/CoverPage.qml
     pages/FirstPage.qml
     pages/SecondPage.qml
+    pages/About.qml
+    models/ChangelogModel.qml
+    ../../common/qml/models/ContributorsModel.qml
 )
 
 add_custom_target(qmlfiles
@@ -10,4 +13,4 @@ add_custom_target(qmlfiles
 )
 
 install(FILES harbour-nazzida.qml DESTINATION ${CMAKE_INSTALL_DATADIR}/harbour-nazzida/qml)
-install(DIRECTORY cover pages DESTINATION ${CMAKE_INSTALL_DATADIR}/harbour-nazzida/qml)
+install(DIRECTORY cover pages models ../../common/qml/models DESTINATION ${CMAKE_INSTALL_DATADIR}/harbour-nazzida/qml)
