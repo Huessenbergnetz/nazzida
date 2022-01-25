@@ -18,7 +18,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(TARGETSYSTEM "sfos" CACHE STRING "Target system to build the application for, currently supported: sfos")
 
 if (${TARGETSYSTEM} STREQUAL "sfos")
-    set(HBNSC_APPNAME harbour-nazzida)
+    set(HARBOUR_APPNAME harbour-nazzida)
 
     list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/3rdparty/HBN_SFOS_Cmake)
 
