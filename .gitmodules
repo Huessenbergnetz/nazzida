@@ -4,3 +4,6 @@
 [submodule "3rdparty/HBN_SFOS_Components"]
 	path = 3rdparty/HBN_SFOS_Components
 	url = git@github.com:Huessenbergnetz/HBN_SFOS_Components.git
+[submodule "3rdparty/libfirfuorida"]
+	path = 3rdparty/libfirfuorida
+	url = git@github.com:Huessenbergnetz/libfirfuorida.git
