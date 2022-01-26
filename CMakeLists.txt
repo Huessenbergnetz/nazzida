@@ -20,6 +20,8 @@ set(TARGETSYSTEM "sfos" CACHE STRING "Target system to build the application for
 if (${TARGETSYSTEM} STREQUAL "sfos")
     set(HARBOUR_APPNAME harbour-nazzida)
     set(CMAKE_INSTALL_LIBDIR share/${HARBOUR_APPNAME}/lib)
+    set(HBNSC_WITH_SQLITE On)
+    set(HBNSC_LICENSES "GPLv3;LGPLv2_1;BSD-3;CC-BY-4_0;OpenSSL")
 
     list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/3rdparty/HBN_SFOS_Cmake)
 
