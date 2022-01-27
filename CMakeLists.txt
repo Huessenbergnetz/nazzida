@@ -16,6 +16,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(TARGETSYSTEM "sfos" CACHE STRING "Target system to build the application for, currently supported: sfos")
+set(NAZZIDA_TRANSDIR "${CMAKE_INSTALL_DATADIR}/nazzida/translations" CACHE PATH "Installation destination for translation files.")
 
 if (${TARGETSYSTEM} STREQUAL "sfos")
     set(HARBOUR_APPNAME harbour-nazzida)
@@ -27,6 +28,7 @@ if (${TARGETSYSTEM} STREQUAL "sfos")
 
     add_subdirectory(3rdparty)
     add_subdirectory(SailfishOS)
+    add_subdirectory(translations)
 
     add_custom_target(specfiles
         SOURCES

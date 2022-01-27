@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 
     {
         const QLocale locale;
-        for (const QString &name : {QStringLiteral("hbnsc")}) {
+        for (const QString &name : {QStringLiteral("hbnsc"), QStringLiteral("nazzida")}) {
             auto trans = new QTranslator(app.get());
             if (Q_LIKELY(trans->load(locale, name, QStringLiteral("_"), QStringLiteral(NAZZIDA_I18NDIR), QStringLiteral(".qm")))) {
                 if (Q_UNLIKELY(!app->installTranslator(trans))) {

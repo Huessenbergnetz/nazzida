@@ -18,7 +18,7 @@ ListModel {
 
     Component.onCompleted: {
         //: contributor role
-        //% "Main developer, Fuoten creator"
+        //% "Main developer, Nazzida creator"
         contModel.get(0).role = qsTrId("nazzida-author-role")
         //: the section a contributor belongs to
         //% "Author"
