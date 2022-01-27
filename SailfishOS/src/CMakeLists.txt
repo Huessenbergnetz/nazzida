@@ -4,6 +4,8 @@ pkg_search_module(Sailfish sailfishapp REQUIRED IMPORTED_TARGET)
 add_executable(harbour-nazzida
     ../../common/src/configuration.h
     ../../common/src/configuration.cpp
+    ../../common/src/migrations/m20220127t134808_people.h
+    ../../common/src/migrations/m20220127t134808_people.cpp
     sfosconfig.h
     sfosconfig.cpp
     models/licensesmodel.h
