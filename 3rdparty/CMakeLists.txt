@@ -1,5 +1,5 @@
 if (${TARGETSYSTEM} STREQUAL "sfos")
+    add_subdirectory(libfirfuorida)
     add_subdirectory(HBN_SFOS_Cmake)
     add_subdirectory(HBN_SFOS_Components)
-    add_subdirectory(libfirfuorida)
 endif(${TARGETSYSTEM} STREQUAL "sfos")
