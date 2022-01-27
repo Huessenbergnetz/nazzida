@@ -27,6 +27,7 @@
 #include "sfosconfig.h"
 #include "models/licensesmodel.h"
 
+#include "../../common/src/models/peoplelistmodel.h"
 #include "../../common/src/migrations/m20220127t134808_people.h"
 
 int main(int argc, char *argv[])
@@ -113,6 +114,7 @@ int main(int argc, char *argv[])
     }
 
     qmlRegisterType<LicensesModel>("harbour.nazzida", 1, 0, "LicensesModel");
+    qmlRegisterType<PeopleListModel>("harbour.nazzida", 1, 0, "PeopleListModel");
 
     std::unique_ptr<QQuickView> view(SailfishApp::createView());
 

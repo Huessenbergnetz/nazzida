@@ -23,7 +23,6 @@ void M20220127T134808_People::up()
     t->varChar(QStringLiteral("first_name"));
     t->varChar(QStringLiteral("last_name"));
     t->tinyInteger(QStringLiteral("size"));
-    t->mediumInteger(QStringLiteral("weight"));
     t->date(QStringLiteral("birthday"));
     t->time(QStringLiteral("day_starts"));
     t->charCol(QStringLiteral("sex"), 1);

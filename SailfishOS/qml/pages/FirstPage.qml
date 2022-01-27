@@ -5,24 +5,76 @@
 
 import QtQuick 2.2
 import Sailfish.Silica 1.0
+import harbour.nazzida 1.0
 
 Page {
-    id: page
-
-    // The effective value will be restricted by ApplicationWindow.allowedOrientations
+    id: firstPage
     allowedOrientations: Orientation.All
 
-    // To enable PullDownMenu, place our content in a SilicaFlickable
-    SilicaFlickable {
+    Component.onCompleted: peopleListModel.load()
+
+    SilicaListView {
         anchors.fill: parent
 
-        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
             MenuItem {
                 //: Page title and pull down menu entry
                 //% "About"
                 text: qsTrId("naz-title-about")
                 onClicked: pageStack.animatorPush(Qt.resolvedUrl("About.qml"))
+            }
+            MenuItem {
+                //: Page title and pull down menu enty
+                //% "Add Person"
+                text: qsTrId("naz-title-add-person")
+                onClicked: pageStack.animatorPush(Qt.resolvedUrl("AddPerson.qml"), {peopleModel: peopleListModel})
+            }
+        }
+
+        VerticalScrollDecorator {
+            flickable: parent
+            page: firstPage
+        }
+
+        model: PeopleListModel {
+            id: peopleListModel
+        }
+
+        header: PageHeader {
+            title: "Nazzida"
+            //: header page description for first page
+            //% "List of logged people"
+            description: qsTrId("naz-first-page-header-desc")
+        }
+
+        delegate: ListItem {
+            id: peopleListItem
+            contentHeight: Theme.itemSizeMedium
+            ListView.onRemove: animateRemoval(peopleListItem)
+
+            ListView.onAdd: AddAnimation {
+                target: peopleListItem
+            }
+
+            Column {
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    leftMargin: Theme.horizontalPageMargin
+                    rightMargin: Theme.horizontalPageMargin
+                }
+
+                Label {
+                    //: %1 will be the first, %2 the last name
+                    //% "%1 %2"
+                    text: qsTrId("naz-full-name").arg(model.firstName).arg(model.lastName)
+                    color: peopleListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                    width: parent.width
+                }
+
+                Text {
+
+                }
             }
         }
     }

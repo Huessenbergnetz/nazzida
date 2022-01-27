@@ -2,6 +2,7 @@ set(QMLSRCS
     harbour-nazzida.qml
     cover/CoverPage.qml
     pages/FirstPage.qml
+    pages/AddPerson.qml
     pages/About.qml
     models/ChangelogModel.qml
     ../../common/qml/models/ContributorsModel.qml
