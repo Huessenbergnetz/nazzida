@@ -80,7 +80,7 @@ Dialog {
                 //% "Birthday"
                 label: qsTrId("naz-textfield-birthday"); placeholderText: label
                 onClicked: {
-                    var dialog = pageStack.push(birthdayPickerComponent, {date: birthDate})
+                    var dialog = pageStack.push(birthdayPickerComponent)
 
                     dialog.accepted.connect(function() {
                         birthdayField.text = dialog.dateText
@@ -106,11 +106,12 @@ Dialog {
                 //% "The day start time is used to determine when a new day starts."
                 description: qsTrId("naz-textfield-daystarts-desc")
                 onClicked: {
-                    var dialog = pageStack.push(dayStartsPickerComponent, {time: dayStarts})
+                    var dialog = pageStack.push(dayStartsPickerComponent)
 
                     dialog.accepted.connect(function() {
                         dayStartsField.text = dialog.timeText
                         dayStarts = dialog.time
+                        console.log("Day Starts: " + dayStarts)
                     })
                 }
 
@@ -119,11 +120,38 @@ Dialog {
                     TimePickerDialog {}
                 }
             }
+
+            ComboBox {
+                id: sexBox
+                //: ComboBox label
+                //% "Sex"
+                label: qsTrId("naz-combo-label-sex")
+                menu: ContextMenu {
+                    MenuItem {
+                        //: ComboBox entry
+                        //% "Male"
+                        text: qsTrId("naz-combo-sex-item-male")
+                        readonly property string value: "m"
+                    }
+                    MenuItem {
+                        //: ComboBox entry
+                        //% "Female"
+                        text: qsTrId("naz-combo-sex-item-female")
+                        readonly property string value: "f"
+                    }
+                    MenuItem {
+                        //: ComboBox entry
+                        //% "Other"
+                        text: qsTrId("naz-combo-sex-item-other")
+                        readonly property string value: "x"
+                    }
+                }
+            }
         }
     }
 
     onAccepted: {
-        peopleModel.add(firstNameField.text, lastNameField.text, parseInt(sizeField.text), birthDate, dayStarts, "m")
+        peopleModel.add(firstNameField.text, lastNameField.text, parseInt(sizeField.text), birthDate, dayStarts, sexBox.currentItem.value)
     }
 
     canAccept: firstNameField.text.length && lastNameField.text.length
