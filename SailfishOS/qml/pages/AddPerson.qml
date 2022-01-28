@@ -111,7 +111,6 @@ Dialog {
                     dialog.accepted.connect(function() {
                         dayStartsField.text = dialog.timeText
                         dayStarts = dialog.time
-                        console.log("Day Starts: " + dayStarts)
                     })
                 }
 
