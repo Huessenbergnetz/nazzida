@@ -72,8 +72,30 @@ Page {
                     width: parent.width
                 }
 
-                Text {
+                Row {
+                    spacing: Theme.paddingMedium
 
+                    Text {
+                        color: peopleListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                        font.pixelSize: Theme.fontSizeSmall
+                        text: model.sex === "m" ? "♂︎" : model.sex === "f" ? "♀︎" : "⚧︎"
+                    }
+
+                    Text {
+                        color: peopleListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                        font.pixelSize: Theme.fontSizeSmall
+                        //: %1 will be the body size in cm
+                        //% "%1 cm"
+                        text: qsTrId("naz-size-in-cm").arg(model.size)
+                    }
+
+                    Text {
+                        color: peopleListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                        font.pixelSize: Theme.fontSizeSmall
+                        //: %1 will be the age in years
+                        //% "%n year(s)"
+                        text: qsTrId("naz-age-in-years", model.age)
+                    }
                 }
             }
 

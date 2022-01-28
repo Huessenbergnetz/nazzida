@@ -146,5 +146,19 @@
         <extracomment>Accept text on person edit dialog</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message id="naz-size-in-cm">
+        <source>%1&#x202f;cm</source>
+        <extracomment>%1 will be the body size in cm</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-age-in-years" numerus="yes">
+        <source>%n&#x202f;year(s)</source>
+        <oldsource>%1&#x202f;years</oldsource>
+        <extracomment>%1 will be the age in years</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
 </context>
 </TS>
