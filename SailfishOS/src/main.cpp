@@ -27,6 +27,7 @@
 #include "sfosconfig.h"
 #include "models/licensesmodel.h"
 
+#include "../../common/src/objects/person.h"
 #include "../../common/src/models/peoplelistmodel.h"
 #include "../../common/src/migrations/m20220127t134808_people.h"
 
@@ -75,7 +76,7 @@ int main(int argc, char *argv[])
         if (errorMessage.isEmpty()) {
             dbFile = dataDir.absoluteFilePath(QStringLiteral("nazzida.sqlite"));
 
-            QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), QStringLiteral("intDbCon"));
+            QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), QStringLiteral("initDbCon"));
             db.setDatabaseName(dbFile);
 
             if (!db.open()) {
@@ -101,7 +102,7 @@ int main(int argc, char *argv[])
             db.close();
         }
 
-        QSqlDatabase::removeDatabase(QStringLiteral("intDbCon"));
+        QSqlDatabase::removeDatabase(QStringLiteral("initDbCon"));
     }
 
     {
@@ -114,6 +115,7 @@ int main(int argc, char *argv[])
     }
 
     qmlRegisterType<LicensesModel>("harbour.nazzida", 1, 0, "LicensesModel");
+    qmlRegisterType<Person>("harbour.nazzida", 1, 0, "Person");
     qmlRegisterType<PeopleListModel>("harbour.nazzida", 1, 0, "PeopleListModel");
 
     std::unique_ptr<QQuickView> view(SailfishApp::createView());

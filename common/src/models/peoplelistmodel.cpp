@@ -126,7 +126,7 @@ int PeopleListModel::add(const QString &firstName, const QString &lastName, int 
 QHash<int, QByteArray> PeopleListModel::roleNames() const
 {
     QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
-    roles.insert(Id, QByteArrayLiteral("item"));
+    roles.insert(Item, QByteArrayLiteral("item"));
     roles.insert(Id, QByteArrayLiteral("id"));
     roles.insert(FirstName, QByteArrayLiteral("firstName"));
     roles.insert(LastName, QByteArrayLiteral("lastName"));
@@ -185,31 +185,61 @@ bool PeopleListModel::setData(const QModelIndex &index, const QVariant &value, i
         return false;
     }
 
+    Person *p = m_people.at(index.row());
+
     QString roleColumn;
     switch(role) {
     case FirstName:
+    {
+        if (p->firstName() == value.toString()) {
+            return true;
+        }
         roleColumn = QStringLiteral("first_name");
+    }
         break;
     case LastName:
+    {
+        if (p->lastName() == value.toString()) {
+            return true;
+        }
         roleColumn = QStringLiteral("last_name");
+    }
         break;
     case Size:
+    {
+        if (p->size() == value.toInt()) {
+            return true;
+        }
         roleColumn = QStringLiteral("size");
+    }
         break;
     case Birthday:
+    {
+        if (p->birthday() == value.toDate()) {
+            return true;
+        }
         roleColumn = QStringLiteral("birthday");
+    }
         break;
     case DayStarts:
+    {
+        if (p->dayStarts() == value.toTime()) {
+            return true;
+        }
         roleColumn = QStringLiteral("day_starts");
+    }
         break;
     case Sex:
+    {
+        if (p->sex() == value.toString()) {
+            return true;
+        }
         roleColumn = QStringLiteral("sex");
+    }
         break;
     default:
         return false;
     }
-
-    Person *p = m_people.at(index.row());
 
     QSqlQuery q;
     if (!q.prepare(QStringLiteral("UPDATE people SET %1 = :value WHERE id = :id").arg(roleColumn))) {
@@ -286,6 +316,48 @@ bool PeopleListModel::remove(const QModelIndex &index)
 
     qDebug("Removed Person %s %s with ID %i", qUtf8Printable(p->firstName()),qUtf8Printable(p->lastName()), p->id());
     delete p;
+
+    return true;
+}
+
+bool PeopleListModel::edit(const QModelIndex &index, const QString &firstName, const QString &lastName, int size, const QDate &birthday, const QTime &dayStarts, const QString &sex)
+{
+    if (!index.isValid() || (index.row() >= rowCount())) {
+        qWarning("%s", "Invalid index");
+        return false;
+    }
+
+    Person *p = m_people.at(index.row());
+
+    if (!setData(index, firstName, FirstName)) {
+        return false;
+    }
+    p->setFirstName(firstName);
+
+    if (!setData(index, lastName, LastName)) {
+        return false;
+    }
+    p->setLastName(lastName);
+
+    if (!setData(index, size, Size)) {
+        return false;
+    }
+    p->setSize(size);
+
+    if (!setData(index, birthday, Birthday)) {
+        return false;
+    }
+    p->setBirthday(birthday);
+
+    if (!setData(index, dayStarts, DayStarts)) {
+        return false;
+    }
+    p->setDayStarts(dayStarts);
+
+    if (!setData(index, sex, Sex)) {
+        return false;
+    }
+    p->setSex(sex);
 
     return true;
 }

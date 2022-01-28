@@ -14,12 +14,12 @@ class Person : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int id READ id CONSTANT)
-    Q_PROPERTY(QString firstName READ firstName WRITE setFirstName NOTIFY firstNameChanged)
-    Q_PROPERTY(QString lastName READ lastName WRITE setLastName NOTIFY lastNameChanged)
-    Q_PROPERTY(int size READ size WRITE setSize NOTIFY sizeChanged)
-    Q_PROPERTY(QDate birthday READ birthday WRITE setBirthday NOTIFY birthdayChanged)
-    Q_PROPERTY(QTime dayStarts READ dayStarts WRITE setDayStarts NOTIFY dayStartsChanged)
-    Q_PROPERTY(QString sex READ sex WRITE setSex NOTIFY sexChanged)
+    Q_PROPERTY(QString firstName READ firstName NOTIFY firstNameChanged)
+    Q_PROPERTY(QString lastName READ lastName NOTIFY lastNameChanged)
+    Q_PROPERTY(int size READ size NOTIFY sizeChanged)
+    Q_PROPERTY(QDate birthday READ birthday NOTIFY birthdayChanged)
+    Q_PROPERTY(QTime dayStarts READ dayStarts NOTIFY dayStartsChanged)
+    Q_PROPERTY(QString sex READ sex NOTIFY sexChanged)
 public:
     explicit Person(QObject *parent = nullptr);
     Person(int id, const QString &firstName, const QString &lastName, int size, const QDate &birthday, const QTime &dayStarts, const QString &sex, QObject *parent = nullptr);
@@ -28,22 +28,16 @@ public:
     int id() const;
 
     QString firstName() const;
-    void setFirstName(const QString &name);
 
     QString lastName() const;
-    void setLastName(const QString &name);
 
     int size() const;
-    void setSize(int nSize);
 
     QDate birthday() const;
-    void setBirthday(const QDate &date);
 
     QTime dayStarts() const;
-    void setDayStarts(const QTime &time);
 
     QString sex() const;
-    void setSex(const QString &s);
 
 signals:
     void firstNameChanged(const QString &firstName);
@@ -54,6 +48,15 @@ signals:
     void sexChanged(const QString &sex);
 
 private:
+    friend class PeopleListModel;
+
+    void setFirstName(const QString &name);
+    void setLastName(const QString &name);
+    void setSize(int nSize);
+    void setBirthday(const QDate &date);
+    void setDayStarts(const QTime &time);
+    void setSex(const QString &s);
+
     QString m_firstName;
     QString m_lastName;
     QString m_sex;

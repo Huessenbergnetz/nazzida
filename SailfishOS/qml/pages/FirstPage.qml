@@ -93,6 +93,7 @@ Page {
                     //: context menu item entry
                     //% "Edit"
                     text: qsTrId("naz-menu-edit-person")
+                    onClicked: pageStack.animatorPush(Qt.resolvedUrl("EditPerson.qml"), {peopleModel: peopleListModel, person: model.item, modelIndex: index})
                 }
 
                 MenuItem {

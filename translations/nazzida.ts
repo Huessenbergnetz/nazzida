@@ -116,5 +116,35 @@
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
+    <message id="naz-combo-label-sex">
+        <source>Sex</source>
+        <extracomment>ComboBox label</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-combo-sex-item-male">
+        <source>Male</source>
+        <extracomment>ComboBox entry</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-combo-sex-item-female">
+        <source>Female</source>
+        <extracomment>ComboBox entry</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-combo-sex-item-other">
+        <source>Other</source>
+        <extracomment>ComboBox entry</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-title-edit-person">
+        <source>Edit %1 %2</source>
+        <extracomment>dialog header title, %1 will be replaced by the first name, %2 by the last name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-accept-edit-person">
+        <source>Apply</source>
+        <extracomment>Accept text on person edit dialog</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
