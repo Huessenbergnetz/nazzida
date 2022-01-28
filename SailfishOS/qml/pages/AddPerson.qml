@@ -125,4 +125,6 @@ Dialog {
     onAccepted: {
         peopleModel.add(firstNameField.text, lastNameField.text, parseInt(sizeField.text), birthDate, dayStarts, "m")
     }
+
+    canAccept: firstNameField.text.length && lastNameField.text.length
 }
