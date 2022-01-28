@@ -76,6 +76,32 @@ Page {
 
                 }
             }
+
+            RemorseItem {
+                id: removeRemorse
+            }
+
+            function removeItem() {
+                var idx = index;
+                //: remorse item text, %1 will be the first, %2 the second name
+                //% "Delete %1 %2"
+                removeRemorse.execute(peopleListItem, qsTrId("naz-remorse-delete").arg(model.firstName).arg(model.lastName), function() { peopleListModel.remove(peopleListModel.index(idx, 0)) } )
+            }
+
+            menu: ContextMenu {
+                MenuItem {
+                    //: context menu item entry
+                    //% "Edit"
+                    text: qsTrId("naz-menu-edit-person")
+                }
+
+                MenuItem {
+                    // context menu item entry
+                    //% "Delete"
+                    text: qsTrId("naz-menu-del-person")
+                    onClicked: removeItem()
+                }
+            }
         }
     }
 }

@@ -181,6 +181,7 @@ QVariant PeopleListModel::data(const QModelIndex &index, int role) const
 bool PeopleListModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if (!index.isValid() || (index.row() >= rowCount())) {
+        qWarning("%s", "Invalid index");
         return false;
     }
 
@@ -249,6 +250,42 @@ bool PeopleListModel::setData(const QModelIndex &index, const QVariant &value, i
     }
 
     dataChanged(index, index, {role});
+
+    return true;
+}
+
+bool PeopleListModel::remove(const QModelIndex &index)
+{
+    if (!index.isValid() || (index.row() >= rowCount())) {
+        qWarning("%s", "Invalid index");
+        return false;
+    }
+
+    Person *p = m_people.at(index.row());
+
+    QSqlQuery q;
+    if (!q.prepare(QStringLiteral("DELETE FROM people WHERE id = :id"))) {
+        setLastError(qtTrId("naz-err-failed-prepare-db-query").arg(q.lastError().text()));
+        qCritical("Failed to prepare database query: %s", qUtf8Printable(q.lastError().text()));
+        return false;
+    }
+
+    q.bindValue(QStringLiteral(":id"), p->id());
+
+    if (!q.exec()) {
+        setLastError(qtTrId("naz-err-failed-execute-db-query").arg(q.lastError().text()));
+        qCritical("Failed to execute database query: %s", qUtf8Printable(q.lastError().text()));
+        return false;
+    }
+
+    beginRemoveRows(QModelIndex(), index.row(), index.row());
+
+    m_people.erase(m_people.begin() + index.row());
+
+    endRemoveRows();
+
+    qDebug("Removed Person %s %s with ID %i", qUtf8Printable(p->firstName()),qUtf8Printable(p->lastName()), p->id());
+    delete p;
 
     return true;
 }

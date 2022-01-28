@@ -100,5 +100,19 @@
         <extracomment>error message, %1 will be replaced by the migration error</extracomment>
         <translation>Kann Datenbankmigration nicht durchführen: %1</translation>
     </message>
+    <message id="naz-remorse-delete">
+        <source>Delete %1 %2</source>
+        <extracomment>remorse item text, %1 will be the first, %2 the second name</extracomment>
+        <translation>Lösche %1 %2</translation>
+    </message>
+    <message id="naz-menu-edit-person">
+        <source>Edit</source>
+        <extracomment>context menu item entry</extracomment>
+        <translation>Bearbeiten</translation>
+    </message>
+    <message id="naz-menu-del-person">
+        <source>Delete</source>
+        <translation>Löschen</translation>
+    </message>
 </context>
 </TS>
