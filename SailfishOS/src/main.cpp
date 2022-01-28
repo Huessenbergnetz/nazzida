@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
             }
 
             if (errorMessage.isEmpty()) {
-                auto migrator = new Firfuorida::Migrator(QStringLiteral("intDbCon"), QStringLiteral("migrations"), app.get());
+                auto migrator = new Firfuorida::Migrator(QStringLiteral("initDbCon"), QStringLiteral("migrations"), app.get());
                 new M20220127T134808_People(migrator);
 
                 if (!migrator->migrate()) {
