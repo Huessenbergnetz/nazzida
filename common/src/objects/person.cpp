@@ -4,6 +4,7 @@
  */
 
 #include "person.h"
+#include <cmath>
 
 Person::Person(QObject *parent) :
     QObject(parent)
@@ -80,6 +81,7 @@ void Person::setBirthday(const QDate &date)
         qDebug("Changing birthday from \"%s\" to \"%s\"", qUtf8Printable(m_birthday.toString()), qUtf8Printable(date.toString()));
         m_birthday = date;
         emit birthdayChanged(birthday());
+        emit ageChanged(age());
     }
 }
 
@@ -109,6 +111,12 @@ void Person::setSex(const QString &s)
         m_sex = s;
         emit sexChanged(sex());
     }
+}
+
+int Person::age() const
+{
+    const qint64 days = m_birthday.daysTo(QDate::currentDate());
+    return std::abs(std::lround(days/365.25));
 }
 
 #include "moc_person.cpp"

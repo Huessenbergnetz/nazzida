@@ -134,6 +134,7 @@ QHash<int, QByteArray> PeopleListModel::roleNames() const
     roles.insert(Birthday, QByteArrayLiteral("birthday"));
     roles.insert(DayStarts, QByteArrayLiteral("dayStarts"));
     roles.insert(Sex, QByteArrayLiteral("sex"));
+    roles.insert(Age, QByteArrayLiteral("age"));
     return roles;
 }
 
@@ -173,6 +174,8 @@ QVariant PeopleListModel::data(const QModelIndex &index, int role) const
         return QVariant::fromValue<QTime>(p->dayStarts());
     case Sex:
         return QVariant::fromValue<QString>(p->sex());
+    case Age:
+        return QVariant::fromValue<int>(p->age());
     default:
         return QVariant();
     }

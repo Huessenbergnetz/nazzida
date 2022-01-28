@@ -27,7 +27,8 @@ public:
         Size,
         Birthday,
         DayStarts,
-        Sex
+        Sex,
+        Age
     };
     Q_ENUM(Roles)
 

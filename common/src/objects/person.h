@@ -20,6 +20,7 @@ class Person : public QObject
     Q_PROPERTY(QDate birthday READ birthday NOTIFY birthdayChanged)
     Q_PROPERTY(QTime dayStarts READ dayStarts NOTIFY dayStartsChanged)
     Q_PROPERTY(QString sex READ sex NOTIFY sexChanged)
+    Q_PROPERTY(int age READ age NOTIFY ageChanged)
 public:
     explicit Person(QObject *parent = nullptr);
     Person(int id, const QString &firstName, const QString &lastName, int size, const QDate &birthday, const QTime &dayStarts, const QString &sex, QObject *parent = nullptr);
@@ -39,6 +40,8 @@ public:
 
     QString sex() const;
 
+    int age() const;
+
 signals:
     void firstNameChanged(const QString &firstName);
     void lastNameChanged(const QString &lastName);
@@ -46,6 +49,7 @@ signals:
     void birthdayChanged(const QDate &birthday);
     void dayStartsChanged(const QTime &dayStarts);
     void sexChanged(const QString &sex);
+    void ageChanged(int age);
 
 private:
     friend class PeopleListModel;
