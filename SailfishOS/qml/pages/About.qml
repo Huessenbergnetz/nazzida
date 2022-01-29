@@ -10,6 +10,7 @@ import harbour.nazzida 1.0
 import "../models"
 
 AboutPage {
+    allowedOrientations: Orientation.All
     pageTitle: qsTrId("naz-title-about")
     appTitle: "Nazzida"
     //% "Nazzida is the old high german word for liquid. This applicaton helps you to manage a personal fluid balance protocol if you need to log your daily liquid input and output."
