@@ -9,7 +9,7 @@ import harbour.nazzida 1.0
 
 Page {
     id: firstPage
-    allowedOrientations: Orientation.All
+    allowedOrientations: defaultAllowedOrientations
 
     Component.onCompleted: peopleListModel.load()
 

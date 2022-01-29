@@ -9,7 +9,7 @@ import harbour.nazzida 1.0
 
 Page {
     id: settingsPage
-    allowedOrientations: Orientation.All
+    allowedOrientations: defaultAllowedOrientations
 
     SilicaFlickable {
         id: settingsFlick

@@ -9,7 +9,7 @@ import harbour.nazzida 1.0
 
 Dialog {
     id: editPersonDialog
-    allowedOrientations: Orientation.All
+    allowedOrientations: defaultAllowedOrientations
     property int modelIndex
     property PeopleListModel peopleModel: null
     property Person person: null

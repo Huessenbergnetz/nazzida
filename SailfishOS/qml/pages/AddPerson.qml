@@ -10,7 +10,7 @@ import harbour.nazzida 1.0
 
 Dialog {
     id: addPersonDialog
-    allowedOrientations: Orientation.All
+    allowedOrientations: defaultAllowedOrientations
     property PeopleListModel peopleModel: null
     property date birthDate: new Date()
     property date dayStarts: new Date()
