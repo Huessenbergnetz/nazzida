@@ -24,6 +24,12 @@ Page {
                 onClicked: pageStack.animatorPush(Qt.resolvedUrl("About.qml"))
             }
             MenuItem {
+                //: Page title and pull down menu entry
+                //% "Settings"
+                text: qsTrId("naz-title-settings")
+                onClicked: pageStack.animatorPush(Qt.resolvedUrl("Settings.qml"))
+            }
+            MenuItem {
                 //: Page title and pull down menu enty
                 //% "Add Person"
                 text: qsTrId("naz-title-add-person")

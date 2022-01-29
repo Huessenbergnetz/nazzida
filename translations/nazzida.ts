@@ -160,5 +160,25 @@
             <numerusform></numerusform>
         </translation>
     </message>
+    <message id="naz-title-settings">
+        <source>Settings</source>
+        <extracomment>Page title and pull down menu entry</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-settings-section-appearance">
+        <source>Appearance</source>
+        <extracomment>settings section header</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-settings-language-label">
+        <source>Language</source>
+        <extracomment>ComboBox label on the settings page</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-settings-language-desc">
+        <source>To change the language, you have to restart the application.</source>
+        <extracomment>Description for a combo box on the settings page to select the application language</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

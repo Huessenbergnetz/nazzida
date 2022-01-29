@@ -155,5 +155,25 @@
         <extracomment>%1 will be the age in years</extracomment>
         <translation><numerusform>%n Jahr</numerusform><numerusform>%n Jahre</numerusform></translation>
     </message>
+    <message id="naz-title-settings">
+        <source>Settings</source>
+        <extracomment>Page title and pull down menu entry</extracomment>
+        <translation>Einstellungen</translation>
+    </message>
+    <message id="naz-settings-section-appearance">
+        <source>Appearance</source>
+        <extracomment>settings section header</extracomment>
+        <translation>Aussehen</translation>
+    </message>
+    <message id="naz-settings-language-label">
+        <source>Language</source>
+        <extracomment>ComboBox label on the settings page</extracomment>
+        <translation>Sprache</translation>
+    </message>
+    <message id="naz-settings-language-desc">
+        <source>To change the language, you have to restart the application.</source>
+        <extracomment>Description for a combo box on the settings page to select the application language</extracomment>
+        <translation>Um die Sprache zu ändern muss die Anwendung neu gestartet werden.</translation>
+    </message>
 </context>
 </TS>

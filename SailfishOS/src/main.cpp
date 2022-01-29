@@ -29,6 +29,7 @@
 
 #include "../../common/src/objects/person.h"
 #include "../../common/src/models/peoplelistmodel.h"
+#include "../../common/src/models/languagesmodel.h"
 #include "../../common/src/migrations/m20220127t134808_people.h"
 
 int main(int argc, char *argv[])
@@ -117,6 +118,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<LicensesModel>("harbour.nazzida", 1, 0, "LicensesModel");
     qmlRegisterType<Person>("harbour.nazzida", 1, 0, "Person");
     qmlRegisterType<PeopleListModel>("harbour.nazzida", 1, 0, "PeopleListModel");
+    qmlRegisterType<LanguagesModel>("harbour.nazzida", 1, 0, "LanguagesModel");
 
     std::unique_ptr<QQuickView> view(SailfishApp::createView());
 

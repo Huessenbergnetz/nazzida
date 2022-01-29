@@ -12,6 +12,8 @@ add_executable(harbour-nazzida
     ../../common/src/models/baselistmodel.cpp
     ../../common/src/models/peoplelistmodel.h
     ../../common/src/models/peoplelistmodel.cpp
+    ../../common/src/models/languagesmodel.h
+    ../../common/src/models/languagesmodel.cpp
     sfosconfig.h
     sfosconfig.cpp
     models/licensesmodel.h
