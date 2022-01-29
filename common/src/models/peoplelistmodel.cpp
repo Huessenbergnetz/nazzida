@@ -10,7 +10,6 @@
 #include <QSqlError>
 #include <QDate>
 #include <QTime>
-#include <QDebug>
 
 PeopleListModel::PeopleListModel(QObject *parent) :
     BaseListModel(parent)
