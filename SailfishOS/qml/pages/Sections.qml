@@ -39,6 +39,8 @@ Page {
                 width: parent.width
                 contentHeight: Theme.itemSizeMedium
 
+                onClicked: pageStack.animatorPush(Qt.resolvedUrl("DrinkingProtocol.qml"), {person: sectionsPage.person})
+
                 Icon {
                     id: drinkingIcon
                     anchors {

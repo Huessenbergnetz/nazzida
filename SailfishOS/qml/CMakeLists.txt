@@ -7,6 +7,7 @@ set(QMLSRCS
     pages/About.qml
     pages/Settings.qml
     pages/Sections.qml
+    pages/DrinkingProtocol.qml
     models/ChangelogModel.qml
     ../../common/qml/models/ContributorsModel.qml
 )

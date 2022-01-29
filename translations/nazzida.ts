@@ -190,5 +190,10 @@
         <extracomment>error message, %1 will be the database error message</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message id="naz-add-input-output">
+        <source>Add In‐ or Output</source>
+        <extracomment>Dialog title and pull down menu entry, means liquids</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
