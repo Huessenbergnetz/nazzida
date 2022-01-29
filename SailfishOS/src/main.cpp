@@ -144,6 +144,7 @@ int main(int argc, char *argv[])
     std::unique_ptr<QQuickView> view(SailfishApp::createView());
 
     auto hbnscIconProvider = Hbnsc::HbnscIconProvider::createProvider(view->engine());
+    auto nazzidaIconProvider = Hbnsc::BaseIconProvider::createProvider({1.0,1.25,1.5,1.75,2.0}, QString(), false, QStringLiteral("nazzida"), view->engine());
 
     view->rootContext()->setContextProperty(QStringLiteral("config"), config);
     view->rootContext()->setContextProperty(QStringLiteral("startupError"), errorMessage);
