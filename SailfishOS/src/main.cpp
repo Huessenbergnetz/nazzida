@@ -14,6 +14,7 @@
 #include <QtQml>
 #include <QSqlDatabase>
 #include <QSqlError>
+#include <QSqlQuery>
 #include <QStandardPaths>
 #include <QDir>
 
@@ -88,6 +89,14 @@ int main(int argc, char *argv[])
                 qCritical("Failed to open database %s: %s", qUtf8Printable(dbFile), qUtf8Printable(db.lastError().text()));
             }
 
+            QSqlQuery q(db);
+            if (!q.exec(QStringLiteral("PRAGMA foreign_keys = ON"))) {
+                //: error message, %1 will be the database error message
+                //% "Failed to enable foreign keys pragma: %1"
+                errorMessage = qtTrId("naz-err-failed-foreign-keys-pragma").arg(q.lastError().text());
+                qCritical("Failed to enable foreign keys pragma: %s", qUtf8Printable(q.lastError().text()));
+            }
+
             if (errorMessage.isEmpty()) {
                 auto migrator = new Firfuorida::Migrator(QStringLiteral("initDbCon"), QStringLiteral("migrations"), app.get());
                 new M20220127T134808_People(migrator);
@@ -112,6 +121,12 @@ int main(int argc, char *argv[])
         if (!db.open()) {
             errorMessage = qtTrId("naz-err-failed-open-db").arg(dbFile, db.lastError().text());
             qCritical("Failed to open database %s: %s", qUtf8Printable(dbFile), qUtf8Printable(db.lastError().text()));
+        }
+
+        QSqlQuery q(db);
+        if (!q.exec(QStringLiteral("PRAGMA foreign_keys = ON"))) {
+            errorMessage = qtTrId("naz-err-failed-foreign-keys-pragma").arg(q.lastError().text());
+            qCritical("Failed to enable foreign keys pragma: %s", qUtf8Printable(q.lastError().text()));
         }
     }
 
