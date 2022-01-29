@@ -56,11 +56,22 @@ Page {
                 target: peopleListItem
             }
 
-            Column {
+            Icon {
+                id: personIcon
                 anchors {
                     left: parent.left
-                    right: parent.right
                     leftMargin: Theme.horizontalPageMargin
+                }
+                source: "image://theme/icon-l-people"
+                width: Theme.iconSizeLarge
+                height: Theme.iconSizeLarge
+            }
+
+            Column {
+                anchors {
+                    left: personIcon.right
+                    right: parent.right
+                    leftMargin: Theme.paddingMedium
                     rightMargin: Theme.horizontalPageMargin
                 }
 
