@@ -6,6 +6,7 @@ set(QMLSRCS
     pages/EditPerson.qml
     pages/About.qml
     pages/Settings.qml
+    pages/Sections.qml
     models/ChangelogModel.qml
     ../../common/qml/models/ContributorsModel.qml
 )

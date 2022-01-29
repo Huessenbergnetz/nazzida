@@ -62,6 +62,8 @@ Page {
                 target: peopleListItem
             }
 
+            onClicked: pageStack.animatorPush(Qt.resolvedUrl("Sections.qml"), {person: model.item})
+
             Icon {
                 id: personIcon
                 anchors {
@@ -71,13 +73,14 @@ Page {
                 source: "image://theme/icon-l-people"
                 width: Theme.iconSizeLarge
                 height: Theme.iconSizeLarge
+                highlighted: peopleListItem.highlighted
             }
 
             Column {
                 anchors {
                     left: personIcon.right
                     right: parent.right
-                    leftMargin: Theme.paddingMedium
+                    leftMargin: Theme.paddingLarge
                     rightMargin: Theme.horizontalPageMargin
                 }
 

@@ -175,5 +175,15 @@
         <extracomment>Description for a combo box on the settings page to select the application language</extracomment>
         <translation>Um die Sprache zu ändern muss die Anwendung neu gestartet werden.</translation>
     </message>
+    <message id="naz-fluid-balance-protocol">
+        <source>Fluid Balance Protol</source>
+        <extracomment>label on a list of different entries</extracomment>
+        <translation>Trink‐ und Ausfuhrprotokoll</translation>
+    </message>
+    <message id="naz-err-failed-foreign-keys-pragma">
+        <source>Failed to enable foreign keys pragma: %1</source>
+        <extracomment>error message, %1 will be the database error message</extracomment>
+        <translation>Kann Foreign Keys Pragma nicht aktivieren: %1</translation>
+    </message>
 </context>
 </TS>
