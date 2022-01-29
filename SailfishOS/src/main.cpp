@@ -89,12 +89,14 @@ int main(int argc, char *argv[])
                 qCritical("Failed to open database %s: %s", qUtf8Printable(dbFile), qUtf8Printable(db.lastError().text()));
             }
 
-            QSqlQuery q(db);
-            if (!q.exec(QStringLiteral("PRAGMA foreign_keys = ON"))) {
-                //: error message, %1 will be the database error message
-                //% "Failed to enable foreign keys pragma: %1"
-                errorMessage = qtTrId("naz-err-failed-foreign-keys-pragma").arg(q.lastError().text());
-                qCritical("Failed to enable foreign keys pragma: %s", qUtf8Printable(q.lastError().text()));
+            if (errorMessage.isEmpty()) {
+                QSqlQuery q(db);
+                if (!q.exec(QStringLiteral("PRAGMA foreign_keys = ON"))) {
+                    //: error message, %1 will be the database error message
+                    //% "Failed to enable foreign keys pragma: %1"
+                    errorMessage = qtTrId("naz-err-failed-foreign-keys-pragma").arg(q.lastError().text());
+                    qCritical("Failed to enable foreign keys pragma: %s", qUtf8Printable(q.lastError().text()));
+                }
             }
 
             if (errorMessage.isEmpty()) {
@@ -123,10 +125,12 @@ int main(int argc, char *argv[])
             qCritical("Failed to open database %s: %s", qUtf8Printable(dbFile), qUtf8Printable(db.lastError().text()));
         }
 
-        QSqlQuery q(db);
-        if (!q.exec(QStringLiteral("PRAGMA foreign_keys = ON"))) {
-            errorMessage = qtTrId("naz-err-failed-foreign-keys-pragma").arg(q.lastError().text());
-            qCritical("Failed to enable foreign keys pragma: %s", qUtf8Printable(q.lastError().text()));
+        if (errorMessage.isEmpty()) {
+            QSqlQuery q(db);
+            if (!q.exec(QStringLiteral("PRAGMA foreign_keys = ON"))) {
+                errorMessage = qtTrId("naz-err-failed-foreign-keys-pragma").arg(q.lastError().text());
+                qCritical("Failed to enable foreign keys pragma: %s", qUtf8Printable(q.lastError().text()));
+            }
         }
     }
 
