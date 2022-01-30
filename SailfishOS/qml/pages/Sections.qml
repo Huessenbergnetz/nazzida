@@ -39,7 +39,7 @@ Page {
                 width: parent.width
                 contentHeight: Theme.itemSizeMedium
 
-                onClicked: pageStack.animatorPush(Qt.resolvedUrl("DrinkingProtocol.qml"), {person: sectionsPage.person})
+                onClicked: pageStack.animatorPush(Qt.resolvedUrl("Liquids.qml"), {person: sectionsPage.person})
 
                 Icon {
                     id: drinkingIcon
@@ -62,7 +62,7 @@ Page {
                         verticalCenter: drinkingIcon.verticalCenter
                     }
                     //: label on a list of different entries
-                    //% "Fluid Balance Protol"
+                    //% "Fluid Balance Protocol"
                     text: qsTrId("naz-fluid-balance-protocol")
                 }
             }
