@@ -19,44 +19,20 @@ PeopleListFilterModel::~PeopleListFilterModel()
 
 int PeopleListFilterModel::add(const QString &firstName, const QString &lastName, int size, const QDate &birthday, const QTime &dayStarts, const QString &sex)
 {
-    if (model()) {
-        PeopleListModel *m = qobject_cast<PeopleListModel*>(model());
-        if (m) {
-            return m->add(firstName, lastName, size, birthday, dayStarts, sex);
-        } else {
-            return false;
-        }
-    } else {
-        return 0;
-    }
+    PeopleListModel *m = qobject_cast<PeopleListModel*>(model());
+    return m ? m->add(firstName, lastName, size, birthday, dayStarts, sex) : 0;
 }
 
 bool PeopleListFilterModel::remove(const QModelIndex &index)
 {
-    if (model()) {
-        PeopleListModel *m = qobject_cast<PeopleListModel*>(model());
-        if (m) {
-            return m->remove(mapToSource(index));
-        } else {
-            return false;
-        }
-    } else {
-        return false;
-    }
+    PeopleListModel *m = qobject_cast<PeopleListModel*>(model());
+    return m ? m->remove(mapToSource(index)) : false;
 }
 
 bool PeopleListFilterModel::edit(const QModelIndex &index, const QString &firstName, const QString &lastName, int size, const QDate &birthday, const QTime &dayStarts, const QString &sex)
 {
-    if (model()) {
-        PeopleListModel *m = qobject_cast<PeopleListModel*>(model());
-        if (m) {
-            return m->edit(mapToSource(index), firstName, lastName, size, birthday, dayStarts, sex);
-        } else {
-            return false;
-        }
-    } else {
-        return false;
-    }
+    PeopleListModel *m = qobject_cast<PeopleListModel*>(model());
+    return m ? m->edit(mapToSource(index), firstName, lastName, size, birthday, dayStarts, sex) : false;
 }
 
 bool PeopleListFilterModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
