@@ -6,8 +6,8 @@ add_executable(harbour-nazzida
     ../../common/src/configuration.cpp
     ../../common/src/migrations/m20220127t134808_people.h
     ../../common/src/migrations/m20220127t134808_people.cpp
-    ../../common/src/migrations/m20220129t113054_drinking.h
-    ../../common/src/migrations/m20220129t113054_drinking.cpp
+    ../../common/src/migrations/m20220130t123658_liquid.h
+    ../../common/src/migrations/m20220130t123658_liquid.cpp
     ../../common/src/objects/person.h
     ../../common/src/objects/person.cpp
     ../../common/src/models/baselistmodel.h
