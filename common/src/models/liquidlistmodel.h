@@ -51,7 +51,7 @@ signals:
 
 private:
     std::vector<Liquid> m_liquids;
-    int m_personId;
+    int m_personId = 0;
 };
 
 #endif // LIQUIDLISTMODEL_H

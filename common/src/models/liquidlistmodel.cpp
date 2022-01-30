@@ -39,7 +39,7 @@ bool LiquidListModel::load()
 
     QSqlQuery q;
 
-    if (Q_UNLIKELY(!q.exec(QStringLiteral("SELECT id, person_id, moment, in_or_out, amount, name, note FROM liquid ORDER")))) {
+    if (Q_UNLIKELY(!q.exec(QStringLiteral("SELECT id, person_id, moment, in_or_out, amount, name, note FROM liquid ORDER BY moment DESC")))) {
         setLastError(qtTrId("naz-err-failed-execute-db-query").arg(q.lastError().text()));
         qCritical("Failed to execute database query: %s", qUtf8Printable(q.lastError().text()));
         setInOperation(false);
