@@ -8,7 +8,7 @@ import Sailfish.Silica 1.0
 import harbour.nazzida 1.0
 
 Page {
-    id: drinkingProtocolPage
+    id: liquidsPage
     allowedOrientations: defaultAllowedOrientations
     property Person person: null
 
@@ -25,7 +25,7 @@ Page {
 
         VerticalScrollDecorator {
             flickable: parent
-            page: drinkingProtocolPage
+            page: liquidsPage
         }
 
         header: PageHeader {
