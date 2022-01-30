@@ -11,7 +11,7 @@ Dialog {
     id: editPersonDialog
     allowedOrientations: defaultAllowedOrientations
     property int modelIndex
-    property PeopleListModel peopleModel: null
+    property PeopleListFilterModel peopleModel: null
     property Person person: null
     property date birthday: person.birthday
     property date dayStarts: person.dayStarts

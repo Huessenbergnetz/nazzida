@@ -11,7 +11,7 @@ import harbour.nazzida 1.0
 Dialog {
     id: addPersonDialog
     allowedOrientations: defaultAllowedOrientations
-    property PeopleListModel peopleModel: null
+    property PeopleListFilterModel peopleModel: null
     property date birthDate: new Date()
     property date dayStarts: new Date()
 

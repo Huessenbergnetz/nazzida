@@ -42,7 +42,7 @@ Page {
             page: firstPage
         }
 
-        model: PeopleListModel {
+        model: PeopleListFilterModel {
             id: peopleListModel
         }
 
