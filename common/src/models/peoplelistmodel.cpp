@@ -25,11 +25,14 @@ PeopleListModel::~PeopleListModel()
 
 bool PeopleListModel::load()
 {
+    setInOperation(true);
+
     {
         QSqlDatabase db = QSqlDatabase::database();
         if (!db.open()) {
             setLastError(qtTrId("naz-err-failed-open-db").arg(db.databaseName(), db.lastError().text()));
             qCritical("Failed to open database %s: %s", qUtf8Printable(db.databaseName()), qUtf8Printable(db.lastError().text()));
+            setInOperation(false);
             return false;
         }
     }
@@ -43,6 +46,7 @@ bool PeopleListModel::load()
         //% "Failed to execute database query: %1"
         setLastError(qtTrId("naz-err-failed-execute-db-query").arg(q.lastError().text()));
         qCritical("Failed to execute database query: %s", qUtf8Printable(q.lastError().text()));
+        setInOperation(false);
         return false;
     }
 
@@ -65,16 +69,19 @@ bool PeopleListModel::load()
         endInsertRows();
     }
 
+    setInOperation(false);
     return true;
 }
 
 void PeopleListModel::clear()
 {
     if (!m_people.empty()) {
+        setInOperation(true);
         beginRemoveRows(QModelIndex(), 0, m_people.size() - 1);
         qDeleteAll(m_people);
         m_people.clear();
         endRemoveRows();
+        setInOperation(false);
     }
 }
 
