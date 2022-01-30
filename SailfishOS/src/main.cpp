@@ -29,8 +29,8 @@
 #include "models/licensesmodel.h"
 
 #include "../../common/src/objects/person.h"
-#include "../../common/src/models/peoplelistmodel.h"
 #include "../../common/src/models/peoplelistfiltermodel.h"
+#include "../../common/src/models/liquidlistfiltermodel.h"
 #include "../../common/src/models/languagesmodel.h"
 #include "../../common/src/migrations/m20220127t134808_people.h"
 #include "../../common/src/migrations/m20220130t123658_liquid.h"
@@ -140,6 +140,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<LicensesModel>("harbour.nazzida", 1, 0, "LicensesModel");
     qmlRegisterType<Person>("harbour.nazzida", 1, 0, "Person");
     qmlRegisterType<PeopleListFilterModel>("harbour.nazzida", 1, 0, "PeopleListFilterModel");
+    qmlRegisterType<LiquidListFilterModel>("harbour.nazzida", 1, 0, "LiquidListFilterModel");
     qmlRegisterType<LanguagesModel>("harbour.nazzida", 1, 0, "LanguagesModel");
 
     std::unique_ptr<QQuickView> view(SailfishApp::createView());

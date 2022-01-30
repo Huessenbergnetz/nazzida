@@ -10,6 +10,9 @@ add_executable(harbour-nazzida
     ../../common/src/migrations/m20220130t123658_liquid.cpp
     ../../common/src/objects/person.h
     ../../common/src/objects/person.cpp
+    ../../common/src/objects/liquid.h
+    ../../common/src/objects/liquid_p.h
+    ../../common/src/objects/liquid.cpp
     ../../common/src/models/baselistmodel.h
     ../../common/src/models/baselistmodel.cpp
     ../../common/src/models/basefiltermodel.h
@@ -18,6 +21,10 @@ add_executable(harbour-nazzida
     ../../common/src/models/peoplelistmodel.cpp
     ../../common/src/models/peoplelistfiltermodel.h
     ../../common/src/models/peoplelistfiltermodel.cpp
+    ../../common/src/models/liquidlistmodel.h
+    ../../common/src/models/liquidlistmodel.cpp
+    ../../common/src/models/liquidlistfiltermodel.h
+    ../../common/src/models/liquidlistfiltermodel.cpp
     ../../common/src/models/languagesmodel.h
     ../../common/src/models/languagesmodel.cpp
     sfosconfig.h
