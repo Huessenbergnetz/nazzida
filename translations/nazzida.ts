@@ -181,7 +181,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message id="naz-fluid-balance-protocol">
-        <source>Fluid Balance Protol</source>
+        <source>Fluid Balance Protocol</source>
+        <oldsource>Fluid Balance Protol</oldsource>
         <extracomment>label on a list of different entries</extracomment>
         <translation type="unfinished"></translation>
     </message>
@@ -193,6 +194,61 @@
     <message id="naz-add-input-output">
         <source>Add In‐ or Output</source>
         <extracomment>Dialog title and pull down menu entry, means liquids</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-accept-add-inoutput">
+        <source>Add</source>
+        <extracomment>Accept text for add in- or output dialog</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-combo-label-inouttype">
+        <source>In‐ or Output</source>
+        <extracomment>label for a combobox on th add liquid dialog</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-combo-inouttype-item-in">
+        <source>Drinks/Soups</source>
+        <extracomment>ComboBox item</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-combo-inouttype-item-iniv">
+        <source>Intravenous</source>
+        <extracomment>ComboBox item</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-combo-inouttype-item-out">
+        <source>Excretion</source>
+        <extracomment>ComboBox item, excretion of body fluids</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-textfield-inoutput-date">
+        <source>Date</source>
+        <extracomment>text field label</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-textfield-inoutput-time">
+        <source>Time</source>
+        <extracomment>text field label</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-full-liquid-title">
+        <source>%1&#x202f;ml %2</source>
+        <extracomment>%1 will be the amount of the liquid, %2 will be the liquid name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-textfield-liquid-amount-label">
+        <source>Amount in ml</source>
+        <extracomment>text field label</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-textfield-liquid-name-label">
+        <source>Name</source>
+        <extracomment>text field label</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-textarea-liquid-note-label">
+        <source>Note (optional)</source>
+        <extracomment>text area label</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
