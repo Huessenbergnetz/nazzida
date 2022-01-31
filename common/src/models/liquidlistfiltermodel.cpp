@@ -24,10 +24,10 @@ bool LiquidListFilterModel::loadForPerson(int personId)
     return load();
 }
 
-int LiquidListFilterModel::add(int personId, const QDateTime &moment, Liquid::InOrOut inOrOut, int amount, const QString &name, const QString &note)
+int LiquidListFilterModel::add(const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note)
 {
     LiquidListModel* m = qobject_cast<LiquidListModel*>(model());
-    return m ? m->add(personId, moment, inOrOut, amount, name, note) : 0;
+    return m ? m->add(moment, inOrOut, amount, name, note) : 0;
 }
 
 bool LiquidListFilterModel::remove(const QModelIndex &index)

@@ -34,7 +34,7 @@ public:
     Q_INVOKABLE bool loadForPerson(int personId);
     Q_INVOKABLE void clear() override;
 
-    Q_INVOKABLE int add(int personId, const QDateTime &moment, Liquid::InOrOut inOrOut, int amount, const QString &name, const QString &note);
+    Q_INVOKABLE int add(const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note);
     Q_INVOKABLE bool remove(const QModelIndex &index);
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;

@@ -39,7 +39,15 @@ bool LiquidListModel::load()
 
     QSqlQuery q;
 
-    if (Q_UNLIKELY(!q.exec(QStringLiteral("SELECT id, person_id, moment, in_or_out, amount, name, note FROM liquid ORDER BY moment DESC")))) {
+    if (Q_UNLIKELY(!q.prepare(QStringLiteral("SELECT id, person_id, moment, in_or_out, amount, name, note FROM liquid WHERE person_id = :person_id ORDER BY moment DESC")))) {
+        setLastError(qtTrId("naz-err-failed-prepare-db-query").arg(q.lastError().text()));
+        qCritical("Failed to prepare database query: %s", qUtf8Printable(q.lastError().text()));
+        return 0;
+    }
+
+    q.bindValue(QStringLiteral(":person_id"), personId());
+
+    if (Q_UNLIKELY(!q.exec())) {
         setLastError(qtTrId("naz-err-failed-execute-db-query").arg(q.lastError().text()));
         qCritical("Failed to execute database query: %s", qUtf8Printable(q.lastError().text()));
         setInOperation(false);
@@ -83,8 +91,10 @@ void LiquidListModel::clear()
     }
 }
 
-int LiquidListModel::add(int personId, const QDateTime &moment, Liquid::InOrOut inOrOut, int amount, const QString &name, const QString &note)
+int LiquidListModel::add(const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note)
 {
+    Liquid::InOrOut _inOrOut = static_cast<Liquid::InOrOut>(inOrOut);
+
     QSqlQuery q;
 
     if (Q_UNLIKELY(!q.prepare(QStringLiteral("INSERT INTO liquid (person_id, moment, in_or_out, amount, name, note) VALUES (:person_id, :moment, :in_or_out, :amount, :name, :note)")))) {
@@ -93,9 +103,9 @@ int LiquidListModel::add(int personId, const QDateTime &moment, Liquid::InOrOut 
         return 0;
     }
 
-    q.bindValue(QStringLiteral(":person_id"), personId);
+    q.bindValue(QStringLiteral(":person_id"), personId());
     q.bindValue(QStringLiteral(":moment"), moment);
-    q.bindValue(QStringLiteral(":in_or_out"), inOrOut);
+    q.bindValue(QStringLiteral(":in_or_out"), _inOrOut);
     q.bindValue(QStringLiteral(":amount"), amount);
     q.bindValue(QStringLiteral(":name"), name);
     q.bindValue(QStringLiteral(":note"), note);
@@ -111,16 +121,16 @@ int LiquidListModel::add(int personId, const QDateTime &moment, Liquid::InOrOut 
     beginInsertRows(QModelIndex(), m_liquids.size(), m_liquids.size());
 
     m_liquids.emplace_back(id,
-                           personId,
+                           personId(),
                            moment,
-                           inOrOut,
+                           _inOrOut,
                            amount,
                            name,
                            note);
 
     endInsertRows();
 
-    qDebug("Created new liquid %i %s with ID %i for person ID %i", amount, qUtf8Printable(name), id, personId);
+    qDebug("Created new liquid %i %s with ID %i for person ID %i", amount, qUtf8Printable(name), id, personId());
 
     return id;
 }
