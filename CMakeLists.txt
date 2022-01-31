@@ -35,7 +35,6 @@ if (${TARGETSYSTEM} STREQUAL "sfos")
 
     add_subdirectory(3rdparty)
     add_subdirectory(SailfishOS)
-    add_subdirectory(translations)
 
     add_custom_target(specfiles
         SOURCES

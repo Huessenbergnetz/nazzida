@@ -2,9 +2,9 @@
 host = https://www.transifex.com
 
 [nazzida.sfos]
-file_filter = translations/nazzida_<lang>.ts
+file_filter = SailfishOS/translations/nazzida_<lang>.ts
 minimum_perc = 0
-source_file = translations/nazzida.ts
+source_file = SailfishOS/translations/nazzida.ts
 source_lang = en
 type = QT
 
