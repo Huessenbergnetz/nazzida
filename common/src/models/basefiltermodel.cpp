@@ -73,6 +73,7 @@ void BaseFilterModel::setSortOrder(Qt::SortOrder order)
         qDebug() << "Changing sortOrder from" << m_sortOrder << "to" << order;
         m_sortOrder = order;
         emit sortOrderChanged(sortOrder());
+        sort(0, m_sortOrder);
     }
 }
 
