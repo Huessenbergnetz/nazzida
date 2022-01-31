@@ -7,8 +7,6 @@ project(nazzida
     HOMEPAGE_URL "https://github.com/Huessenbergnetz/nazzida"
     LANGUAGES CXX)
 
-find_package (Qt5 COMPONENTS Core Network Qml Gui Quick Sql REQUIRED)
-
 include(FindPkgConfig)
 include(GNUInstallDirs)
 
@@ -19,6 +17,10 @@ set(TARGETSYSTEM "sfos" CACHE STRING "Target system to build the application for
 set(NAZZIDA_TRANSDIR "${CMAKE_INSTALL_DATADIR}/nazzida/translations" CACHE PATH "Installation destination for translation files.")
 
 if (${TARGETSYSTEM} STREQUAL "sfos")
+    message(STATUS "Building Nazzida for SailfishOS")
+
+    find_package (Qt5 COMPONENTS Core Network Qml Gui Quick Sql REQUIRED)
+
     set(HARBOUR_APPNAME harbour-nazzida)
     set(CMAKE_INSTALL_LIBDIR share/${HARBOUR_APPNAME}/lib)
     set(HBNSC_WITH_FIRFUORIDA On)
@@ -40,3 +42,26 @@ if (${TARGETSYSTEM} STREQUAL "sfos")
             rpm/harbour-nazzida.yaml
     )
 endif (${TARGETSYSTEM} STREQUAL "sfos")
+
+if (${TARGETSYSTEM} STREQUAL "kirigami")
+    message(STATUS "Building Nazzida for Kirigami")
+
+    set(KF_MIN_VERSION "5.76.0")
+    set(QT_MIN_VERSION "5.12.0")
+
+    find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
+
+    list(APPEND CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+
+    include(KDEInstallDirs)
+    include(KDECMakeSettings)
+    include(KDECompilerSettings NO_POLICY_SCOPE)
+
+    find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Test Gui QuickControls2 Widgets Network Sql)
+    find_package(KF5 ${KF_MIN_VERSION} REQUIRED COMPONENTS Kirigami2 I18n CoreAddons)
+    find_package(FirfuoridaQt5 REQUIRED)
+
+    add_subdirectory(Kirigami)
+
+    feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+endif (${TARGETSYSTEM} STREQUAL "kirigami")
