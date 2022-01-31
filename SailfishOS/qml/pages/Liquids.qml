@@ -16,6 +16,7 @@ Page {
 
     SilicaListView {
         anchors.fill: parent
+        spacing: Theme.paddingMedium
 
         PullDownMenu {
             MenuItem {
@@ -33,6 +34,7 @@ Page {
 
         model: LiquidListFilterModel {
             id: liquidsModel
+            sortOrder: Qt.DescendingOrder
         }
 
         header: PageHeader {
