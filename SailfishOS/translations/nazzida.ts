@@ -251,5 +251,14 @@
         <extracomment>text area label</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message id="naz-remorse-delete-liquid">
+        <source>Delete %1&#x202f;ml %2 from %3</source>
+        <extracomment>remorse item text, %1 will be the liquid amout, %2 the liquid name, %3 will be the datetime the liquid has been consumed or excreted</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-menu-del-liquid">
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

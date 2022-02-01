@@ -79,6 +79,27 @@ Page {
                     width: parent.width
                 }
             }
+
+            RemorseItem {
+                id: removeRemorse
+            }
+
+            function removeLiquid() {
+                var idx = index;
+                //: remorse item text, %1 will be the liquid amout, %2 the liquid name,
+                //: %3 will be the datetime the liquid has been consumed or excreted
+                //% "Delete %1 ml %2 from %3"
+                removeRemorse.execute(liquidItem, qsTrId("naz-remorse-delete-liquid").arg(Number(model.amount).toLocaleString(Qt.locale())).arg(model.name).arg(Qt.formatDate(model.moment)), function() { liquidsModel.remove(liquidsModel.index(idx, 0)) } )
+            }
+
+            menu: ContextMenu {
+                MenuItem {
+                    // context menu item entry
+                    //% "Delete"
+                    text: qsTrId("naz-menu-del-liquid")
+                    onClicked: removeLiquid()
+                }
+            }
         }
     }
 }
