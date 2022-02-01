@@ -41,6 +41,13 @@ bool PeopleListModel::load()
 
     QSqlQuery q;
 
+    if (!q.exec(QStringLiteral("PRAGMA foreign_keys = ON"))) {
+        setLastError(qtTrId("naz-err-failed-foreign-keys-pragma").arg(q.lastError().text()));
+        qCritical("Failed to enable foreign keys pragma: %s", qUtf8Printable(q.lastError().text()));
+        setInOperation(false);
+        return false;
+    }
+
     if (!q.exec(QStringLiteral("SELECT id, first_name, last_name, size, birthday, day_starts, sex FROM people"))) {
         //: error message, %1 will be replaced by the database error message
         //% "Failed to execute database query: %1"
@@ -88,6 +95,12 @@ void PeopleListModel::clear()
 int PeopleListModel::add(const QString &firstName, const QString &lastName, int size, const QDate &birthday, const QTime &dayStarts, const QString &sex)
 {
     QSqlQuery q;
+
+    if (!q.exec(QStringLiteral("PRAGMA foreign_keys = ON"))) {
+        setLastError(qtTrId("naz-err-failed-foreign-keys-pragma").arg(q.lastError().text()));
+        qCritical("Failed to enable foreign keys pragma: %s", qUtf8Printable(q.lastError().text()));
+        return 0;
+    }
 
     if (!q.prepare(QStringLiteral("INSERT INTO people (first_name, last_name, size, birthday, day_starts, sex) VALUES (:first_name, :last_name, :size, :birthday, :day_starts, :sex)"))) {
         //: error message, %1 will be replaced by the database error message
@@ -303,6 +316,13 @@ bool PeopleListModel::remove(const QModelIndex &index)
     Person *p = m_people.at(index.row());
 
     QSqlQuery q;
+
+    if (!q.exec(QStringLiteral("PRAGMA foreign_keys = ON"))) {
+        setLastError(qtTrId("naz-err-failed-foreign-keys-pragma").arg(q.lastError().text()));
+        qCritical("Failed to enable foreign keys pragma: %s", qUtf8Printable(q.lastError().text()));
+        return false;
+    }
+
     if (!q.prepare(QStringLiteral("DELETE FROM people WHERE id = :id"))) {
         setLastError(qtTrId("naz-err-failed-prepare-db-query").arg(q.lastError().text()));
         qCritical("Failed to prepare database query: %s", qUtf8Printable(q.lastError().text()));

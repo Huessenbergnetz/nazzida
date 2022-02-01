@@ -51,11 +51,14 @@ int main(int argc, char *argv[])
 
     {
         const QLocale locale;
+        qDebug("Loading translations for locale %s", qUtf8Printable(locale.name()));
         for (const QString &name : {QStringLiteral("hbnsc"), QStringLiteral("nazzida")}) {
             auto trans = new QTranslator(app.get());
             if (Q_LIKELY(trans->load(locale, name, QStringLiteral("_"), QStringLiteral(NAZZIDA_I18NDIR), QStringLiteral(".qm")))) {
                 if (Q_UNLIKELY(!app->installTranslator(trans))) {
                     qWarning(R"(Can not install translator for component "%s" and locale "%s".)", qUtf8Printable(name), qUtf8Printable(locale.name()));
+                } else {
+                    qDebug("Loaded translations for %s", qUtf8Printable(name));
                 }
             } else {
                 qWarning(R"(Can not load translations for component "%s" and locale "%s".)", qUtf8Printable(name), qUtf8Printable(locale.name()));
@@ -84,6 +87,8 @@ int main(int argc, char *argv[])
             QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), QStringLiteral("initDbCon"));
             db.setDatabaseName(dbFile);
 
+            qDebug("Initializing database %s", qUtf8Printable(dbFile));
+
             if (!db.open()) {
                 //: error message, %1 will be the path to the database file, %2
                 //: will be the database error message
@@ -93,6 +98,7 @@ int main(int argc, char *argv[])
             }
 
             if (errorMessage.isEmpty()) {
+                qDebug("%s", "Enabling foreign_keys pragma");
                 QSqlQuery q(db);
                 if (!q.exec(QStringLiteral("PRAGMA foreign_keys = ON"))) {
                     //: error message, %1 will be the database error message
@@ -122,6 +128,7 @@ int main(int argc, char *argv[])
     }
 
     {
+        qDebug("Opening database %s", qUtf8Printable(dbFile));
         QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"));
         db.setDatabaseName(dbFile);
         if (!db.open()) {
@@ -130,6 +137,7 @@ int main(int argc, char *argv[])
         }
 
         if (errorMessage.isEmpty()) {
+            qDebug("%s", "Enabling foreign_keys pragma");
             QSqlQuery q(db);
             if (!q.exec(QStringLiteral("PRAGMA foreign_keys = ON"))) {
                 errorMessage = qtTrId("naz-err-failed-foreign-keys-pragma").arg(q.lastError().text());
