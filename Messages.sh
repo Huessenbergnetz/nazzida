@@ -24,4 +24,5 @@ $QTLUPDATE -no-obsolete \
            -target-language en \
            -locations none \
            common SailfishOS \
-           -ts "translations/nazzida.ts"
+           -ts "SailfishOS/translations/nazzida.ts"
+
