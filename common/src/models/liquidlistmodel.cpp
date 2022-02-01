@@ -97,6 +97,12 @@ int LiquidListModel::add(const QDateTime &moment, int inOrOut, int amount, const
 
     QSqlQuery q;
 
+    if (!q.exec(QStringLiteral("PRAGMA foreign_keys = ON"))) {
+        setLastError(qtTrId("naz-err-failed-foreign-keys-pragma").arg(q.lastError().text()));
+        qCritical("Failed to enable foreign keys pragma: %s", qUtf8Printable(q.lastError().text()));
+        return 0;
+    }
+
     if (Q_UNLIKELY(!q.prepare(QStringLiteral("INSERT INTO liquid (person_id, moment, in_or_out, amount, name, note) VALUES (:person_id, :moment, :in_or_out, :amount, :name, :note)")))) {
         setLastError(qtTrId("naz-err-failed-prepare-db-query").arg(q.lastError().text()));
         qCritical("Failed to prepare database query: %s", qUtf8Printable(q.lastError().text()));
