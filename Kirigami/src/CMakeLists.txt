@@ -2,6 +2,10 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 add_executable(nazzida
+    ../../common/src/migrations/m20220127t134808_people.h
+    ../../common/src/migrations/m20220127t134808_people.cpp
+    ../../common/src/migrations/m20220130t123658_liquid.h
+    ../../common/src/migrations/m20220130t123658_liquid.cpp
     main.cpp
     )
 
@@ -34,7 +38,7 @@ target_link_libraries(nazzida
         Qt5::Sql
         KF5::Kirigami2
         KF5::I18n
-        FirfuoridaQt5
+        Firfuorida::Firfuorida
 )
 
 install(TARGETS nazzida
