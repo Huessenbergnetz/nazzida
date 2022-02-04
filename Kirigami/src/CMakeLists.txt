@@ -6,6 +6,23 @@ add_executable(nazzida
     ../../common/src/migrations/m20220127t134808_people.cpp
     ../../common/src/migrations/m20220130t123658_liquid.h
     ../../common/src/migrations/m20220130t123658_liquid.cpp
+    ../../common/src/objects/person.h
+    ../../common/src/objects/person.cpp
+    ../../common/src/objects/liquid.h
+    ../../common/src/objects/liquid_p.h
+    ../../common/src/objects/liquid.cpp
+    ../../common/src/models/baselistmodel.h
+    ../../common/src/models/baselistmodel.cpp
+    ../../common/src/models/basefiltermodel.h
+    ../../common/src/models/basefiltermodel.cpp
+    ../../common/src/models/peoplelistmodel.h
+    ../../common/src/models/peoplelistmodel.cpp
+    ../../common/src/models/peoplelistfiltermodel.h
+    ../../common/src/models/peoplelistfiltermodel.cpp
+    ../../common/src/models/liquidlistmodel.h
+    ../../common/src/models/liquidlistmodel.cpp
+    ../../common/src/models/liquidlistfiltermodel.h
+    ../../common/src/models/liquidlistfiltermodel.cpp
     main.cpp
     )
 

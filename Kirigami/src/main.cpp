@@ -18,6 +18,11 @@
 #include "../../common/src/migrations/m20220127t134808_people.h"
 #include "../../common/src/migrations/m20220130t123658_liquid.h"
 
+#include "../../common/src/objects/person.h"
+#include "../../common/src/models/peoplelistfiltermodel.h"
+#include "../../common/src/objects/liquid.h"
+#include "../../common/src/models/liquidlistfiltermodel.h"
+
 int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -99,6 +104,11 @@ int main(int argc, char *argv[])
             }
         }
     }
+
+    qmlRegisterType<Person>("de.huessenbergnetz.nazzida", 1, 0, "Person");
+    qmlRegisterType<PeopleListFilterModel>("de.huessenbergnetz.nazzida", 1, 0, "PeopleListFilterModel");
+    qmlRegisterUncreatableType<Liquid>("de.huessenbergnetz.nazzida", 1, 0, "Liquid", QStringLiteral("You can not create objects of type Liquid in QML!"));
+    qmlRegisterType<LiquidListFilterModel>("de.huessenbergnetz.nazzida", 1, 0, "LiquidListFilterModel");
 
     QQmlApplicationEngine engine;
 
