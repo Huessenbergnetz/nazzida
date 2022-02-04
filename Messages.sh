@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [ ! -d translations ]; then
-    mkdir translations;
+if [ ! -d SailfishOS/translations ]; then
+    mkdir SailfishOS/translations
 fi
 
 if [ ! $QTLUPDATE ]; then
