@@ -335,7 +335,7 @@ bool LiquidListModel::setData(const QModelIndex &index, const QVariant &value, i
 
     m_liquids[index.row()] = l;
 
-    dataChanged(index, index, {role});
+    emit dataChanged(index, index, {role});
 
     return true;
 }

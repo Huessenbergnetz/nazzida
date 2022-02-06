@@ -301,7 +301,7 @@ bool PeopleListModel::setData(const QModelIndex &index, const QVariant &value, i
         break;
     }
 
-    dataChanged(index, index, {role});
+    emit dataChanged(index, index, {role});
 
     return true;
 }
