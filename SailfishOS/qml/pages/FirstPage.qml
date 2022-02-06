@@ -96,13 +96,13 @@ Page {
                     spacing: Theme.paddingMedium
 
                     Text {
-                        color: peopleListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                        color: peopleListItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
                         font.pixelSize: Theme.fontSizeSmall
                         text: model.sex === "m" ? "♂︎" : model.sex === "f" ? "♀︎" : "⚧︎"
                     }
 
                     Text {
-                        color: peopleListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                        color: peopleListItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
                         font.pixelSize: Theme.fontSizeSmall
                         //: %1 will be the body size in cm
                         //% "%1 cm"
@@ -110,7 +110,7 @@ Page {
                     }
 
                     Text {
-                        color: peopleListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                        color: peopleListItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
                         font.pixelSize: Theme.fontSizeSmall
                         //: %1 will be the age in years
                         //% "%n year(s)"
