@@ -136,7 +136,7 @@ int LiquidListModel::add(const QDateTime &moment, int inOrOut, int amount, const
 
     endInsertRows();
 
-    qDebug("Created new liquid %i %s with ID %i for person ID %i", amount, qUtf8Printable(name), id, personId());
+    qDebug("Created new liquid %i ml %s with ID %i for person ID %i", amount, qUtf8Printable(name), id, personId());
 
     return id;
 }
