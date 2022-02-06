@@ -56,7 +56,7 @@ bool LiquidListFilterModel::lessThan(const QModelIndex &left, const QModelIndex 
     auto r = sourceModel()->data(right, LiquidListModel::Moment);
 
     auto lDt = sortRole() == Qt::AscendingOrder ? l.toDateTime() : r.toDateTime();
-    auto rDt = sortRole() == Qt::AscendingOrder ? r.toDateTime() : l.toDateTime();
+    auto rDt = sortRole() == Qt::DescendingOrder ? r.toDateTime() : l.toDateTime();
 
     return lDt < rDt;
 }
