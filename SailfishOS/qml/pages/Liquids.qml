@@ -78,6 +78,13 @@ Page {
                     color: liquidItem.highlighted ? Theme.highlightColor : Theme.primaryColor
                     width: parent.width
                 }
+
+                Text {
+                    text: Qt.formatDateTime(model.moment)
+                    color: liquidItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                    width: parent.width
+                    font.pixelSize: Theme.fontSizeSmall
+                }
             }
 
             RemorseItem {
