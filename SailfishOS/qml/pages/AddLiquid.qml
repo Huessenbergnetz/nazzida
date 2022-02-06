@@ -100,7 +100,7 @@ Dialog {
                     id: dateField
                     property int year: moment.getFullYear()
                     property int month: moment.getMonth()
-                    property int day: moment.getDay()
+                    property int day: moment.getDate()
                     anchors {
                         left: parent.left
                     }
