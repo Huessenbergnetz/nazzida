@@ -92,7 +92,7 @@ void PeopleListModel::clear()
     }
 }
 
-int PeopleListModel::add(const QString &firstName, const QString &lastName, int size, const QDate &birthday, const QTime &dayStarts, const QString &sex)
+int PeopleListModel::add(const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex)
 {
     QSqlQuery q;
 
@@ -306,7 +306,7 @@ bool PeopleListModel::setData(const QModelIndex &index, const QVariant &value, i
     return true;
 }
 
-bool PeopleListModel::remove(const QModelIndex &index)
+bool PeopleListModel::remove(QModelIndex index)
 {
     if (!index.isValid() || (index.row() >= rowCount())) {
         qWarning("%s", "Invalid index");
@@ -349,7 +349,7 @@ bool PeopleListModel::remove(const QModelIndex &index)
     return true;
 }
 
-bool PeopleListModel::edit(const QModelIndex &index, const QString &firstName, const QString &lastName, int size, const QDate &birthday, const QTime &dayStarts, const QString &sex)
+bool PeopleListModel::edit(QModelIndex index, const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex)
 {
     if (!index.isValid() || (index.row() >= rowCount())) {
         qWarning("%s", "Invalid index");

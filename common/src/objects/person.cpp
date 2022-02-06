@@ -12,7 +12,7 @@ Person::Person(QObject *parent) :
 
 }
 
-Person::Person(int id, const QString &firstName, const QString &lastName, int size, const QDate &birthday, const QTime &dayStarts, const QString &sex, QObject *parent) :
+Person::Person(int id, const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex, QObject *parent) :
     QObject(parent), m_firstName(firstName), m_lastName(lastName), m_sex(sex), m_birthday(birthday), m_dayStarts(dayStarts), m_id(id), m_size(size)
 {
 
@@ -75,7 +75,7 @@ QDate Person::birthday() const
     return m_birthday;
 }
 
-void Person::setBirthday(const QDate &date)
+void Person::setBirthday(QDate date)
 {
     if (m_birthday != date) {
         qDebug("Changing birthday from \"%s\" to \"%s\"", qUtf8Printable(m_birthday.toString()), qUtf8Printable(date.toString()));
@@ -90,7 +90,7 @@ QTime Person::dayStarts() const
     return m_dayStarts;
 }
 
-void Person::setDayStarts(const QTime &time)
+void Person::setDayStarts(QTime time)
 {
     if (m_dayStarts != time) {
         qDebug("Changing dayStarts from \"%s\" to \"%s\"", qUtf8Printable(m_dayStarts.toString()), qUtf8Printable(time.toString()));

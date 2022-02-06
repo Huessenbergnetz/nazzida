@@ -30,7 +30,7 @@ int LiquidListFilterModel::add(const QDateTime &moment, int inOrOut, int amount,
     return m ? m->add(moment, inOrOut, amount, name, note) : 0;
 }
 
-bool LiquidListFilterModel::remove(const QModelIndex &index)
+bool LiquidListFilterModel::remove(QModelIndex index)
 {
     LiquidListModel* m = qobject_cast<LiquidListModel*>(model());
     return m ? m->remove(mapToSource(index)) : false;

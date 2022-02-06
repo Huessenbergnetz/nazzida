@@ -141,7 +141,7 @@ int LiquidListModel::add(const QDateTime &moment, int inOrOut, int amount, const
     return id;
 }
 
-bool LiquidListModel::remove(const QModelIndex &index)
+bool LiquidListModel::remove(QModelIndex index)
 {
     if (!index.isValid() || (index.row() >= rowCount())) {
         qWarning("%s", "Invalid index");

@@ -23,7 +23,7 @@ class Person : public QObject
     Q_PROPERTY(int age READ age NOTIFY ageChanged)
 public:
     explicit Person(QObject *parent = nullptr);
-    Person(int id, const QString &firstName, const QString &lastName, int size, const QDate &birthday, const QTime &dayStarts, const QString &sex, QObject *parent = nullptr);
+    Person(int id, const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex, QObject *parent = nullptr);
     ~Person() override;
 
     int id() const;
@@ -57,8 +57,8 @@ private:
     void setFirstName(const QString &name);
     void setLastName(const QString &name);
     void setSize(int nSize);
-    void setBirthday(const QDate &date);
-    void setDayStarts(const QTime &time);
+    void setBirthday(QDate date);
+    void setDayStarts(QTime time);
     void setSex(const QString &s);
 
     QString m_firstName;

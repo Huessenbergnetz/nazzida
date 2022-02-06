@@ -17,19 +17,19 @@ PeopleListFilterModel::~PeopleListFilterModel()
 
 }
 
-int PeopleListFilterModel::add(const QString &firstName, const QString &lastName, int size, const QDate &birthday, const QTime &dayStarts, const QString &sex)
+int PeopleListFilterModel::add(const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex)
 {
     PeopleListModel *m = qobject_cast<PeopleListModel*>(model());
     return m ? m->add(firstName, lastName, size, birthday, dayStarts, sex) : 0;
 }
 
-bool PeopleListFilterModel::remove(const QModelIndex &index)
+bool PeopleListFilterModel::remove(QModelIndex index)
 {
     PeopleListModel *m = qobject_cast<PeopleListModel*>(model());
     return m ? m->remove(mapToSource(index)) : false;
 }
 
-bool PeopleListFilterModel::edit(const QModelIndex &index, const QString &firstName, const QString &lastName, int size, const QDate &birthday, const QTime &dayStarts, const QString &sex)
+bool PeopleListFilterModel::edit(QModelIndex index, const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex)
 {
     PeopleListModel *m = qobject_cast<PeopleListModel*>(model());
     return m ? m->edit(mapToSource(index), firstName, lastName, size, birthday, dayStarts, sex) : false;
