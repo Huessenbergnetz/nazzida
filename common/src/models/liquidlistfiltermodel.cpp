@@ -36,6 +36,12 @@ bool LiquidListFilterModel::remove(QModelIndex index)
     return m ? m->remove(mapToSource(index)) : false;
 }
 
+bool LiquidListFilterModel::edit(QModelIndex index, const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note)
+{
+    LiquidListModel* m = qobject_cast<LiquidListModel*>(model());
+    return m ? m->edit(mapToSource(index), moment, inOrOut, amount, name, note) : false;
+}
+
 int LiquidListFilterModel::personId() const
 {
     auto m = qobject_cast<LiquidListModel*>(model());
@@ -55,7 +61,7 @@ bool LiquidListFilterModel::lessThan(const QModelIndex &left, const QModelIndex 
     auto l = sourceModel()->data(left, LiquidListModel::Moment);
     auto r = sourceModel()->data(right, LiquidListModel::Moment);
 
-    auto lDt = sortRole() == Qt::AscendingOrder ? l.toDateTime() : r.toDateTime();
+    auto lDt = sortRole() == Qt::DescendingOrder ? l.toDateTime() : r.toDateTime();
     auto rDt = sortRole() == Qt::DescendingOrder ? r.toDateTime() : l.toDateTime();
 
     return lDt < rDt;
