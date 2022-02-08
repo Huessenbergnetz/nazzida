@@ -177,6 +177,36 @@ bool LiquidListModel::remove(QModelIndex index)
     return true;
 }
 
+bool LiquidListModel::edit(QModelIndex index, const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note)
+{
+    if (!index.isValid() || index.row() >= rowCount()) {
+        qWarning("%s", "Invalid index");
+        return false;
+    }
+
+    if (!setData(index, moment, Moment)) {
+        return false;
+    }
+
+    if (!setData(index, inOrOut, InOrOut)) {
+        return false;
+    }
+
+    if (!setData(index, amount, Amount)) {
+        return false;
+    }
+
+    if (!setData(index, name, Name)) {
+        return false;
+    }
+
+    if (!setData(index, note, Note)) {
+        return false;
+    }
+
+    return true;
+}
+
 QModelIndex LiquidListModel::index(int row, int column, const QModelIndex &parent) const
 {
     return hasIndex(row, column, parent) ? createIndex(row, column) : QModelIndex();
