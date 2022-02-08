@@ -39,9 +39,10 @@
 int main(int argc, char *argv[])
 {
     std::unique_ptr<QGuiApplication> app(SailfishApp::application(argc, argv));
-    QCoreApplication::setApplicationName(QStringLiteral("harbour-nazzida"));
-    QGuiApplication::setApplicationDisplayName(QStringLiteral("Nazzida"));
-    QCoreApplication::setApplicationVersion(QStringLiteral(NAZZIDA_VERSION));
+    app->setApplicationName(QStringLiteral("harbour-nazzida"));
+    app->setApplicationDisplayName(QStringLiteral("Nazzida"));
+    app->setOrganizationName(QStringLiteral("de.huessenbergnetz"));
+    app->setApplicationVersion(QStringLiteral(NAZZIDA_VERSION));
 
     auto config = new SfosConfig(app.get());
 
