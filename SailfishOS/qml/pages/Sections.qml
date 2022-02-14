@@ -33,6 +33,7 @@ Page {
             PageHeader {
                 page: sectionsPage
                 title: qsTrId("naz-full-name").arg(person.firstName).arg(person.lastName)
+                description: (person.sex === "m" ? "♂︎" : person.sex === "f" ? "♀︎" : "⚧︎") + " " + qsTrId("naz-size-in-cm").arg(person.size) + " " + qsTrId("naz-age-in-years", person.age)
             }
 
             BackgroundItem {
