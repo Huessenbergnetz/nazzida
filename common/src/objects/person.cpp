@@ -116,7 +116,7 @@ void Person::setSex(const QString &s)
 int Person::age() const
 {
     const qint64 days = m_birthday.daysTo(QDate::currentDate());
-    return std::abs(std::lround(days/365.25));
+    return std::abs(std::floor(days/365.25));
 }
 
 #include "moc_person.cpp"
