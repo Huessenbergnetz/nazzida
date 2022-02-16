@@ -29,7 +29,6 @@ bool BaseFilterModel::load()
     } else {
         return false;
     }
-    return m_model ? m_model->load() : false;
 }
 
 void BaseFilterModel::clear()
