@@ -12,6 +12,7 @@ set(QMLSRCS
     pages/Sections.qml
     pages/Liquids.qml
     pages/AddLiquid.qml
+    pages/EditLiquid.qml
     models/ChangelogModel.qml
     ../../common/qml/models/ContributorsModel.qml
 )

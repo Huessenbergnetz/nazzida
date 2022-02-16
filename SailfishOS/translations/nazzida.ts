@@ -260,5 +260,20 @@
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
+    <message id="naz-edit-input-output">
+        <source>Edit In- or Output</source>
+        <extracomment>dialog title</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-accept-edit-liquid">
+        <source>Apply</source>
+        <extracomment>Accept text on liquid edit dialog</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-menu-edit-liquid">
+        <source>Edit</source>
+        <extracomment>context menu item entry</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
