@@ -180,7 +180,7 @@ bool LiquidListModel::remove(QModelIndex index)
 bool LiquidListModel::edit(QModelIndex index, const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note)
 {
     if (!index.isValid() || index.row() >= rowCount()) {
-        qWarning("%s", "Invalid index");
+        qWarning("Invalid index: %i", index.row());
         return false;
     }
 
@@ -262,7 +262,7 @@ QHash<int, QByteArray> LiquidListModel::roleNames() const
 bool LiquidListModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if (!index.isValid() || (index.row() >= rowCount())) {
-        qWarning("%s", "Invalid index");
+        qWarning("Invalid index: %i", index.row());
         return false;
     }
 

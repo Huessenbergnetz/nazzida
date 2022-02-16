@@ -203,7 +203,7 @@ QVariant PeopleListModel::data(const QModelIndex &index, int role) const
 bool PeopleListModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if (!index.isValid() || (index.row() >= rowCount())) {
-        qWarning("%s", "Invalid index");
+        qWarning("Invalid index: %i", index.row());
         return false;
     }
 
@@ -352,7 +352,7 @@ bool PeopleListModel::remove(QModelIndex index)
 bool PeopleListModel::edit(QModelIndex index, const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex)
 {
     if (!index.isValid() || (index.row() >= rowCount())) {
-        qWarning("%s", "Invalid index");
+        qWarning("Invalid index: %i", index.row());
         return false;
     }
 
