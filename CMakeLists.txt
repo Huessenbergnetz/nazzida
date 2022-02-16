@@ -16,7 +16,7 @@ include(GNUInstallDirs)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-set(TARGETSYSTEM "sfos" CACHE STRING "Target system to build the application for, currently supported: sfos")
+set(TARGETSYSTEM "sfos" CACHE STRING "Target system to build the application for, currently supported: sfos, kirigami")
 set(NAZZIDA_TRANSDIR "${CMAKE_INSTALL_DATADIR}/nazzida/translations" CACHE PATH "Installation destination for translation files.")
 
 if (${TARGETSYSTEM} STREQUAL "sfos")
