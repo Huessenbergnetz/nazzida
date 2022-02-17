@@ -10,6 +10,9 @@ LiquidListFilterModel::LiquidListFilterModel(QObject *parent) : BaseFilterModel(
 {
     auto m = new LiquidListModel(this);
     connect(m, &LiquidListModel::personIdChanged, this, &LiquidListFilterModel::personIdChanged);
+    connect(m, &LiquidListModel::dayStartsChanged, this, &LiquidListFilterModel::dayStartsChanged);
+    connect(m, &LiquidListModel::dayChanged, this, &LiquidListFilterModel::dayChanged);
+    connect(m, &LiquidListModel::differenceChanged, this, &LiquidListFilterModel::differenceChanged);
     setModel(m);
 }
 
@@ -18,16 +21,18 @@ LiquidListFilterModel::~LiquidListFilterModel()
 
 }
 
-bool LiquidListFilterModel::loadForPerson(int personId)
+bool LiquidListFilterModel::loadForPerson(int personId,  QTime dayStarts, QDate day)
 {
     setPersonId(personId);
+    setDayStarts(dayStarts);
+    setDay(day);
     return load();
 }
 
-int LiquidListFilterModel::add(const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note)
+int LiquidListFilterModel::add(int id, const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note)
 {
     LiquidListModel* m = qobject_cast<LiquidListModel*>(model());
-    return m ? m->add(moment, inOrOut, amount, name, note) : 0;
+    return m ? m->add(id, moment, inOrOut, amount, name, note) : 0;
 }
 
 bool LiquidListFilterModel::remove(QModelIndex index)
@@ -54,6 +59,40 @@ void LiquidListFilterModel::setPersonId(int id)
     if (m) {
         m->setPersonId(id);
     }
+}
+
+QTime LiquidListFilterModel::dayStarts() const
+{
+    auto m = qobject_cast<LiquidListModel*>(model());
+    return m ? m->dayStarts() : QTime();
+}
+
+void LiquidListFilterModel::setDayStarts(QTime start)
+{
+    auto m = qobject_cast<LiquidListModel*>(model());
+    if (m) {
+        m->setDayStarts(start);
+    }
+}
+
+QDate LiquidListFilterModel::day() const
+{
+    auto m = qobject_cast<LiquidListModel*>(model());
+    return m ? m->day() : QDate();
+}
+
+void LiquidListFilterModel::setDay(QDate day)
+{
+    auto m = qobject_cast<LiquidListModel*>(model());
+    if (m) {
+        m->setDay(day);
+    }
+}
+
+int LiquidListFilterModel::difference() const
+{
+    auto m = qobject_cast<LiquidListModel*>(model());
+    return m ? m->difference() : 0;
 }
 
 bool LiquidListFilterModel::lessThan(const QModelIndex &left, const QModelIndex &right) const

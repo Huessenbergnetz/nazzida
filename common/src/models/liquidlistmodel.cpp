@@ -8,6 +8,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QDateTime>
 
 LiquidListModel::LiquidListModel(QObject *parent) : BaseListModel(parent)
 {
@@ -23,7 +24,7 @@ bool LiquidListModel::load()
 {
     setInOperation(true);
 
-    qDebug("Loading liquids for person ID %i", personId());
+    qDebug("Loading liquids for person ID %i on %s", personId(), qUtf8Printable(day().toString()));
 
     {
         QSqlDatabase db = QSqlDatabase::database();
@@ -37,15 +38,20 @@ bool LiquidListModel::load()
 
     clear();
 
+    const QDateTime start = QDateTime(day(), dayStarts());
+    const QDateTime end = QDateTime(day().addDays(1), dayStarts());
+
     QSqlQuery q;
 
-    if (Q_UNLIKELY(!q.prepare(QStringLiteral("SELECT id, person_id, moment, in_or_out, amount, name, note FROM liquid WHERE person_id = :person_id ORDER BY moment DESC")))) {
+    if (Q_UNLIKELY(!q.prepare(QStringLiteral("SELECT id, person_id, moment, in_or_out, amount, name, note FROM liquid WHERE person_id = :person_id AND moment >= :start AND moment < :end ORDER BY moment DESC")))) {
         setLastError(qtTrId("naz-err-failed-prepare-db-query").arg(q.lastError().text()));
         qCritical("Failed to prepare database query: %s", qUtf8Printable(q.lastError().text()));
         return 0;
     }
 
     q.bindValue(QStringLiteral(":person_id"), personId());
+    q.bindValue(QStringLiteral(":start"), start);
+    q.bindValue(QStringLiteral(":end"), end);
 
     if (Q_UNLIKELY(!q.exec())) {
         setLastError(qtTrId("naz-err-failed-execute-db-query").arg(q.lastError().text()));
@@ -55,15 +61,21 @@ bool LiquidListModel::load()
     }
 
     std::vector<Liquid> _liquids;
+    int diff = 0;
     while (q.next()) {
+        const Liquid::InOrOut inOrOut = static_cast<Liquid::InOrOut>(q.value(3).toInt());
+        const int amount = q.value(4).toInt();
         _liquids.emplace_back(q.value(0).toInt(),
                               q.value(1).toInt(),
                               q.value(2).toDateTime(),
-                              static_cast<Liquid::InOrOut>(q.value(3).toInt()),
-                              q.value(4).toInt(),
+                              inOrOut,
+                              amount,
                               q.value(5).toString(),
                               q.value(6).toString());
+        diff += (inOrOut == Liquid::Out ? (-1 * amount) : amount);
     }
+
+    setDifference(diff);
 
     if (!_liquids.empty()) {
         beginInsertRows(QModelIndex(), 0, _liquids.size() - 1);
@@ -76,9 +88,11 @@ bool LiquidListModel::load()
     return true;
 }
 
-bool LiquidListModel::loadForPerson(int personId)
+bool LiquidListModel::loadForPerson(int personId,  QTime dayStarts, QDate day)
 {
     setPersonId(personId);
+    setDayStarts(dayStarts);
+    setDay(day);
     return load();
 }
 
@@ -91,38 +105,48 @@ void LiquidListModel::clear()
     }
 }
 
-int LiquidListModel::add(const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note)
+int LiquidListModel::add(int id, const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note)
 {
-    Liquid::InOrOut _inOrOut = static_cast<Liquid::InOrOut>(inOrOut);
-
-    QSqlQuery q;
-
-    if (!q.exec(QStringLiteral("PRAGMA foreign_keys = ON"))) {
-        setLastError(qtTrId("naz-err-failed-foreign-keys-pragma").arg(q.lastError().text()));
-        qCritical("Failed to enable foreign keys pragma: %s", qUtf8Printable(q.lastError().text()));
+    if (moment.date() != day()) {
         return 0;
     }
 
-    if (Q_UNLIKELY(!q.prepare(QStringLiteral("INSERT INTO liquid (person_id, moment, in_or_out, amount, name, note) VALUES (:person_id, :moment, :in_or_out, :amount, :name, :note)")))) {
-        setLastError(qtTrId("naz-err-failed-prepare-db-query").arg(q.lastError().text()));
-        qCritical("Failed to prepare database query: %s", qUtf8Printable(q.lastError().text()));
-        return 0;
+    const Liquid::InOrOut _inOrOut = static_cast<Liquid::InOrOut>(inOrOut);
+
+    if (_inOrOut == Liquid::Out) {
+        setDifference(difference() + (-1 * amount));
+    } else {
+        setDifference(difference() + amount);
     }
 
-    q.bindValue(QStringLiteral(":person_id"), personId());
-    q.bindValue(QStringLiteral(":moment"), moment);
-    q.bindValue(QStringLiteral(":in_or_out"), _inOrOut);
-    q.bindValue(QStringLiteral(":amount"), amount);
-    q.bindValue(QStringLiteral(":name"), name);
-    q.bindValue(QStringLiteral(":note"), note);
+//    QSqlQuery q;
 
-    if (Q_UNLIKELY(!q.exec())) {
-        setLastError(qtTrId("naz-err-failed-execute-db-query").arg(q.lastError().text()));
-        qCritical("Failed to execute database query: %s", qUtf8Printable(q.lastError().text()));
-        return 0;
-    }
+//    if (!q.exec(QStringLiteral("PRAGMA foreign_keys = ON"))) {
+//        setLastError(qtTrId("naz-err-failed-foreign-keys-pragma").arg(q.lastError().text()));
+//        qCritical("Failed to enable foreign keys pragma: %s", qUtf8Printable(q.lastError().text()));
+//        return 0;
+//    }
 
-    const int id = q.lastInsertId().toInt();
+//    if (Q_UNLIKELY(!q.prepare(QStringLiteral("INSERT INTO liquid (person_id, moment, in_or_out, amount, name, note) VALUES (:person_id, :moment, :in_or_out, :amount, :name, :note)")))) {
+//        setLastError(qtTrId("naz-err-failed-prepare-db-query").arg(q.lastError().text()));
+//        qCritical("Failed to prepare database query: %s", qUtf8Printable(q.lastError().text()));
+//        return 0;
+//    }
+
+//    q.bindValue(QStringLiteral(":person_id"), personId());
+//    q.bindValue(QStringLiteral(":moment"), moment);
+//    q.bindValue(QStringLiteral(":in_or_out"), _inOrOut);
+//    q.bindValue(QStringLiteral(":amount"), amount);
+//    q.bindValue(QStringLiteral(":name"), name);
+//    q.bindValue(QStringLiteral(":note"), note);
+
+//    if (Q_UNLIKELY(!q.exec())) {
+//        setLastError(qtTrId("naz-err-failed-execute-db-query").arg(q.lastError().text()));
+//        qCritical("Failed to execute database query: %s", qUtf8Printable(q.lastError().text()));
+//        return 0;
+//    }
+
+//    const int id = q.lastInsertId().toInt();
 
     beginInsertRows(QModelIndex(), m_liquids.size(), m_liquids.size());
 
@@ -218,7 +242,7 @@ QVariant LiquidListModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
-    auto l = m_liquids.at(index.row());
+    const auto l = m_liquids.at(index.row());
 
     switch(role) {
     case Id:
@@ -381,6 +405,48 @@ void LiquidListModel::setPersonId(int id)
         qDebug("Changing personId from %i to %i", m_personId, id);
         m_personId = id;
         emit personIdChanged(personId());
+    }
+}
+
+QTime LiquidListModel::dayStarts() const
+{
+    return m_dayStarts;
+}
+
+void LiquidListModel::setDayStarts(QTime start)
+{
+    if (m_dayStarts != start) {
+        qDebug("Changing dayStarts from \"%s\" to \"%s\"", qUtf8Printable(m_dayStarts.toString()), qUtf8Printable(start.toString()));
+        m_dayStarts = start;
+        emit dayStartsChanged(dayStarts());
+    }
+}
+
+QDate LiquidListModel::day() const
+{
+    return m_day;
+}
+
+void LiquidListModel::setDay(QDate day)
+{
+    if (m_day != day) {
+        qDebug("Changing day from \"%s\" to \"%s\"", qUtf8Printable(m_day.toString()), qUtf8Printable(day.toString()));
+        m_day = day;
+        emit dayChanged(this->day());
+    }
+}
+
+int LiquidListModel::difference() const
+{
+    return m_difference;
+}
+
+void LiquidListModel::setDifference(int difference)
+{
+    if (m_difference != difference) {
+        qDebug("Changing difference from %i to %i", m_difference, difference);
+        m_difference = difference;
+        emit differenceChanged(this->difference());
     }
 }
 
