@@ -270,5 +270,10 @@
         <extracomment>context menu item entry</extracomment>
         <translation>Bearbeiten</translation>
     </message>
+    <message id="naz-name-day-total">
+        <source>%1 %2, %3, %4 ml</source>
+        <extracomment>%1 will be the first name, %2 the second name, %3 will be the date in short format, %4 will be the liquid amount in ml</extracomment>
+        <translation>%1 %2, %3, %4 ml</translation>
+    </message>
 </context>
 </TS>
