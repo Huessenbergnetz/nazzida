@@ -16,6 +16,9 @@ add_executable(harbour-nazzida
     ../../common/src/objects/liquid.h
     ../../common/src/objects/liquid_p.h
     ../../common/src/objects/liquid.cpp
+    ../../common/src/objects/dailyliquids.h
+    ../../common/src/objects/dailyliquids_p.h
+    ../../common/src/objects/dailyliquids.cpp
     ../../common/src/models/baselistmodel.h
     ../../common/src/models/baselistmodel.cpp
     ../../common/src/models/basefiltermodel.h
@@ -28,6 +31,10 @@ add_executable(harbour-nazzida
     ../../common/src/models/liquidlistmodel.cpp
     ../../common/src/models/liquidlistfiltermodel.h
     ../../common/src/models/liquidlistfiltermodel.cpp
+    ../../common/src/models/dailyliquidlistmodel.h
+    ../../common/src/models/dailyliquidlistmodel.cpp
+    ../../common/src/models/dailyliquidlistfiltermodel.h
+    ../../common/src/models/dailyliquidlistfiltermodel.cpp
     ../../common/src/models/languagesmodel.h
     ../../common/src/models/languagesmodel.cpp
     sfosconfig.h

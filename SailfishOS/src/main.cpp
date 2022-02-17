@@ -30,6 +30,8 @@
 
 #include "../../common/src/objects/person.h"
 #include "../../common/src/models/peoplelistfiltermodel.h"
+#include "../../common/src/objects/dailyliquids.h"
+#include "../../common/src/models/dailyliquidlistfiltermodel.h"
 #include "../../common/src/objects/liquid.h"
 #include "../../common/src/models/liquidlistfiltermodel.h"
 #include "../../common/src/models/languagesmodel.h"
@@ -150,6 +152,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<LicensesModel>("harbour.nazzida", 1, 0, "LicensesModel");
     qmlRegisterType<Person>("harbour.nazzida", 1, 0, "Person");
     qmlRegisterType<PeopleListFilterModel>("harbour.nazzida", 1, 0, "PeopleListFilterModel");
+    qmlRegisterUncreatableType<DailyLiquids>("harbour.nazzida", 1, 0, "DailyLiquids", QStringLiteral("You can not create objects of type DailyLiquids in QML!"));
+    qmlRegisterType<DailyLiquidListFilterModel>("harbour.nazzida", 1, 0, "DailyLiquidListFilterModel");
     qmlRegisterUncreatableType<Liquid>("harbour.nazzida", 1, 0, "Liquid", QStringLiteral("You can not create objects of type Liquid in QML!"));
     qmlRegisterType<LiquidListFilterModel>("harbour.nazzida", 1, 0, "LiquidListFilterModel");
     qmlRegisterType<LanguagesModel>("harbour.nazzida", 1, 0, "LanguagesModel");
