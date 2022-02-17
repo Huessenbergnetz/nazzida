@@ -13,6 +13,7 @@ Dialog {
     allowedOrientations: defaultAllowedOrientations
     property Person person: null
     property LiquidListFilterModel liquidsModel: null
+    property DailyLiquidListFilterModel dailyLiquidsModel: null
     property date moment: new Date()
 
     SilicaFlickable {
@@ -197,5 +198,12 @@ Dialog {
 
     canAccept: nameField.text.length && amountField.text.length && parseInt(amountField.text) > 0
 
-    onAccepted: liquidsModel.add(moment, typePicker.currentItem.value, parseInt(amountField.text), nameField.text, noteArea.text)
+//    onAccepted: liquidsModel.add(moment, typePicker.currentItem.value, parseInt(amountField.text), nameField.text, noteArea.text)
+    onAccepted: {
+        var newId = dailyLiquidsModel.add(moment, typePicker.currentItem.value, parseInt(amountField.text), nameField.text, noteArea.text)
+
+        if (liquidsModel) {
+            liquidsModel.add(newId, moment, typePicker.currentItem.value, parseInt(amountField.text), nameField.text, noteArea.text);
+        }
+    }
 }

@@ -10,6 +10,7 @@ set(QMLSRCS
     pages/About.qml
     pages/Settings.qml
     pages/Sections.qml
+    pages/DailyLiquids.qml
     pages/Liquids.qml
     pages/AddLiquid.qml
     pages/EditLiquid.qml
