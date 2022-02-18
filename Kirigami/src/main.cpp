@@ -17,6 +17,7 @@
 
 #include "../../common/src/migrations/m20220127t134808_people.h"
 #include "../../common/src/migrations/m20220130t123658_liquid.h"
+#include "../../common/src/migrations/m20220218t081651_people_transpire.h"
 
 #include "../../common/src/objects/person.h"
 #include "../../common/src/models/peoplelistfiltermodel.h"
@@ -73,6 +74,7 @@ int main(int argc, char *argv[])
                 auto migrator = new Firfuorida::Migrator(QStringLiteral("initDbCon"), QStringLiteral("migrations"), &app);
                 new M20220127T134808_People(migrator);
                 new M20220130T123658_Liquid(migrator);
+                new M20220218T081651_People_transpire(migrator);
 
                 if (!migrator->migrate()) {
                     errorMessage = i18nc("error message, %1 is the migration error", "Failed to perform database migrations: %1").arg(migrator->lastError().text());
