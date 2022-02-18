@@ -37,6 +37,7 @@
 #include "../../common/src/models/languagesmodel.h"
 #include "../../common/src/migrations/m20220127t134808_people.h"
 #include "../../common/src/migrations/m20220130t123658_liquid.h"
+#include "../../common/src/migrations/m20220218t081651_people_transpire.h"
 
 int main(int argc, char *argv[])
 {
@@ -115,6 +116,7 @@ int main(int argc, char *argv[])
                 auto migrator = new Firfuorida::Migrator(QStringLiteral("initDbCon"), QStringLiteral("migrations"), app.get());
                 new M20220127T134808_People(migrator);
                 new M20220130T123658_Liquid(migrator);
+                new M20220218T081651_People_transpire(migrator);
 
                 if (!migrator->migrate()) {
                     //: error message, %1 will be replaced by the migration error

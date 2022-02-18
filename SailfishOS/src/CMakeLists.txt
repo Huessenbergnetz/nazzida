@@ -11,6 +11,8 @@ add_executable(harbour-nazzida
     ../../common/src/migrations/m20220127t134808_people.cpp
     ../../common/src/migrations/m20220130t123658_liquid.h
     ../../common/src/migrations/m20220130t123658_liquid.cpp
+    ../../common/src/migrations/m20220218t081651_people_transpire.h
+    ../../common/src/migrations/m20220218t081651_people_transpire.cpp
     ../../common/src/objects/person.h
     ../../common/src/objects/person.cpp
     ../../common/src/objects/liquid.h
