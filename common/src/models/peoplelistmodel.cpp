@@ -48,7 +48,7 @@ bool PeopleListModel::load()
         return false;
     }
 
-    if (!q.exec(QStringLiteral("SELECT id, first_name, last_name, size, birthday, day_starts, sex FROM people"))) {
+    if (!q.exec(QStringLiteral("SELECT id, first_name, last_name, size, birthday, day_starts, sex, transpire FROM people"))) {
         //: error message, %1 will be replaced by the database error message
         //% "Failed to execute database query: %1"
         setLastError(qtTrId("naz-err-failed-execute-db-query").arg(q.lastError().text()));
@@ -67,6 +67,7 @@ bool PeopleListModel::load()
                                      q.value(4).toDate(),
                                      q.value(5).toTime(),
                                      q.value(6).toString(),
+                                     q.value(7).toInt(),
                                      this));
     }
 
@@ -92,7 +93,7 @@ void PeopleListModel::clear()
     }
 }
 
-int PeopleListModel::add(const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex)
+int PeopleListModel::add(const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex, int transpire)
 {
     QSqlQuery q;
 
@@ -102,7 +103,7 @@ int PeopleListModel::add(const QString &firstName, const QString &lastName, int 
         return 0;
     }
 
-    if (!q.prepare(QStringLiteral("INSERT INTO people (first_name, last_name, size, birthday, day_starts, sex) VALUES (:first_name, :last_name, :size, :birthday, :day_starts, :sex)"))) {
+    if (!q.prepare(QStringLiteral("INSERT INTO people (first_name, last_name, size, birthday, day_starts, sex, transpire) VALUES (:first_name, :last_name, :size, :birthday, :day_starts, :sex, :transpire)"))) {
         //: error message, %1 will be replaced by the database error message
         //% "Failed to prepare database query: %1"
         setLastError(qtTrId("naz-err-failed-prepare-db-query").arg(q.lastError().text()));
@@ -115,6 +116,7 @@ int PeopleListModel::add(const QString &firstName, const QString &lastName, int 
     q.bindValue(QStringLiteral(":birthday"), birthday);
     q.bindValue(QStringLiteral(":day_starts"), dayStarts);
     q.bindValue(QStringLiteral(":sex"), sex);
+    q.bindValue(QStringLiteral(":transpire"), transpire);
 
     if (!q.exec()) {
         setLastError(qtTrId("naz-err-failed-execute-db-query").arg(q.lastError().text()));
@@ -133,6 +135,7 @@ int PeopleListModel::add(const QString &firstName, const QString &lastName, int 
                                   birthday,
                                   dayStarts,
                                   sex,
+                                  transpire,
                                   this));
 
     endInsertRows();
@@ -154,6 +157,7 @@ QHash<int, QByteArray> PeopleListModel::roleNames() const
     roles.insert(DayStarts, QByteArrayLiteral("dayStarts"));
     roles.insert(Sex, QByteArrayLiteral("sex"));
     roles.insert(Age, QByteArrayLiteral("age"));
+    roles.insert(Transpire, QByteArrayLiteral("transpire"));
     return roles;
 }
 
@@ -195,6 +199,8 @@ QVariant PeopleListModel::data(const QModelIndex &index, int role) const
         return QVariant::fromValue<QString>(p->sex());
     case Age:
         return QVariant::fromValue<int>(p->age());
+    case Transpire:
+        return QVariant::fromValue<int>(p->transpire());
     default:
         return QVariant();
     }
@@ -259,6 +265,14 @@ bool PeopleListModel::setData(const QModelIndex &index, const QVariant &value, i
         roleColumn = QStringLiteral("sex");
     }
         break;
+    case Transpire:
+    {
+        if (p->transpire() == value.toInt()) {
+            return true;
+        }
+        roleColumn = QStringLiteral("transpire");
+    }
+        break;
     default:
         return false;
     }
@@ -296,6 +310,9 @@ bool PeopleListModel::setData(const QModelIndex &index, const QVariant &value, i
         break;
     case Sex:
         p->setSex(value.toString());
+        break;
+    case Transpire:
+        p->setTranspire(value.toInt());
         break;
     default:
         break;
@@ -349,7 +366,7 @@ bool PeopleListModel::remove(QModelIndex index)
     return true;
 }
 
-bool PeopleListModel::edit(QModelIndex index, const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex)
+bool PeopleListModel::edit(QModelIndex index, const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex, int transpire)
 {
     if (!index.isValid() || (index.row() >= rowCount())) {
         qWarning("Invalid index: %i", index.row());
@@ -387,6 +404,11 @@ bool PeopleListModel::edit(QModelIndex index, const QString &firstName, const QS
         return false;
     }
     p->setSex(sex);
+
+    if (!setData(index, transpire, Transpire)) {
+        return false;
+    }
+    p->setTranspire(transpire);
 
     return true;
 }

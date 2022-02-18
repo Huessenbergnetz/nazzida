@@ -16,9 +16,9 @@ public:
     explicit PeopleListFilterModel(QObject *parent = nullptr);
     ~PeopleListFilterModel() override;
 
-    Q_INVOKABLE int add(const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex);
+    Q_INVOKABLE int add(const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex, int transpire);
     Q_INVOKABLE bool remove(QModelIndex index);
-    Q_INVOKABLE bool edit(QModelIndex index, const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex);
+    Q_INVOKABLE bool edit(QModelIndex index, const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex, int transpire);
 
 protected:
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;

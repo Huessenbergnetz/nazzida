@@ -12,8 +12,8 @@ Person::Person(QObject *parent) :
 
 }
 
-Person::Person(int id, const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex, QObject *parent) :
-    QObject(parent), m_firstName(firstName), m_lastName(lastName), m_sex(sex), m_birthday(birthday), m_dayStarts(dayStarts), m_id(id), m_size(size)
+Person::Person(int id, const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex, int transpire, QObject *parent) :
+    QObject(parent), m_firstName(firstName), m_lastName(lastName), m_sex(sex), m_birthday(birthday), m_dayStarts(dayStarts), m_id(id), m_size(size), m_transpire(transpire)
 {
 
 }
@@ -117,6 +117,20 @@ int Person::age() const
 {
     const qint64 days = m_birthday.daysTo(QDate::currentDate());
     return std::abs(std::floor(days/365.25));
+}
+
+int Person::transpire() const
+{
+    return m_transpire;
+}
+
+void Person::setTranspire(int nTranspire)
+{
+    if (m_transpire != nTranspire) {
+        qDebug("Changing transpire from %i to %i", m_transpire, nTranspire);
+        m_transpire = nTranspire;
+        emit transpireChanged(transpire());
+    }
 }
 
 #include "moc_person.cpp"

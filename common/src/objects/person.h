@@ -21,9 +21,10 @@ class Person : public QObject
     Q_PROPERTY(QTime dayStarts READ dayStarts NOTIFY dayStartsChanged)
     Q_PROPERTY(QString sex READ sex NOTIFY sexChanged)
     Q_PROPERTY(int age READ age NOTIFY ageChanged)
+    Q_PROPERTY(int transpire READ transpire NOTIFY transpireChanged)
 public:
     explicit Person(QObject *parent = nullptr);
-    Person(int id, const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex, QObject *parent = nullptr);
+    Person(int id, const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex, int transpire, QObject *parent = nullptr);
     ~Person() override;
 
     int id() const;
@@ -42,6 +43,8 @@ public:
 
     int age() const;
 
+    int transpire() const;
+
 signals:
     void firstNameChanged(const QString &firstName);
     void lastNameChanged(const QString &lastName);
@@ -50,6 +53,7 @@ signals:
     void dayStartsChanged(const QTime &dayStarts);
     void sexChanged(const QString &sex);
     void ageChanged(int age);
+    void transpireChanged(int transpire);
 
 private:
     friend class PeopleListModel;
@@ -60,6 +64,7 @@ private:
     void setBirthday(QDate date);
     void setDayStarts(QTime time);
     void setSex(const QString &s);
+    void setTranspire(int nTranspire);
 
     QString m_firstName;
     QString m_lastName;
@@ -68,6 +73,7 @@ private:
     QTime m_dayStarts;
     int m_id = 0;
     int m_size = 0;
+    int m_transpire = 500;
 };
 
 #endif // PERSON_H

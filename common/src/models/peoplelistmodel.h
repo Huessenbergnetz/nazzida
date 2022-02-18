@@ -28,15 +28,16 @@ public:
         Birthday,
         DayStarts,
         Sex,
-        Age
+        Age,
+        Transpire
     };
     Q_ENUM(Roles)
 
     Q_INVOKABLE bool load() override;
     Q_INVOKABLE void clear() override;
-    Q_INVOKABLE int add(const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex);
+    Q_INVOKABLE int add(const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex, int transpire);
     Q_INVOKABLE bool remove(QModelIndex index);
-    Q_INVOKABLE bool edit(QModelIndex index, const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex);
+    Q_INVOKABLE bool edit(QModelIndex index, const QString &firstName, const QString &lastName, int size, QDate birthday, QTime dayStarts, const QString &sex, int transpire);
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role) const override;
