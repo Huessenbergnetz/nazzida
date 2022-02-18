@@ -68,8 +68,24 @@ Dialog {
                 label: qsTrId("naz-textfield-size"); placeholderText: label
                 inputMethodHints: Qt.ImhDigitsOnly
                 validator: IntValidator { bottom: 0 }
+                EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                EnterKey.onClicked: transpireField.focus = true
+            }
+
+            TextField {
+                id: transpireField
+                width: parent.width
+                text: "500"
+                //: text field label
+                //% "Transpire in ml"
+                label: qsTrId("naz-textfield-transpire"); placeholderText: label
+                //: text field description
+                //% "Approximate daily transpiration. The body of an adult loses about 500 ml daily through perspiration. This is used when calculating the difference between fluid intake and fluid output."
+                description: qsTrId("naz-textfield-transpire-desc")
+                inputMethodHints: Qt.ImhDigitsOnly
+                validator: IntValidator { bottom: 0 }
                 EnterKey.iconSource: "image://theme/icon-m-enter-close"
-                EnterKey.onClicked: sizeField.focus = false
+                EnterKey.onClicked: transpireField.focus = false
             }
 
             TextField {
@@ -151,7 +167,7 @@ Dialog {
     }
 
     onAccepted: {
-        peopleModel.add(firstNameField.text, lastNameField.text, parseInt(sizeField.text), birthDate, dayStarts, sexBox.currentItem.value)
+        peopleModel.add(firstNameField.text, lastNameField.text, parseInt(sizeField.text), birthDate, dayStarts, sexBox.currentItem.value, parseInt(transpireField.text))
     }
 
     canAccept: firstNameField.text.length && lastNameField.text.length

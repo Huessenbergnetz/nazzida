@@ -275,5 +275,15 @@
         <extracomment>%1 will be the first name, %2 the second name, %3 will be the date in short format, %4 will be the liquid amount in ml</extracomment>
         <translation>%1 %2, %3, %4 ml</translation>
     </message>
+    <message id="naz-textfield-transpire">
+        <source>Transpire in ml</source>
+        <extracomment>text field label</extracomment>
+        <translation>Transpiration in ml</translation>
+    </message>
+    <message id="naz-textfield-transpire-desc">
+        <source>Approximate daily transpiration. The body of an adult loses about 500 ml daily through perspiration. This is used when calculating the difference between fluid intake and fluid output.</source>
+        <extracomment>text field description</extracomment>
+        <translation>Ungefähre tägliche Transpiration. Der Körper eines Erwachsenen schwitzt täglich etwa 500 ml Flüssigkeit aus. Dieser Wert wird für die Berechnung der Differenz zwischen Flüssigkeitsaufnahme und -abgabe benutzt.</translation>
+    </message>
 </context>
 </TS>

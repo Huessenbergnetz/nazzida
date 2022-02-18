@@ -59,7 +59,7 @@ Page {
                 width: Theme.iconSizeLarge
                 height: Theme.iconSizeLarge
                 highlighted: liquidItem.highlighted
-                rotation: model.difference > 0 ? 180 : 0
+                rotation: model.difference - person.transpire > 0 ? 180 : 0
             }
 
             Column {
@@ -128,7 +128,7 @@ Page {
                                 right: parent.right
                             }
 
-                            text: "-" + model.output.toLocaleString(Qt.locale(), 'f', 0)
+                            text: "-" + Number(model.output + person.transpire).toLocaleString(Qt.locale(), 'f', 0)
                             color: liquidItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
                             font.pixelSize: Theme.fontSizeSmall
                         }
@@ -154,8 +154,8 @@ Page {
                                 left: diffIcon.right
                                 right: parent.right
                             }
-                            text: (model.difference < 0 ? "" : "+") + model.difference.toLocaleString(Qt.locale(), 'f', 0)
-                            color: liquidItem.highlighted ? Theme.secondaryHighlightColor : model.difference - 500 > 0 ? Theme.errorColor : Theme.secondaryColor
+                            text: (model.difference - person.transpire < 0 ? "" : "+") + Number(model.difference - person.transpire).toLocaleString(Qt.locale(), 'f', 0)
+                            color: liquidItem.highlighted ? Theme.secondaryHighlightColor : model.difference - person.transpire > 0 ? Theme.errorColor : Theme.secondaryColor
                             font.pixelSize: Theme.fontSizeSmall
                         }
                     }

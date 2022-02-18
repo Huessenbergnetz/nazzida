@@ -66,8 +66,20 @@ Dialog {
                 label: qsTrId("naz-textfield-size"); placeholderText: label
                 inputMethodHints: Qt.ImhDigitsOnly
                 validator: IntValidator { bottom: 0 }
+                EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                EnterKey.onClicked: transpireField.focus = true
+            }
+
+            TextField {
+                id: transpireField
+                width: parent.width
+                text: person.transpire
+                label: qsTrId("naz-textfield-transpire"); placeholderText: label
+                description: qsTrId("naz-textfield-transpire-desc")
+                inputMethodHints: Qt.ImhDigitsOnly
+                validator: IntValidator { bottom: 0 }
                 EnterKey.iconSource: "image://theme/icon-m-enter-close"
-                EnterKey.onClicked: sizeField.focus = false
+                EnterKey.onClicked: transpireField.focus = false
             }
 
             TextField {
@@ -152,6 +164,6 @@ Dialog {
     canAccept: firstNameField.text.length && lastNameField.text.length
 
     onAccepted: {
-        peopleModel.edit(peopleModel.index(modelIndex,0), firstNameField.text, lastNameField.text, parseInt(sizeField.text), birthday, dayStarts, sexBox.currentItem.value)
+        peopleModel.edit(peopleModel.index(modelIndex,0), firstNameField.text, lastNameField.text, parseInt(sizeField.text), birthday, dayStarts, sexBox.currentItem.value, parseInt(transpireField.text))
     }
 }

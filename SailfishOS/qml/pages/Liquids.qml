@@ -43,7 +43,7 @@ Page {
             title: qsTrId("naz-fluid-balance-protocol")
             //: %1 will be the first name, %2 the second name, %3 will be the date in short format, %4 will be the liquid amount in ml
             //% "%1 %2, %3, %4 ml"
-            description: qsTrId("naz-name-day-total").arg(person.firstName).arg(person.lastName).arg(liquidsPage.day.toLocaleDateString(Qt.locale(), Locale.ShortFormat)).arg((liquidsModel.difference < 0 ? "" : "+") + liquidsModel.difference.toLocaleString(Qt.locale(), 'f', 0))
+            description: qsTrId("naz-name-day-total").arg(person.firstName).arg(person.lastName).arg(liquidsPage.day.toLocaleDateString(Qt.locale(), Locale.ShortFormat)).arg((liquidsModel.difference - person.transpire < 0 ? "" : "+") + Number(liquidsModel.difference - person.transpire).toLocaleString(Qt.locale(), 'f', 0))
         }
 
         delegate: ListItem {
