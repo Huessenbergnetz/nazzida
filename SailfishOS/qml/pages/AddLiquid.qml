@@ -198,11 +198,10 @@ Dialog {
 
     canAccept: nameField.text.length && amountField.text.length && parseInt(amountField.text) > 0
 
-//    onAccepted: liquidsModel.add(moment, typePicker.currentItem.value, parseInt(amountField.text), nameField.text, noteArea.text)
     onAccepted: {
         var newId = dailyLiquidsModel.add(moment, typePicker.currentItem.value, parseInt(amountField.text), nameField.text, noteArea.text)
 
-        if (liquidsModel) {
+        if (liquidsModel && newId > 0) {
             liquidsModel.add(newId, moment, typePicker.currentItem.value, parseInt(amountField.text), nameField.text, noteArea.text);
         }
     }
