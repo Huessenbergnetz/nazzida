@@ -11,7 +11,6 @@ import "../models"
 
 AboutPage {
     allowedOrientations: defaultAllowedOrientations
-    pageTitle: qsTrId("naz-title-about")
     appTitle: "Nazzida"
     //% "Nazzida is the old high german word for liquid. This applicaton helps you to manage a personal fluid balance protocol if you need to log your daily liquid input and output."
     appDescription: qsTrId("naz-about-app-desc")
