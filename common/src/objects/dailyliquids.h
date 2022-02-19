@@ -16,9 +16,10 @@ class DailyLiquids
     Q_PROPERTY(int input READ input CONSTANT)
     Q_PROPERTY(int output READ output CONSTANT)
     Q_PROPERTY(int difference READ difference CONSTANT)
+    Q_PROPERTY(int entries READ entries CONSTANT)
 public:
     DailyLiquids();
-    DailyLiquids(int id, int personId, QDate day, int input, int output);
+    DailyLiquids(int id, int personId, QDate day, int input, int output, int entries);
     DailyLiquids(const DailyLiquids &other);
     DailyLiquids(DailyLiquids &&other) noexcept;
     DailyLiquids& operator=(const DailyLiquids &other);
@@ -33,6 +34,7 @@ public:
     int input() const;
     int output() const;
     int difference() const;
+    int entries() const;
 
 private:
     friend class DailyLiquidListModel;

@@ -22,6 +22,7 @@ public:
     Q_INVOKABLE bool loadForPerson(int personId, QTime dayStarts);
 
     Q_INVOKABLE int add(const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note);
+    Q_INVOKABLE bool remove(const QDateTime &moment, int inOrOut, int amount);
 
     int personId() const;
     void setPersonId(int id);

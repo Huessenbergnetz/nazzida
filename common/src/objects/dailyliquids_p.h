@@ -14,13 +14,14 @@ class DailyLiquidsData : public QSharedData
 public:
     DailyLiquidsData() : QSharedData() {}
 
-    DailyLiquidsData(int _id, int _personId, QDate _day, int _input, int _output) :
+    DailyLiquidsData(int _id, int _personId, QDate _day, int _input, int _output, int _entries) :
         QSharedData(),
         day(_day),
         id(_id),
         personId(_personId),
         input(_input),
-        output(_output)
+        output(_output),
+        entries(_entries)
     {}
 
     ~DailyLiquidsData() {}
@@ -30,6 +31,7 @@ public:
     int personId = 0;
     int input = 0;
     int output = 0;
+    int entries = 0;
 };
 
 #endif // DAILYLIQUIDS_P_H

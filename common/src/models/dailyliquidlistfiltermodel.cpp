@@ -32,6 +32,12 @@ int DailyLiquidListFilterModel::add(const QDateTime &moment, int inOrOut, int am
     return m ? m->add(moment, inOrOut, amount, name, note) : 0;
 }
 
+bool DailyLiquidListFilterModel::remove(const QDateTime &moment, int inOrOut, int amount)
+{
+    DailyLiquidListModel* m = qobject_cast<DailyLiquidListModel*>(model());
+    return m ? m->remove(moment, inOrOut, amount) : false;
+}
+
 int DailyLiquidListFilterModel::personId() const
 {
     DailyLiquidListModel* m = qobject_cast<DailyLiquidListModel*>(model());

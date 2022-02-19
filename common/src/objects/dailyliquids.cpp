@@ -11,8 +11,8 @@ DailyLiquids::DailyLiquids()
 
 }
 
-DailyLiquids::DailyLiquids(int id, int personId, QDate day, int input, int output)
-    : d(new DailyLiquidsData(id, personId, day, input, output))
+DailyLiquids::DailyLiquids(int id, int personId, QDate day, int input, int output, int entries)
+    : d(new DailyLiquidsData(id, personId, day, input, output, entries))
 {
 
 }
@@ -63,6 +63,11 @@ int DailyLiquids::output() const
 int DailyLiquids::difference() const
 {
     return d->input - d->output;
+}
+
+int DailyLiquids::entries() const
+{
+    return d->entries;
 }
 
 #include "moc_dailyliquids.cpp"
