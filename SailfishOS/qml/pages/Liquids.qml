@@ -17,6 +17,7 @@ Page {
     Component.onCompleted: liquidsModel.loadForPerson(person.id, person.dayStarts, day)
 
     SilicaListView {
+        id: liquidsListView
         anchors.fill: parent
         spacing: Theme.paddingMedium
 
@@ -100,7 +101,19 @@ Page {
                 //: remorse item text, %1 will be the liquid amout, %2 the liquid name,
                 //: %3 will be the datetime the liquid has been consumed or excreted
                 //% "Delete %1 ml %2 from %3"
-                removeRemorse.execute(liquidItem, qsTrId("naz-remorse-delete-liquid").arg(Number(model.amount).toLocaleString(Qt.locale())).arg(model.name).arg(Qt.formatDate(model.moment)), function() { liquidsModel.remove(liquidsModel.index(idx, 0)) } )
+                removeRemorse.execute(liquidItem, qsTrId("naz-remorse-delete-liquid").arg(Number(model.amount).toLocaleString(Qt.locale())).arg(model.name).arg(Qt.formatDate(model.moment)), function() {
+                    var _moment = model.moment
+                    var _inOrOut = model.inOrOut
+                    var _amount = model.amount
+                    if (liquidsModel.remove(liquidsModel.index(idx, 0))) {
+                        if (dailyLiquidsModel) {
+                            dailyLiquidsModel.remove(_moment, _inOrOut, _amount)
+                        }
+                        if (liquidsListView.count == 0) {
+                            pageStack.pop()
+                        }
+                    }
+                })
             }
 
             menu: ContextMenu {
