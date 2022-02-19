@@ -205,6 +205,17 @@ bool LiquidListModel::edit(QModelIndex index, const QDateTime &moment, int inOrO
         return false;
     }
 
+    const QDate _day = moment.date();
+    const QTime _time = moment.time();
+    const QDate _liquidDay = _time >= dayStarts() ? _day : _day.addDays(-1);
+
+    if (_liquidDay != day()) {
+        beginRemoveRows(QModelIndex(), index.row(), index.row());
+        m_liquids.erase(m_liquids.begin() + index.row());
+        endRemoveRows();
+        updateDifference();
+    }
+
     return true;
 }
 
@@ -368,6 +379,10 @@ bool LiquidListModel::setData(const QModelIndex &index, const QVariant &value, i
 
     emit dataChanged(index, index, {role});
 
+    if (role == InOrOut || role == Amount) {
+        updateDifference();
+    }
+
     return true;
 }
 
@@ -425,6 +440,15 @@ void LiquidListModel::setDifference(int difference)
         m_difference = difference;
         emit differenceChanged(this->difference());
     }
+}
+
+void LiquidListModel::updateDifference()
+{
+    int diff = 0;
+    for (const auto &l : m_liquids) {
+        diff += (l.inOrOut() == Liquid::Out ? (-1 * l.amount()) : l.amount());
+    }
+    setDifference(diff);
 }
 
 #include "moc_liquidlistmodel.cpp"

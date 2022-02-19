@@ -68,6 +68,7 @@ signals:
 
 private:
     void setDifference(int difference);
+    void updateDifference();
 
     std::vector<Liquid> m_liquids;
     QTime m_dayStarts = QTime(7,0);
