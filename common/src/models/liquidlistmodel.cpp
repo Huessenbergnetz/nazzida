@@ -119,35 +119,6 @@ int LiquidListModel::add(int id, const QDateTime &moment, int inOrOut, int amoun
         setDifference(difference() + amount);
     }
 
-//    QSqlQuery q;
-
-//    if (!q.exec(QStringLiteral("PRAGMA foreign_keys = ON"))) {
-//        setLastError(qtTrId("naz-err-failed-foreign-keys-pragma").arg(q.lastError().text()));
-//        qCritical("Failed to enable foreign keys pragma: %s", qUtf8Printable(q.lastError().text()));
-//        return 0;
-//    }
-
-//    if (Q_UNLIKELY(!q.prepare(QStringLiteral("INSERT INTO liquid (person_id, moment, in_or_out, amount, name, note) VALUES (:person_id, :moment, :in_or_out, :amount, :name, :note)")))) {
-//        setLastError(qtTrId("naz-err-failed-prepare-db-query").arg(q.lastError().text()));
-//        qCritical("Failed to prepare database query: %s", qUtf8Printable(q.lastError().text()));
-//        return 0;
-//    }
-
-//    q.bindValue(QStringLiteral(":person_id"), personId());
-//    q.bindValue(QStringLiteral(":moment"), moment);
-//    q.bindValue(QStringLiteral(":in_or_out"), _inOrOut);
-//    q.bindValue(QStringLiteral(":amount"), amount);
-//    q.bindValue(QStringLiteral(":name"), name);
-//    q.bindValue(QStringLiteral(":note"), note);
-
-//    if (Q_UNLIKELY(!q.exec())) {
-//        setLastError(qtTrId("naz-err-failed-execute-db-query").arg(q.lastError().text()));
-//        qCritical("Failed to execute database query: %s", qUtf8Printable(q.lastError().text()));
-//        return 0;
-//    }
-
-//    const int id = q.lastInsertId().toInt();
-
     beginInsertRows(QModelIndex(), m_liquids.size(), m_liquids.size());
 
     m_liquids.emplace_back(id,
@@ -172,7 +143,7 @@ bool LiquidListModel::remove(QModelIndex index)
         return false;
     }
 
-    Liquid l = m_liquids.at(index.row());
+    const Liquid l = m_liquids.at(index.row());
 
     QSqlQuery q;
 
@@ -195,6 +166,12 @@ bool LiquidListModel::remove(QModelIndex index)
     m_liquids.erase(m_liquids.begin() + index.row());
 
     endRemoveRows();
+
+    if (l.inOrOut() == Liquid::Out) {
+        setDifference(difference() - (-1 * l.amount()));
+    } else {
+        setDifference(difference() - l.amount());
+    }
 
     qDebug("Removed Liquid %i ml %s with ID %i", l.amount(), qUtf8Printable(l.name()), l.id());
 
