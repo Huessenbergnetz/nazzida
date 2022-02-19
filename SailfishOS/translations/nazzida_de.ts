@@ -285,5 +285,47 @@
         <extracomment>text field description</extracomment>
         <translation>Ungefähre tägliche Transpiration. Der Körper eines Erwachsenen schwitzt täglich etwa 500 ml Flüssigkeit aus. Dieser Wert wird für die Berechnung der Differenz zwischen Flüssigkeitsaufnahme und -abgabe benutzt.</translation>
     </message>
+    <message id="naz-privacy-0">
+        <source>What information does Nazzida collect?</source>
+        <translation>Welche Informationen sammelt Nazzida?</translation>
+    </message>
+    <message id="naz-privacy-1">
+        <source>Nazzida helps you to manage a personal fluid balance protocol if you need to log your daily liquid input and output. To do this, it stores your input into a local SQLite database on your device. It saves only data that you enter yourself in the application.</source>
+        <translation>Nazzida hilft Ihnen dabei, ein persönliches Ein‐ und Ausfuhrprotokoll zu führen, wenn Sie Ihre tägliche Flüssigkeitszu und ‐abfuhr protokollieren müssen. Dazu speichert es Ihre Eingaben in einer lokalen SQLite-Datenbank auf Ihrem Gerät. Es speichert nur Daten, die Sie selber in das Programm eingeben.</translation>
+    </message>
+    <message id="naz-privacy-2">
+        <source>What does Nazzida use your data for?</source>
+        <translation>Wozu nutzt Nazzida Ihre Daten?</translation>
+    </message>
+    <message id="naz-privacy-3">
+        <source>Nazzida uses your stored data to show you your daily liquid balance data as well as every data entry you provided to the application. The data is only stored on your local device and is not shared to other parties.</source>
+        <translation>Nazzida nutzt Ihr gespeicherten Daten um Ihnen einen täglichen Überblick über Ihren Flüssigkeitshaushalt so wie alle eingegebenen Daten zu geben. Die Daten werden nur lokal auf Ihrem Gerät gespeichert und nicht mit anderen geteilt.</translation>
+    </message>
+    <message id="naz-privacy-4">
+        <source>Does Nazzida disclose any information to outside parties?</source>
+        <translation>Gibt Nazzida irgendwelche Informationen an Dritte weiter?</translation>
+    </message>
+    <message id="naz-privacy-5">
+        <source>No, Nazzida only stores the data local on your device. Nazzida does not send this data to the author of Nazzida or any other third parties.</source>
+        <translation>Nein, Nazzida speichert die Daten nur lokal auf Ihrem Gerät. Nazzida sendet die Daten weder an den Autor von Nazzida noch an sonstige Dritte.</translation>
+    </message>
+    <message id="nazh-privacy-6">
+        <source>Your consent</source>
+        <translation>Ihr Einverständnis</translation>
+    </message>
+    <message id="nazh-privacy-7">
+        <source>By using Nazzida, you consent to this privacy policy.</source>
+        <oldsource>By using Nazhzida, you consent to this privacy policy.</oldsource>
+        <translation>Durch die Nutzung von Nazzida erklären Sie sich mit dieser Datenschutzerklärung einverstanden.</translation>
+    </message>
+    <message id="nazh-privacy-8">
+        <source>Contact</source>
+        <translation>Kontakt</translation>
+    </message>
+    <message id="naz-privazy-policy">
+        <source>Privacy policy</source>
+        <extracomment>Label and page header</extracomment>
+        <translation>Datenschutzerklärung</translation>
+    </message>
 </context>
 </TS>

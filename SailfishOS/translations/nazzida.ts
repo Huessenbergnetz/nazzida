@@ -290,5 +290,47 @@
         <extracomment>text field description</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message id="naz-privacy-0">
+        <source>What information does Nazzida collect?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-privacy-1">
+        <source>Nazzida helps you to manage a personal fluid balance protocol if you need to log your daily liquid input and output. To do this, it stores your input into a local SQLite database on your device. It saves only data that you enter yourself in the application.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-privacy-2">
+        <source>What does Nazzida use your data for?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-privacy-3">
+        <source>Nazzida uses your stored data to show you your daily liquid balance data as well as every data entry you provided to the application. The data is only stored on your local device and is not shared to other parties.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-privacy-4">
+        <source>Does Nazzida disclose any information to outside parties?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-privacy-5">
+        <source>No, Nazzida only stores the data local on your device. Nazzida does not send this data to the author of Nazzida or any other third parties.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="nazh-privacy-6">
+        <source>Your consent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="nazh-privacy-7">
+        <source>By using Nazzida, you consent to this privacy policy.</source>
+        <oldsource>By using Nazhzida, you consent to this privacy policy.</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="nazh-privacy-8">
+        <source>Contact</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-privazy-policy">
+        <source>Privacy policy</source>
+        <extracomment>Label and page header</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

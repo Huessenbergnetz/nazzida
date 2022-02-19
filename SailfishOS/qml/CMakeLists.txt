@@ -8,6 +8,7 @@ set(QMLSRCS
     pages/AddPerson.qml
     pages/EditPerson.qml
     pages/About.qml
+    pages/PrivacyPolicy.qml
     pages/Settings.qml
     pages/Sections.qml
     pages/DailyLiquids.qml
@@ -16,6 +17,7 @@ set(QMLSRCS
     pages/EditLiquid.qml
     models/ChangelogModel.qml
     ../../common/qml/models/ContributorsModel.qml
+    ../../common/qml/models/PrivacyPolicyModel.qml
 )
 
 add_custom_target(qmlfiles

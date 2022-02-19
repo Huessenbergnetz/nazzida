@@ -43,4 +43,6 @@ AboutPage {
 
     changelogModel: ChangelogModel {}
     bugTrackerBaseUrl: "https://github.com/Huessenbergnetz/Fuoten/issues/"
+
+    privacyPolicyQmlFile: Qt.resolvedUrl("PrivacyPolicy.qml")
 }
