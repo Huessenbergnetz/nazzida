@@ -167,6 +167,7 @@ int main(int argc, char *argv[])
 
     view->rootContext()->setContextProperty(QStringLiteral("config"), config);
     view->rootContext()->setContextProperty(QStringLiteral("startupError"), errorMessage);
+    view->rootContext()->setContextProperty(QStringLiteral("coverIconPath"), Hbnsc::getLauncherIcon({86,108,128,150,172}));
 
     view->setSource(SailfishApp::pathToMainQml());
 
