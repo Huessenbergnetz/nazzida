@@ -13,12 +13,23 @@ Dialog {
 
     property Person person: null
     property LiquidListFilterModel liquidsModel: null
+    property DailyLiquidListFilterModel dailyLiquidsModel: null
     property int modelIndex
     property date moment
     property int inOrOut
     property int amount
     property string name
     property string note
+
+    property date oldMoment
+    property int oldInOrOut
+    property int oldAmount
+
+    Component.onCompleted: {
+        oldMoment = moment
+        oldInOrOut = inOrOut
+        oldAmount = amount
+    }
 
     SilicaFlickable {
         id: editLiquidFlick
@@ -208,5 +219,9 @@ Dialog {
 
     canAccept: nameField.text.length && amountField.text.length && parseInt(amountField.text) > 0
 
-    onAccepted: liquidsModel.edit(liquidsModel.index(editLiquidDialog.modelIndex,0), editLiquidDialog.moment, typePicker.currentItem.value, parseInt(amountField.text), nameField.text, noteArea.text)
+    onAccepted: {
+        if (liquidsModel.edit(liquidsModel.index(editLiquidDialog.modelIndex,0), editLiquidDialog.moment, typePicker.currentItem.value, parseInt(amountField.text), nameField.text, noteArea.text)) {
+            dailyLiquidsModel.edit(editLiquidDialog.oldMoment, editLiquidDialog.moment, editLiquidDialog.oldInOrOut, typePicker.currentItem.value, editLiquidDialog.oldAmount, parseInt(amountField.text))
+        }
+    }
 }
