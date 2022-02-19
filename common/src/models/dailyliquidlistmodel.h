@@ -38,6 +38,7 @@ public:
 
     Q_INVOKABLE int add(const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note);
     Q_INVOKABLE bool remove(const QDateTime &moment, int inOrOut, int amount);
+    Q_INVOKABLE bool edit(const QDateTime &oldMoment, const QDateTime &newMoment, int oldInOrOut, int newInOrOut, int oldAmount, int newAmount);
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role) const override;

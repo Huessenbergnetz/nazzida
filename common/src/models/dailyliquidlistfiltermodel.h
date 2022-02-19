@@ -23,6 +23,7 @@ public:
 
     Q_INVOKABLE int add(const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note);
     Q_INVOKABLE bool remove(const QDateTime &moment, int inOrOut, int amount);
+    Q_INVOKABLE bool edit(const QDateTime &oldMoment, const QDateTime &newMoment, int oldInOrOut, int newInOrOut, int oldAmount, int newAmount);
 
     int personId() const;
     void setPersonId(int id);

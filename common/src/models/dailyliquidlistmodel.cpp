@@ -244,6 +244,132 @@ bool DailyLiquidListModel::remove(const QDateTime &moment, int inOrOut, int amou
     return true;
 }
 
+bool DailyLiquidListModel::edit(const QDateTime &oldMoment, const QDateTime &newMoment, int oldInOrOut, int newInOrOut, int oldAmount, int newAmount)
+{
+    Liquid::InOrOut _oldInOrOut = static_cast<Liquid::InOrOut>(oldInOrOut);
+    Liquid::InOrOut _newInOrOut = static_cast<Liquid::InOrOut>(newInOrOut);
+
+    const QDate oldDay = oldMoment.date();
+    const QTime oldTime = oldMoment.time();
+    const QDate oldLiquidDay = oldTime >= dayStarts() ? oldDay : oldDay.addDays(-1);
+
+    const QDate newDay = newMoment.date();
+    const QTime newTime = newMoment.time();
+    const QDate newLiquidDay = newTime >= dayStarts() ? newDay : newDay.addDays(-1);
+
+    if (oldMoment == newMoment) {
+        if (_oldInOrOut == _newInOrOut && oldAmount == newAmount) {
+            qDebug("%s", "Editing daily liquids. Nothing changed.");
+            return true;
+        }
+
+        int idx = -1;
+        int currentIndex = 0;
+        for (auto &l : m_dailyLiquids) {
+            if (l.day() == oldLiquidDay) {
+                idx = currentIndex;
+                break;
+            } else {
+                currentIndex++;
+            }
+        }
+
+        if (idx < 0) {
+            qWarning("Failed to find valid index for moment %s", qUtf8Printable(oldMoment.toString()));
+            return false;
+        }
+
+        DailyLiquids l = m_dailyLiquids.at(idx);
+
+        if (_oldInOrOut == _newInOrOut) {
+            if (_oldInOrOut == Liquid::Out) {
+                l.d->output = l.output() - oldAmount;
+                l.d->output = l.output() + newAmount;
+            } else {
+                l.d->input = l.input() - oldAmount;
+                l.d->input = l.input() + newAmount;
+            }
+        } else {
+            if (_oldInOrOut == Liquid::Out) {
+                l.d->output = l.output() - oldAmount;
+                l.d->input = l.input() + newAmount;
+            } else {
+                l.d->output = l.output() + newAmount;
+                l.d->input = l.input() - oldAmount;
+            }
+        }
+
+        m_dailyLiquids[idx] = l;
+        emit dataChanged(index(idx, 0), index(idx, 0), {DailyLiquidListModel::Input, DailyLiquidListModel::Output, DailyLiquidListModel::Difference});
+
+    } else { // oldMoment != newMoment
+
+        int oldIdx = -1;
+        int currentIndex = 0;
+        for (auto &l : m_dailyLiquids) {
+            if (l.day() == oldLiquidDay) {
+                oldIdx = currentIndex;
+                break;
+            } else {
+                currentIndex++;
+            }
+        }
+
+        int newIdx = -1;
+        currentIndex = 0;
+        for (auto &l : m_dailyLiquids) {
+            if (l.day() == newLiquidDay) {
+                newIdx = currentIndex;
+                break;
+            } else {
+                currentIndex++;
+            }
+        }
+
+        if (oldIdx < 0) {
+            qWarning("Failed to find valid index for moment %s", qUtf8Printable(oldMoment.toString()));
+            return false;
+        }
+
+        DailyLiquids oldDl = m_dailyLiquids.at(oldIdx);
+        if (_oldInOrOut == Liquid::Out) {
+            oldDl.d->output = oldDl.output() - oldAmount;
+        } else {
+            oldDl.d->input = oldDl.input() - oldAmount;
+        }
+        oldDl.d->entries = oldDl.entries() - 1;
+
+        if (oldDl.entries() == 0) {
+            beginRemoveRows(QModelIndex(), oldIdx, oldIdx);
+            m_dailyLiquids.erase(m_dailyLiquids.begin() + oldIdx);
+            endRemoveRows();
+        } else {
+            m_dailyLiquids[oldIdx] = oldDl;
+            emit dataChanged(index(oldIdx, 0), index(oldIdx, 0), {DailyLiquidListModel::Input, DailyLiquidListModel::Output, DailyLiquidListModel::Difference, DailyLiquidListModel::Entries});
+        }
+
+        if (newIdx > -1) {
+            auto l = m_dailyLiquids.at(newIdx);
+            if (newInOrOut == Liquid::Out) {
+                l.d->output = l.output() + newAmount;
+            } else {
+                l.d->input = l.input() + newAmount;
+            }
+            l.d->entries = l.entries() + 1;
+            m_dailyLiquids[newIdx] = l;
+            emit dataChanged(index(newIdx, 0), index(newIdx, 0), {DailyLiquidListModel::Input, DailyLiquidListModel::Output, DailyLiquidListModel::Difference, DailyLiquidListModel::Entries});
+        } else {
+            const int input = newInOrOut == Liquid::Out ? 0 : newAmount;
+            const int output = newInOrOut == Liquid::Out ? newAmount : 0;
+            beginInsertRows(QModelIndex(), rowCount(), rowCount());
+            m_dailyLiquids.emplace_back(0, personId(), newLiquidDay, input, output, 1);
+            endInsertRows();
+        }
+    }
+
+    return true;
+}
+
 QModelIndex DailyLiquidListModel::index(int row, int column, const QModelIndex &parent) const
 {
     return hasIndex(row, column, parent) ? createIndex(row, column) : QModelIndex();
