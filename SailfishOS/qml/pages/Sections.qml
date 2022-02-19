@@ -40,7 +40,6 @@ Page {
                 width: parent.width
                 contentHeight: Theme.itemSizeMedium
 
-//                onClicked: pageStack.animatorPush(Qt.resolvedUrl("Liquids.qml"), {person: sectionsPage.person})
                 onClicked: pageStack.animatorPush(Qt.resolvedUrl("DailyLiquids.qml"), {person: sectionsPage.person})
 
                 Icon {
