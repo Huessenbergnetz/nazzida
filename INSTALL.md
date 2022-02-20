@@ -4,10 +4,11 @@ Nazzida is currently available for Sailfish OS via the Jolla Store and [OpenRepo
 
 ## Sailfish OS building instructions
 
-To build Nazzida for Sailfish OS, you need the [Sailfish OS Application SDK](https://docs.sailfishos.org/Tools/Sailfish_SDK/) and some other tools.
+To build Nazzida for Sailfish OS, you need the [Sailfish OS Application SDK](https://docs.sailfishos.org/Tools/Sailfish_SDK/) and some other tools. Nazzida uses CMake to build the code.
 
 ### Required tools
 * [Sailfish OS Application SDK](https://docs.sailfishos.org/Tools/Sailfish_SDK/) (required to build the code)
+* [CMake](https://cmake.org/) (required to build the code)
 * [git](https://git-scm.com/) (required to get the code)
 * [lrelease](https://doc.qt.io/qt-5/linguist-manager.html) (required to generate the translations)
 * [librsvg-tools](https://wiki.gnome.org/Projects/LibRsvg) (required to generate the icons)
