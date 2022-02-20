@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.16.0)
 cmake_policy(SET CMP0048 NEW)
 
 project(nazzida
-    VERSION 0.0.1
+    VERSION 1.0.0
     DESCRIPTION "Personal Fluid Balance Protocol"
     HOMEPAGE_URL "https://github.com/Huessenbergnetz/nazzida"
     LANGUAGES CXX)
@@ -24,12 +24,12 @@ if (${TARGETSYSTEM} STREQUAL "sfos")
 
     find_package (Qt5 COMPONENTS Core Qml Gui Quick Sql REQUIRED)
 
-    set(HARBOUR_APPNAME harbour-nazzida)
-    set(CMAKE_INSTALL_LIBDIR share/${HARBOUR_APPNAME}/lib)
+    set(HBNSC_APPNAME harbour-nazzida)
+    set(CMAKE_INSTALL_LIBDIR share/${HBNSC_APPNAME}/lib)
     set(HBNSC_WITH_OPENSSL OFF)
     set(HBNSC_WITH_FIRFUORIDA On)
     set(HBNSC_LICENSES "GPLv3;LGPLv2_1;BSD-3;CC-BY-4_0")
-    set(NAZZIDA_TRANSDIR share/${HARBOUR_APPNAME}/translations)
+    set(NAZZIDA_TRANSDIR share/${HBNSC_APPNAME}/translations)
 
     list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/3rdparty/HBN_SFOS_Cmake)
 
@@ -38,8 +38,7 @@ if (${TARGETSYSTEM} STREQUAL "sfos")
 
     add_custom_target(specfiles
         SOURCES
-            rpm/harbour-nazzida.changes.in
-            rpm/harbour-nazzida.changes.run.in
+            rpm/harbour-nazzida.changes
             rpm/harbour-nazzida.spec
             rpm/harbour-nazzida.yaml
     )
