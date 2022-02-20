@@ -22,8 +22,6 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(nemonotifications-qt5)
 BuildRequires:  pkgconfig(sailfishsilica)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  librsvg-tools
@@ -72,5 +70,7 @@ desktop-file-install --delete-original       \
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 # >> files
+%exclude %{_bindir}/firfuorida
+%exclude %{_datadir}/%{name}/lib/cmake
 %exclude %{_includedir}/firfuorida-qt5
 # << files

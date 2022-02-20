@@ -22,13 +22,13 @@ set(NAZZIDA_TRANSDIR "${CMAKE_INSTALL_DATADIR}/nazzida/translations" CACHE PATH 
 if (${TARGETSYSTEM} STREQUAL "sfos")
     message(STATUS "Building Nazzida for SailfishOS")
 
-    find_package (Qt5 COMPONENTS Core Network Qml Gui Quick Sql REQUIRED)
+    find_package (Qt5 COMPONENTS Core Qml Gui Quick Sql REQUIRED)
 
     set(HARBOUR_APPNAME harbour-nazzida)
     set(CMAKE_INSTALL_LIBDIR share/${HARBOUR_APPNAME}/lib)
+    set(HBNSC_WITH_OPENSSL OFF)
     set(HBNSC_WITH_FIRFUORIDA On)
-    set(HBNSC_WITH_OPENSSL On)
-    set(HBNSC_LICENSES "GPLv3;LGPLv2_1;BSD-3;CC-BY-4_0;OpenSSL")
+    set(HBNSC_LICENSES "GPLv3;LGPLv2_1;BSD-3;CC-BY-4_0")
     set(NAZZIDA_TRANSDIR share/${HARBOUR_APPNAME}/translations)
 
     list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/3rdparty/HBN_SFOS_Cmake)
@@ -59,7 +59,7 @@ if (${TARGETSYSTEM} STREQUAL "kirigami")
     include(KDECMakeSettings)
     include(KDECompilerSettings NO_POLICY_SCOPE)
 
-    find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Test Gui QuickControls2 Widgets Network Sql)
+    find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Test Gui QuickControls2 Widgets Sql)
     find_package(KF5 ${KF_MIN_VERSION} REQUIRED COMPONENTS Kirigami2 I18n CoreAddons)
     find_package(FirfuoridaQt5 REQUIRED)
 

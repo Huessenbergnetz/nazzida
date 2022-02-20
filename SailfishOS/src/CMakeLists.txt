@@ -63,7 +63,6 @@ target_link_libraries(harbour-nazzida
     PRIVATE
         Qt5::Core
         Qt5::Quick
-        Qt5::Network
         Qt5::Sql
         PkgConfig::Sailfish
         HbnSfosComponentsQt5::Core
