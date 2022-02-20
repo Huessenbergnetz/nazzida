@@ -5,7 +5,7 @@ include(HBNSfosGenerateTranslations)
 
 hbn_sfos_gen_translation(nazzidatrans IDBASED INSTALL_DESTINATION ${NAZZIDA_TRANSDIR} INPUT_FILE nazzida.ts)
 
-set(_langs de)
+set(_langs en_GB en_US de)
 foreach(_lang ${_langs})
     hbn_sfos_gen_translation(nazzidatrans IDBASED INSTALL_DESTINATION ${NAZZIDA_TRANSDIR} INPUT_FILE nazzida_${_lang}.ts)
 endforeach()
