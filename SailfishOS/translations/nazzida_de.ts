@@ -61,9 +61,10 @@
         <translation>Tägliche Startzeit</translation>
     </message>
     <message id="naz-textfield-daystarts-desc">
-        <source>The day start time is used to determine when a new day starts.</source>
+        <source>The day start time is used to determine when a new day starts. Liquid intake or output that occurs before this time will be assigned to the previous day. The first toilet after getting up is usually still assigned to the balance of the previous day. So you should choose a time when you nominally get up.</source>
+        <oldsource>The day start time is used to determine when a new day starts.</oldsource>
         <extracomment>text field description</extracomment>
-        <translation>Die Uhrzeit um die ein neuer Tag startet.</translation>
+        <translation>Die Uhrzeit zu der ein neuer Tag startet. Flüssigkeitsaufnahme oder -abgabe, die vor diesem Zeitpunkt erfolgt, wird dem Vortag zugeordnet. Die erste Toilette nach dem Aufstehen wird in der Regel noch der Bilanz des Vortages zugeordnet. Sie sollten also eine Zeit wählen, zu der Sie normalerweise aufstehen.</translation>
     </message>
     <message id="naz-first-page-header-desc">
         <source>List of logged people</source>

@@ -120,7 +120,7 @@ Dialog {
                 //% "Day start time"
                 label: qsTrId("naz-textfield-daystarts"); placeholderText: label
                 //: text field description
-                //% "The day start time is used to determine when a new day starts."
+                //% "The day start time is used to determine when a new day starts. Liquid intake or output that occurs before this time will be assigned to the previous day. The first toilet after getting up is usually still assigned to the balance of the previous day. So you should choose a time when you nominally get up."
                 description: qsTrId("naz-textfield-daystarts-desc")
                 onClicked: {
                     var dialog = pageStack.push(dayStartsPickerComponent)
