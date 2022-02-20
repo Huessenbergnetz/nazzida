@@ -23,7 +23,6 @@ public:
 
 private:
     QSettings *m_config;
-    QString m_language;
 };
 
 #endif // SFOSCONFIG_H
