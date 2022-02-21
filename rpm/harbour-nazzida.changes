@@ -12,5 +12,13 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Mon Feb 21 2022 Matthias Fehring <> 1.0.1-1
+- improved: reorder input fields when adding/editing a person in a more logical way (#7)
+- improved: do not use current time as day start time for new person (#6)
+- improved: add view placeholder for empty views (#2)
+- fixed: adding liquid on daily details page does not update the model (#4)
+- fixed: mising scrollbar when editing person (#3)
+- fixed: add English to the list of supported languages (#1)
+
 * Sun Feb 20 2022 Matthias Fehring <> 1.0.0-1
 - Initial released version

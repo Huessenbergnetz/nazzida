@@ -1,3 +1,13 @@
+Nazzida 1.0.1 - 2022-02-21
+- General
+  * fixed: adding liquid on daily details page does not update the model (#4)
+- Sailfish OS
+  * improved: reorder input fields when adding/editing a person in a more logical way (#7)
+  * improved: do not use current time as day start time for new person (#6)
+  * improved: add view placeholder for empty views (#2)
+  * fixed: mising scrollbar when editing person (#3)
+  * fixed: add English to the list of supported languages (#1)
+
 Nazzida 1.0.0 - 2022-02-20
 - General
   * note: initial released version

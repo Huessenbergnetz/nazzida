@@ -11,7 +11,7 @@ Name:       harbour-nazzida
 # << macros
 
 Summary:    Personal Fluid Balance Protocol
-Version:    1.0.0
+Version:    1.0.1
 Release:    1
 Group:      Applications/Databases
 License:    GPL-3.0-or-later
