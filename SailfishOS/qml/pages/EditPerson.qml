@@ -109,11 +109,7 @@ Dialog {
                 width: parent.width
                 readOnly: true
                 text: Qt.formatTime(dayStarts)
-                //: text field label
-                //% "Day start time"
                 label: qsTrId("naz-textfield-daystarts"); placeholderText: label
-                //: text field description
-                //% "The day start time is used to determine when a new day starts."
                 description: qsTrId("naz-textfield-daystarts-desc")
                 onClicked: {
                     var dialog = pageStack.push(dayStartsPickerComponent, {hour: dayStarts.getHours(), minute: dayStarts.getMinutes()})
