@@ -19,6 +19,7 @@ Dialog {
     SilicaFlickable {
         id: editPersonFlick
         anchors.fill: parent
+        contentHeight: editPersonCol.height
 
         VerticalScrollDecorator {
             flickable: parent
