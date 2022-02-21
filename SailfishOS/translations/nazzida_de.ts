@@ -1,6 +1,8 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="de" sourcelanguage="en">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="de_DE" sourcelanguage="en_US">
 <context>
-    <name/>
+    <name></name>
     <message id="nazzida-author-role">
         <source>Main developer, Nazzida creator</source>
         <oldsource>Main developer, Fuoten creator</oldsource>
@@ -113,6 +115,7 @@
     </message>
     <message id="naz-menu-del-person">
         <source>Delete</source>
+        <extracomment>context menu item entry</extracomment>
         <translation>Löschen</translation>
     </message>
     <message id="naz-combo-label-sex">
@@ -146,15 +149,18 @@
         <translation>Anwenden</translation>
     </message>
     <message id="naz-size-in-cm">
-        <source>%1 cm</source>
+        <source>%1&#x202f;cm</source>
         <extracomment>%1 will be the body size in cm</extracomment>
-        <translation>%1 cm</translation>
+        <translation>%1&#x202f;cm</translation>
     </message>
     <message id="naz-age-in-years" numerus="yes">
-        <source>%n year(s)</source>
-        <oldsource>%1 years</oldsource>
+        <source>%n&#x202f;year(s)</source>
+        <oldsource>%1&#x202f;years</oldsource>
         <extracomment>%1 will be the age in years</extracomment>
-        <translation><numerusform>%n Jahr</numerusform><numerusform>%n Jahre</numerusform></translation>
+        <translation>
+            <numerusform>%n&#x202f;Jahr</numerusform>
+            <numerusform>%n&#x202f;Jahre</numerusform>
+        </translation>
     </message>
     <message id="naz-title-settings">
         <source>Settings</source>
@@ -228,9 +234,9 @@
         <translation>Uhrzeit</translation>
     </message>
     <message id="naz-full-liquid-title">
-        <source>%1 ml %2</source>
+        <source>%1&#x202f;ml %2</source>
         <extracomment>%1 will be the amount of the liquid, %2 will be the liquid name</extracomment>
-        <translation>%1 ml %2</translation>
+        <translation>%1&#x202f;ml %2</translation>
     </message>
     <message id="naz-textfield-liquid-amount-label">
         <source>Amount in ml</source>
@@ -248,9 +254,9 @@
         <translation>Notiz (optional)</translation>
     </message>
     <message id="naz-remorse-delete-liquid">
-        <source>Delete %1 ml %2 from %3</source>
+        <source>Delete %1&#x202f;ml %2 from %3</source>
         <extracomment>remorse item text, %1 will be the liquid amout, %2 the liquid name, %3 will be the datetime the liquid has been consumed or excreted</extracomment>
-        <translation>Lösche %1 ml %2 vom %3</translation>
+        <translation>Lösche %1&#x202f;ml %2 vom %3</translation>
     </message>
     <message id="naz-menu-del-liquid">
         <source>Delete</source>
@@ -272,9 +278,9 @@
         <translation>Bearbeiten</translation>
     </message>
     <message id="naz-name-day-total">
-        <source>%1 %2, %3, %4 ml</source>
+        <source>%1 %2, %3, %4&#x2009;ml</source>
         <extracomment>%1 will be the first name, %2 the second name, %3 will be the date in short format, %4 will be the liquid amount in ml</extracomment>
-        <translation>%1 %2, %3, %4 ml</translation>
+        <translation>%1 %2, %3, %4&#x2009;ml</translation>
     </message>
     <message id="naz-textfield-transpire">
         <source>Transpire in ml</source>
@@ -282,9 +288,9 @@
         <translation>Transpiration in ml</translation>
     </message>
     <message id="naz-textfield-transpire-desc">
-        <source>Approximate daily transpiration. The body of an adult loses about 500 ml daily through perspiration. This is used when calculating the difference between fluid intake and fluid output.</source>
+        <source>Approximate daily transpiration. The body of an adult loses about 500&#x202f;ml daily through perspiration. This is used when calculating the difference between fluid intake and fluid output.</source>
         <extracomment>text field description</extracomment>
-        <translation>Ungefähre tägliche Transpiration. Der Körper eines Erwachsenen schwitzt täglich etwa 500 ml Flüssigkeit aus. Dieser Wert wird für die Berechnung der Differenz zwischen Flüssigkeitsaufnahme und -abgabe benutzt.</translation>
+        <translation>Ungefähre tägliche Transpiration. Der Körper eines Erwachsenen schwitzt täglich etwa 500&#x202f;ml Flüssigkeit aus. Dieser Wert wird für die Berechnung der Differenz zwischen Flüssigkeitsaufnahme und -abgabe benutzt.</translation>
     </message>
     <message id="naz-privacy-0">
         <source>What information does Nazzida collect?</source>
@@ -327,6 +333,16 @@
         <source>Privacy policy</source>
         <extracomment>Label and page header</extracomment>
         <translation>Datenschutzerklärung</translation>
+    </message>
+    <message id="naz-people-list-empty-text">
+        <source>No people added</source>
+        <extracomment>View placeholder text</extracomment>
+        <translation>Noch keine Person hinzugefügt</translation>
+    </message>
+    <message id="naz-people-list-empty-hint">
+        <source>Pull down to add people</source>
+        <extracomment>View placeholder hint</extracomment>
+        <translation>Ziehen Sie das Kopfmenü herunter, um eine neue Person hinzuzufügen</translation>
     </message>
 </context>
 </TS>

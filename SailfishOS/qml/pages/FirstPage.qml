@@ -14,6 +14,7 @@ Page {
     Component.onCompleted: peopleListModel.load()
 
     SilicaListView {
+        id: peopleListView
         anchors.fill: parent
 
         PullDownMenu {
@@ -139,12 +140,22 @@ Page {
                 }
 
                 MenuItem {
-                    // context menu item entry
+                    //: context menu item entry
                     //% "Delete"
                     text: qsTrId("naz-menu-del-person")
                     onClicked: removeItem()
                 }
             }
+        }
+
+        ViewPlaceholder {
+            enabled: peopleListView.count === 0
+            //: View placeholder text
+            //% "No people added"
+            text: qsTrId("naz-people-list-empty-text")
+            //: View placeholder hint
+            //% "Pull down to add people"
+            hintText: qsTrId("naz-people-list-empty-hint")
         }
     }
 }

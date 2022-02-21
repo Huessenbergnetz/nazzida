@@ -333,5 +333,15 @@
         <extracomment>Label and page header</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message id="naz-people-list-empty-text">
+        <source>No people added</source>
+        <extracomment>View placeholder text</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-people-list-empty-hint">
+        <source>Pull down to add people</source>
+        <extracomment>View placeholder hint</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
