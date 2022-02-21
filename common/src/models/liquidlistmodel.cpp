@@ -107,7 +107,11 @@ void LiquidListModel::clear()
 
 int LiquidListModel::add(int id, const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note)
 {
-    if (moment.date() != day()) {
+    const QDate _day = moment.date();
+    const QTime _time = moment.time();
+    const QDate _liquidDay = _time >= dayStarts() ? _day : _day.addDays(-1);
+
+    if (_liquidDay != day()) {
         return 0;
     }
 
