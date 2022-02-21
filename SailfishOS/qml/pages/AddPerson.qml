@@ -13,7 +13,7 @@ Dialog {
     allowedOrientations: defaultAllowedOrientations
     property PeopleListFilterModel peopleModel: null
     property date birthDate: new Date()
-    property date dayStarts: new Date()
+    property date dayStarts: new Date(1970, 0, 1, 7, 0, 0)
 
     SilicaFlickable {
         id: addPersonFlick
@@ -123,7 +123,7 @@ Dialog {
                 //% "The day start time is used to determine when a new day starts. Liquid intake or output that occurs before this time will be assigned to the previous day. The first toilet after getting up is usually still assigned to the balance of the previous day. So you should choose a time when you nominally get up."
                 description: qsTrId("naz-textfield-daystarts-desc")
                 onClicked: {
-                    var dialog = pageStack.push(dayStartsPickerComponent)
+                    var dialog = pageStack.push(dayStartsPickerComponent, {hour: dayStarts.getHours(), minute: dayStarts.getMinutes()})
 
                     dialog.accepted.connect(function() {
                         dayStartsField.text = dialog.timeText
