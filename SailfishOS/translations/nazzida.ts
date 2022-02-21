@@ -115,6 +115,7 @@
     </message>
     <message id="naz-menu-del-person">
         <source>Delete</source>
+        <extracomment>context menu item entry</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message id="naz-combo-label-sex">
@@ -340,6 +341,16 @@
     </message>
     <message id="naz-people-list-empty-hint">
         <source>Pull down to add people</source>
+        <extracomment>View placeholder hint</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-liquids-list-empty-text">
+        <source>No liquids added</source>
+        <extracomment>View placeholder text</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-liquids-list-empty-hint">
+        <source>Pull down to add liquids</source>
         <extracomment>View placeholder hint</extracomment>
         <translation type="unfinished"></translation>
     </message>

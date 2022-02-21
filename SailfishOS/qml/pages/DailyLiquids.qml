@@ -15,6 +15,7 @@ Page {
     Component.onCompleted: dailyLiquidsModel.loadForPerson(person.id, person.dayStarts)
 
     SilicaListView {
+        id: dailyLiquidsView
         anchors.fill: parent
         spacing: Theme.paddingMedium
 
@@ -161,6 +162,16 @@ Page {
                     }
                 }
             }
+        }
+
+        ViewPlaceholder {
+            enabled: dailyLiquidsView.count === 0
+            //: View placeholder text
+            //% "No liquids added"
+            text: qsTrId("naz-liquids-list-empty-text")
+            //: View placeholder hint
+            //% "Pull down to add liquids"
+            hintText: qsTrId("naz-liquids-list-empty-hint")
         }
     }
 }
