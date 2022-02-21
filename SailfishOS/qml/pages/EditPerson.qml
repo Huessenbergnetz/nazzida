@@ -67,20 +67,8 @@ Dialog {
                 label: qsTrId("naz-textfield-size"); placeholderText: label
                 inputMethodHints: Qt.ImhDigitsOnly
                 validator: IntValidator { bottom: 0 }
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: transpireField.focus = true
-            }
-
-            TextField {
-                id: transpireField
-                width: parent.width
-                text: person.transpire
-                label: qsTrId("naz-textfield-transpire"); placeholderText: label
-                description: qsTrId("naz-textfield-transpire-desc")
-                inputMethodHints: Qt.ImhDigitsOnly
-                validator: IntValidator { bottom: 0 }
                 EnterKey.iconSource: "image://theme/icon-m-enter-close"
-                EnterKey.onClicked: transpireField.focus = false
+                EnterKey.onClicked: sizeField.focus = false
             }
 
             TextField {
@@ -101,28 +89,6 @@ Dialog {
                 Component {
                     id: birthdayPickerComponent
                     DatePickerDialog {}
-                }
-            }
-
-            TextField {
-                id: dayStartsField
-                width: parent.width
-                readOnly: true
-                text: Qt.formatTime(dayStarts)
-                label: qsTrId("naz-textfield-daystarts"); placeholderText: label
-                description: qsTrId("naz-textfield-daystarts-desc")
-                onClicked: {
-                    var dialog = pageStack.push(dayStartsPickerComponent, {hour: dayStarts.getHours(), minute: dayStarts.getMinutes()})
-
-                    dialog.accepted.connect(function() {
-                        dayStartsField.text = dialog.timeText
-                        dayStarts = new Date(1970, 1, 1, dialog.hour, dialog.minute, 0)
-                    })
-                }
-
-                Component {
-                    id: dayStartsPickerComponent
-                    TimePickerDialog {}
                 }
             }
 
@@ -153,6 +119,40 @@ Dialog {
                             break
                         }
                     }
+                }
+            }
+
+            TextField {
+                id: transpireField
+                width: parent.width
+                text: person.transpire
+                label: qsTrId("naz-textfield-transpire"); placeholderText: label
+                description: qsTrId("naz-textfield-transpire-desc")
+                inputMethodHints: Qt.ImhDigitsOnly
+                validator: IntValidator { bottom: 0 }
+                EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                EnterKey.onClicked: transpireField.focus = false
+            }
+
+            TextField {
+                id: dayStartsField
+                width: parent.width
+                readOnly: true
+                text: Qt.formatTime(dayStarts)
+                label: qsTrId("naz-textfield-daystarts"); placeholderText: label
+                description: qsTrId("naz-textfield-daystarts-desc")
+                onClicked: {
+                    var dialog = pageStack.push(dayStartsPickerComponent, {hour: dayStarts.getHours(), minute: dayStarts.getMinutes()})
+
+                    dialog.accepted.connect(function() {
+                        dayStartsField.text = dialog.timeText
+                        dayStarts = new Date(1970, 1, 1, dialog.hour, dialog.minute, 0)
+                    })
+                }
+
+                Component {
+                    id: dayStartsPickerComponent
+                    TimePickerDialog {}
                 }
             }
         }

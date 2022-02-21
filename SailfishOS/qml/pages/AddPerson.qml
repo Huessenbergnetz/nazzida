@@ -68,24 +68,8 @@ Dialog {
                 label: qsTrId("naz-textfield-size"); placeholderText: label
                 inputMethodHints: Qt.ImhDigitsOnly
                 validator: IntValidator { bottom: 0 }
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: transpireField.focus = true
-            }
-
-            TextField {
-                id: transpireField
-                width: parent.width
-                text: "500"
-                //: text field label
-                //% "Transpire in ml"
-                label: qsTrId("naz-textfield-transpire"); placeholderText: label
-                //: text field description
-                //% "Approximate daily transpiration. The body of an adult loses about 500 ml daily through perspiration. This is used when calculating the difference between fluid intake and fluid output."
-                description: qsTrId("naz-textfield-transpire-desc")
-                inputMethodHints: Qt.ImhDigitsOnly
-                validator: IntValidator { bottom: 0 }
-                EnterKey.iconSource: "image://theme/icon-m-enter-close"
-                EnterKey.onClicked: transpireField.focus = false
+                EnterKey.iconSource: "image://theme/icon-m-enter-cole"
+                EnterKey.onClicked: sizeField.focus = false
             }
 
             TextField {
@@ -108,32 +92,6 @@ Dialog {
                 Component {
                     id: birthdayPickerComponent
                     DatePickerDialog {}
-                }
-            }
-
-            TextField {
-                id: dayStartsField
-                width: parent.width
-                readOnly: true
-                text: Qt.formatTime(dayStarts)
-                //: text field label
-                //% "Day start time"
-                label: qsTrId("naz-textfield-daystarts"); placeholderText: label
-                //: text field description
-                //% "The day start time is used to determine when a new day starts. Liquid intake or output that occurs before this time will be assigned to the previous day. The first toilet after getting up is usually still assigned to the balance of the previous day. So you should choose a time when you nominally get up."
-                description: qsTrId("naz-textfield-daystarts-desc")
-                onClicked: {
-                    var dialog = pageStack.push(dayStartsPickerComponent, {hour: dayStarts.getHours(), minute: dayStarts.getMinutes()})
-
-                    dialog.accepted.connect(function() {
-                        dayStartsField.text = dialog.timeText
-                        dayStarts = dialog.time
-                    })
-                }
-
-                Component {
-                    id: dayStartsPickerComponent
-                    TimePickerDialog {}
                 }
             }
 
@@ -161,6 +119,48 @@ Dialog {
                         text: qsTrId("naz-combo-sex-item-other")
                         readonly property string value: "x"
                     }
+                }
+            }
+
+            TextField {
+                id: transpireField
+                width: parent.width
+                text: "500"
+                //: text field label
+                //% "Transpire in ml"
+                label: qsTrId("naz-textfield-transpire"); placeholderText: label
+                //: text field description
+                //% "Approximate daily transpiration. The body of an adult loses about 500 ml daily through perspiration. This is used when calculating the difference between fluid intake and fluid output."
+                description: qsTrId("naz-textfield-transpire-desc")
+                inputMethodHints: Qt.ImhDigitsOnly
+                validator: IntValidator { bottom: 0 }
+                EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                EnterKey.onClicked: transpireField.focus = false
+            }
+
+            TextField {
+                id: dayStartsField
+                width: parent.width
+                readOnly: true
+                text: Qt.formatTime(dayStarts)
+                //: text field label
+                //% "Day start time"
+                label: qsTrId("naz-textfield-daystarts"); placeholderText: label
+                //: text field description
+                //% "The day start time is used to determine when a new day starts. Liquid intake or output that occurs before this time will be assigned to the previous day. The first toilet after getting up is usually still assigned to the balance of the previous day. So you should choose a time when you nominally get up."
+                description: qsTrId("naz-textfield-daystarts-desc")
+                onClicked: {
+                    var dialog = pageStack.push(dayStartsPickerComponent, {hour: dayStarts.getHours(), minute: dayStarts.getMinutes()})
+
+                    dialog.accepted.connect(function() {
+                        dayStartsField.text = dialog.timeText
+                        dayStarts = dialog.time
+                    })
+                }
+
+                Component {
+                    id: dayStartsPickerComponent
+                    TimePickerDialog {}
                 }
             }
         }
