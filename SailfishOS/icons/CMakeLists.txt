@@ -3,8 +3,21 @@
 
 include(HBNSfosGenerateIcons)
 
-hbn_sfos_gen_icons(genicons INPUT_FILE harbour-nazzida.svg APPICON)
+hbn_sfos_add_appicon(appIcons harbour-nazzida.svg)
 
-hbn_sfos_gen_icons(genicons INPUT_FILE cup.svg SIZES "l")
-hbn_sfos_gen_icons(genicons INPUT_FILE peeing.svg SIZES "l")
-hbn_sfos_gen_icons(genicons INPUT_FILE syringe.svg SIZES "l")
+add_custom_target(nazzidaAppIcon ALL
+                  DEPENDS ${appIcons}
+                  COMMENT "Generating application icons"
+                  SOURCES harbour-nazzida.svg)
+
+set(L_ICONS
+    cup.svg
+    peeing.svg
+    syringe.svg)
+
+hbn_sfos_add_icon(lIcons ${L_ICONS} SIZES "l")
+
+add_custom_target(largeIcons ALL
+                  DEPENDS ${lIcons}
+                  COMMENT "Generating icons"
+                  SOURCES ${L_ICONS})

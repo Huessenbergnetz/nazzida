@@ -3,9 +3,19 @@
 
 include(HBNSfosGenerateTranslations)
 
-hbn_sfos_gen_translation(nazzidatrans IDBASED INSTALL_DESTINATION ${NAZZIDA_TRANSDIR} INPUT_FILE nazzida.ts)
+set(TS_FILES
+    nazzida.ts
+    nazzida_de.ts
+    nazzida_en_GB.ts
+    nazzida_en_US.ts)
 
-set(_langs en_GB en_US de)
-foreach(_lang ${_langs})
-    hbn_sfos_gen_translation(nazzidatrans IDBASED INSTALL_DESTINATION ${NAZZIDA_TRANSDIR} INPUT_FILE nazzida_${_lang}.ts)
-endforeach()
+hbn_sfos_add_translation(QM_FILES ${TS_FILES} OPTIONS -idbased)
+
+add_custom_target(nazzidatrans ALL
+                  DEPENDS ${QM_FILES}
+                  COMMENT "Compiles nazzida translation messsages"
+                  SOURCES ${TS_FILES})
+
+install(FILES ${QM_FILES}
+        DESTINATION ${NAZZIDA_TRANSDIR}
+        COMPONENT runtime)

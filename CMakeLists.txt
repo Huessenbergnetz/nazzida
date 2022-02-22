@@ -22,7 +22,7 @@ set(NAZZIDA_TRANSDIR "${CMAKE_INSTALL_DATADIR}/nazzida/translations" CACHE PATH 
 if (${TARGETSYSTEM} STREQUAL "sfos")
     message(STATUS "Building Nazzida for SailfishOS")
 
-    find_package (Qt5 COMPONENTS Core Qml Gui Quick Sql REQUIRED)
+    find_package (Qt5 COMPONENTS Core Qml Gui Quick Sql LinguistTools REQUIRED)
 
     set(HBNSC_APPNAME harbour-nazzida)
     set(CMAKE_INSTALL_LIBDIR share/${HBNSC_APPNAME}/lib)
