@@ -17,19 +17,19 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(TARGETSYSTEM "sfos" CACHE STRING "Target system to build the application for, currently supported: sfos, kirigami")
-set(NAZZIDA_TRANSDIR "${CMAKE_INSTALL_DATADIR}/nazzida/translations" CACHE PATH "Installation destination for translation files.")
 
 if (${TARGETSYSTEM} STREQUAL "sfos")
     message(STATUS "Building Nazzida for SailfishOS")
 
     find_package (Qt5 COMPONENTS Core Qml Gui Quick Sql LinguistTools REQUIRED)
 
-    set(HBNSC_APPNAME harbour-nazzida)
-    set(CMAKE_INSTALL_LIBDIR share/${HBNSC_APPNAME}/lib)
+    set(FUOTEN_EXE_OUTPUT_NAME harbour-nazzida)
+    set(HBNSC_APPNAME ${FUOTEN_EXE_OUTPUT_NAME} CACHE STRING "Name of the application the HBN SFOS Components are used for. Used for installation values.")
+    set(CMAKE_INSTALL_LIBDIR ${CMAKE_INSTALL_DATADIR}/${FUOTEN_EXE_OUTPUT_NAME}/lib)
     set(HBNSC_WITH_OPENSSL OFF)
     set(HBNSC_WITH_FIRFUORIDA On)
     set(HBNSC_LICENSES "GPLv3;LGPLv2_1;BSD-3;CC-BY-4_0")
-    set(NAZZIDA_TRANSDIR share/${HBNSC_APPNAME}/translations)
+    set(NAZZIDA_I18NDIR ${CMAKE_INSTALL_DATADIR}/${FUOTEN_EXE_OUTPUT_NAME}/translations)
 
     list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/3rdparty/HBN_SFOS_Cmake)
 
@@ -61,6 +61,8 @@ if (${TARGETSYSTEM} STREQUAL "kirigami")
     find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Test Gui QuickControls2 Widgets Sql)
     find_package(KF5 ${KF_MIN_VERSION} REQUIRED COMPONENTS Kirigami2 I18n CoreAddons)
     find_package(FirfuoridaQt5 REQUIRED)
+
+    set(NAZZIDA_I18NDIR "${CMAKE_INSTALL_DATADIR}/nazzida/translations" CACHE PATH "Installation destination for translation files.")
 
     add_subdirectory(Kirigami)
 

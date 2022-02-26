@@ -17,5 +17,5 @@ add_custom_target(nazzidatrans ALL
                   SOURCES ${TS_FILES})
 
 install(FILES ${QM_FILES}
-        DESTINATION ${NAZZIDA_TRANSDIR}
+        DESTINATION ${NAZZIDA_I18NDIR}
         COMPONENT runtime)

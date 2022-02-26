@@ -4,7 +4,7 @@
 include(FindPkgConfig)
 pkg_search_module(Sailfish sailfishapp REQUIRED IMPORTED_TARGET)
 
-add_executable(harbour-nazzida
+add_executable(nazzida_exe
     ../../common/src/configuration.h
     ../../common/src/configuration.cpp
     ../../common/src/migrations/m20220127t134808_people.h
@@ -46,20 +46,28 @@ add_executable(harbour-nazzida
     main.cpp
 )
 
-set_property(TARGET harbour-nazzida
-    APPEND PROPERTY INSTALL_RPATH "/usr/share/harbour-nazzida/lib"
+GNUInstallDirs_get_absolute_install_dir(FUOTEN_EXE_RPATH CMAKE_INSTALL_LIBDIR)
+
+set_property(TARGET nazzida_exe
+    APPEND PROPERTY INSTALL_RPATH "${FUOTEN_EXE_RPATH}"
+)
+
+set_property(TARGET nazzida_exe
+    PROPERTY OUTPUT_NAME "${FUOTEN_EXE_OUTPUT_NAME}"
 )
 
 set(CMAKE_SKIP_RPATH OFF CACHE BOOL "" FORCE)
 
-target_compile_definitions(harbour-nazzida PRIVATE
+GNUInstallDirs_get_absolute_install_dir(NAZZIDA_FULL_I18NDIR NAZZIDA_I18NDIR)
+
+target_compile_definitions(nazzida_exe PRIVATE
     $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>
     $<$<NOT:$<CONFIG:Debug>>:QT_NO_DEBUG_OUTPUT>
     NAZZIDA_VERSION="${PROJECT_VERSION}"
-    NAZZIDA_I18NDIR="/usr/share/harbour-nazzida/translations"
+    NAZZIDA_I18NDIR="${NAZZIDA_FULL_I18NDIR}"
 )
 
-target_link_libraries(harbour-nazzida
+target_link_libraries(nazzida_exe
     PRIVATE
         Qt5::Core
         Qt5::Quick
@@ -69,6 +77,6 @@ target_link_libraries(harbour-nazzida
         FirfuoridaQt5::Core
 )
 
-install(TARGETS harbour-nazzida
+install(TARGETS nazzida_exe
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
