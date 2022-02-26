@@ -16,13 +16,11 @@ set(QMLSRCS
     pages/AddLiquid.qml
     pages/EditLiquid.qml
     models/ChangelogModel.qml
-    ../../common/qml/models/ContributorsModel.qml
-    ../../common/qml/models/PrivacyPolicyModel.qml
 )
 
 add_custom_target(qmlfiles
     SOURCES ${QMLSRCS}
 )
 
-install(FILES harbour-nazzida.qml DESTINATION ${CMAKE_INSTALL_DATADIR}/harbour-nazzida/qml)
-install(DIRECTORY cover pages models ../../common/qml/models DESTINATION ${CMAKE_INSTALL_DATADIR}/harbour-nazzida/qml)
+install(FILES harbour-nazzida.qml DESTINATION ${NAZZIDA_QMLDIR})
+install(DIRECTORY cover pages models DESTINATION ${NAZZIDA_QMLDIR})

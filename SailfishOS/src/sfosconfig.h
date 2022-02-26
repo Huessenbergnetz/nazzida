@@ -6,7 +6,7 @@
 #ifndef SFOSCONFIG_H
 #define SFOSCONFIG_H
 
-#include "../../common/src/configuration.h"
+#include "configuration.h"
 
 class QSettings;
 

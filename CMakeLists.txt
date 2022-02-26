@@ -23,13 +23,14 @@ if (${TARGETSYSTEM} STREQUAL "sfos")
 
     find_package (Qt5 COMPONENTS Core Qml Gui Quick Sql LinguistTools REQUIRED)
 
-    set(FUOTEN_EXE_OUTPUT_NAME harbour-nazzida)
-    set(HBNSC_APPNAME ${FUOTEN_EXE_OUTPUT_NAME} CACHE STRING "Name of the application the HBN SFOS Components are used for. Used for installation values.")
-    set(CMAKE_INSTALL_LIBDIR ${CMAKE_INSTALL_DATADIR}/${FUOTEN_EXE_OUTPUT_NAME}/lib)
+    set(NAZZIDA_EXE_OUTPUT_NAME harbour-nazzida)
+    set(HBNSC_APPNAME ${NAZZIDA_EXE_OUTPUT_NAME} CACHE STRING "Name of the application the HBN SFOS Components are used for. Used for installation values.")
+    set(CMAKE_INSTALL_LIBDIR ${CMAKE_INSTALL_DATADIR}/${NAZZIDA_EXE_OUTPUT_NAME}/lib)
     set(HBNSC_WITH_OPENSSL OFF)
     set(HBNSC_WITH_FIRFUORIDA On)
     set(HBNSC_LICENSES "GPLv3;LGPLv2_1;BSD-3;CC-BY-4_0")
-    set(NAZZIDA_I18NDIR ${CMAKE_INSTALL_DATADIR}/${FUOTEN_EXE_OUTPUT_NAME}/translations)
+    set(NAZZIDA_I18NDIR ${CMAKE_INSTALL_DATADIR}/${NAZZIDA_EXE_OUTPUT_NAME}/translations)
+    set(NAZZIDA_QMLDIR ${CMAKE_INSTALL_DATADIR}/${NAZZIDA_EXE_OUTPUT_NAME}/qml)
 
     list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/3rdparty/HBN_SFOS_Cmake)
 

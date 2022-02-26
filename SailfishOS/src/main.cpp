@@ -28,16 +28,16 @@
 #include "sfosconfig.h"
 #include "models/licensesmodel.h"
 
-#include "../../common/src/objects/person.h"
-#include "../../common/src/models/peoplelistfiltermodel.h"
-#include "../../common/src/objects/dailyliquids.h"
-#include "../../common/src/models/dailyliquidlistfiltermodel.h"
-#include "../../common/src/objects/liquid.h"
-#include "../../common/src/models/liquidlistfiltermodel.h"
-#include "../../common/src/models/languagesmodel.h"
-#include "../../common/src/migrations/m20220127t134808_people.h"
-#include "../../common/src/migrations/m20220130t123658_liquid.h"
-#include "../../common/src/migrations/m20220218t081651_people_transpire.h"
+#include "objects/person.h"
+#include "models/peoplelistfiltermodel.h"
+#include "objects/dailyliquids.h"
+#include "models/dailyliquidlistfiltermodel.h"
+#include "objects/liquid.h"
+#include "models/liquidlistfiltermodel.h"
+#include "models/languagesmodel.h"
+#include "migrations/m20220127t134808_people.h"
+#include "migrations/m20220130t123658_liquid.h"
+#include "migrations/m20220218t081651_people_transpire.h"
 
 int main(int argc, char *argv[])
 {
