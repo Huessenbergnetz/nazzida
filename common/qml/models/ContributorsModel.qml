@@ -11,7 +11,7 @@ ListModel {
         name: "Matthias Fehring (Buschmann)"
         role: ""
         section: ""
-        website: "https://www.buschmann23.de/?pk_campaign=Sailfish-App-Fuoten&pk_kwd=ContributorsList"
+        website: "https://www.buschmann23.de/?pk_campaign=Sailfish-App-Nazzida&pk_kwd=ContributorsList"
         twitter: "buschmann23"
         github: "buschmann23"
     }
