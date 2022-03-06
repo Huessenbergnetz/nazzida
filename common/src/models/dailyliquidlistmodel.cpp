@@ -315,17 +315,6 @@ bool DailyLiquidListModel::edit(const QDateTime &oldMoment, const QDateTime &new
             }
         }
 
-        int newIdx = -1;
-        currentIndex = 0;
-        for (auto &l : m_dailyLiquids) {
-            if (l.day() == newLiquidDay) {
-                newIdx = currentIndex;
-                break;
-            } else {
-                currentIndex++;
-            }
-        }
-
         if (oldIdx < 0) {
             qWarning("Failed to find valid index for moment %s", qUtf8Printable(oldMoment.toString()));
             return false;
@@ -346,6 +335,17 @@ bool DailyLiquidListModel::edit(const QDateTime &oldMoment, const QDateTime &new
         } else {
             m_dailyLiquids[oldIdx] = oldDl;
             emit dataChanged(index(oldIdx, 0), index(oldIdx, 0), {DailyLiquidListModel::Input, DailyLiquidListModel::Output, DailyLiquidListModel::Difference, DailyLiquidListModel::Entries});
+        }
+
+        int newIdx = -1;
+        currentIndex = 0;
+        for (auto &l : m_dailyLiquids) {
+            if (l.day() == newLiquidDay) {
+                newIdx = currentIndex;
+                break;
+            } else {
+                currentIndex++;
+            }
         }
 
         if (newIdx > -1) {
