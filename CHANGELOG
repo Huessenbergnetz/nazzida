@@ -1,3 +1,10 @@
+Nazzida 1.0.2 - 2022-03-07
+- General
+  * fixed: out of bounds crash when editing liquids time (#10)
+- Sailfish OS
+  * new: Swedish translation by Åke Engelbrektson
+  * fixed: segmentation fault on shutdown (#12)
+
 Nazzida 1.0.1 - 2022-02-21
 - General
   * fixed: adding liquid on daily details page does not update the model (#4)

@@ -15,6 +15,16 @@ import QtQuick 2.2
 
 ListModel {
     ListElement {
+        version: "1.0.2"
+        date: 1646680364000
+        entries: [
+            ListElement { type: 0; issue: ""; description: "Swedish translation by Åke Engelbrektson" },
+            ListElement { type: 2; issue: "10"; description: "out of bounds crash when editing liquids time" },
+            ListElement { type: 2; issue: "12"; description: "segmentation fault on shutdown" }
+        ]
+    }
+
+    ListElement {
         version: "1.0.1"
         date: 1645439874000
         entries: [

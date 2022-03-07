@@ -12,6 +12,11 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Mon Mar  7 2022 Matthias Fehring <> 1.0.2-1
+- new: Swedish translation by Åke Engelbrektson
+- fixed: out of bounds crash when editing liquids time (#10)
+- fixed: segmentation fault on shutdown (#12)
+
 * Mon Feb 21 2022 Matthias Fehring <> 1.0.1-1
 - improved: reorder input fields when adding/editing a person in a more logical way (#7)
 - improved: do not use current time as day start time for new person (#6)
