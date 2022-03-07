@@ -265,7 +265,7 @@ bool DailyLiquidListModel::edit(const QDateTime &oldMoment, const QDateTime &new
 
         int idx = -1;
         int currentIndex = 0;
-        for (auto &l : m_dailyLiquids) {
+        for (const auto &l : m_dailyLiquids) {
             if (l.day() == oldLiquidDay) {
                 idx = currentIndex;
                 break;
@@ -306,7 +306,7 @@ bool DailyLiquidListModel::edit(const QDateTime &oldMoment, const QDateTime &new
 
         int oldIdx = -1;
         int currentIndex = 0;
-        for (auto &l : m_dailyLiquids) {
+        for (const auto &l : m_dailyLiquids) {
             if (l.day() == oldLiquidDay) {
                 oldIdx = currentIndex;
                 break;
@@ -317,7 +317,7 @@ bool DailyLiquidListModel::edit(const QDateTime &oldMoment, const QDateTime &new
 
         int newIdx = -1;
         currentIndex = 0;
-        for (auto &l : m_dailyLiquids) {
+        for (const auto &l : m_dailyLiquids) {
             if (l.day() == newLiquidDay) {
                 newIdx = currentIndex;
                 break;
@@ -337,7 +337,10 @@ bool DailyLiquidListModel::edit(const QDateTime &oldMoment, const QDateTime &new
         } else {
             oldDl.d->input = oldDl.input() - oldAmount;
         }
-        oldDl.d->entries = oldDl.entries() - 1;
+
+        if (oldLiquidDay != newLiquidDay) {
+            oldDl.d->entries = oldDl.entries() - 1;
+        }
 
         if (oldDl.entries() == 0) {
             beginRemoveRows(QModelIndex(), oldIdx, oldIdx);
