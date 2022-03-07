@@ -349,5 +349,15 @@
         <extracomment>View placeholder hint</extracomment>
         <translation type="unfinished"/>
     </message>
+    <message id="nazzida-contributor-eson-role">
+        <source>Swedish translation</source>
+        <extracomment>contributor role</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="nazzida-thanks-to-section">
+        <source>Thanks to</source>
+        <extracomment>the section a contributor belongs to</extracomment>
+        <translation type="unfinished"/>
+    </message>
 </context>
 </TS>

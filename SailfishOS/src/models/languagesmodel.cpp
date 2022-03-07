@@ -6,7 +6,7 @@
 #include "languagesmodel.h"
 
 LanguagesModel::LanguagesModel(QObject *parent) :
-    Hbnsc::LanguageModel({QStringLiteral("en_GB"), QStringLiteral("en_US"), QStringLiteral("de")}, parent)
+    Hbnsc::LanguageModel({QStringLiteral("en_GB"), QStringLiteral("en_US"), QStringLiteral("de"), QStringLiteral("sv")}, parent)
 {
 
 }

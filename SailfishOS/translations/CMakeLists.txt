@@ -7,7 +7,8 @@ set(TS_FILES
     nazzida.ts
     nazzida_de.ts
     nazzida_en_GB.ts
-    nazzida_en_US.ts)
+    nazzida_en_US.ts
+    nazzida_sv.ts)
 
 hbn_sfos_add_translation(QM_FILES ${TS_FILES} OPTIONS -idbased)
 

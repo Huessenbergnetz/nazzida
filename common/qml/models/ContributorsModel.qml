@@ -16,6 +16,14 @@ ListModel {
         github: "buschmann23"
     }
 
+    ListElement {
+        name: "Åke Engelbrektson (eson)"
+        role: ""
+        section: ""
+        website: "https://svenskasprakfiler.se/?pk_campaign=Sailfish-App-Nazzida&pk_kwd=ContributorsList"
+        github: "eson57"
+    }
+
     Component.onCompleted: {
         //: contributor role
         //% "Main developer, Nazzida creator"
@@ -23,5 +31,12 @@ ListModel {
         //: the section a contributor belongs to
         //% "Author"
         contModel.get(0).section = qsTrId("nazzida-author-section")
+
+        //: contributor role
+        //% "Swedish translation"
+        contModel.get(1).role = qsTrId("nazzida-contributor-eson-role")
+        //: the section a contributor belongs to
+        //% "Thanks to"
+        contModel.get(1).section = qsTrId("nazzida-thanks-to-section")
     }
 }
