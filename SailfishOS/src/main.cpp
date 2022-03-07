@@ -114,10 +114,10 @@ int main(int argc, char *argv[])
             }
 
             if (errorMessage.isEmpty()) {
-                auto migrator = new Firfuorida::Migrator(QStringLiteral("initDbCon"), QStringLiteral("migrations"), app.get());
-                new M20220127T134808_People(migrator);
-                new M20220130T123658_Liquid(migrator);
-                new M20220218T081651_People_transpire(migrator);
+                auto migrator = std::make_unique<Firfuorida::Migrator>(QStringLiteral("initDbCon"), QStringLiteral("migrations"), app.get());
+                new M20220127T134808_People(migrator.get());
+                new M20220130T123658_Liquid(migrator.get());
+                new M20220218T081651_People_transpire(migrator.get());
 
                 if (!migrator->migrate()) {
                     //: error message, %1 will be replaced by the migration error
