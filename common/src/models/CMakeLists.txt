@@ -11,8 +11,6 @@ target_sources(nazzida_exe
         dailyliquidlistfiltermodel.cpp
         dailyliquidlistmodel.h
         dailyliquidlistmodel.cpp
-        languagesmodel.h
-        languagesmodel.cpp
         liquidlistfiltermodel.h
         liquidlistfiltermodel.cpp
         liquidlistmodel.h

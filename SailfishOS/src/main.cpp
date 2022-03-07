@@ -27,6 +27,7 @@
 
 #include "sfosconfig.h"
 #include "models/licensesmodel.h"
+#include "models/languagesmodel.h"
 
 #include "objects/person.h"
 #include "models/peoplelistfiltermodel.h"
@@ -34,7 +35,7 @@
 #include "models/dailyliquidlistfiltermodel.h"
 #include "objects/liquid.h"
 #include "models/liquidlistfiltermodel.h"
-#include "models/languagesmodel.h"
+
 #include "migrations/m20220127t134808_people.h"
 #include "migrations/m20220130t123658_liquid.h"
 #include "migrations/m20220218t081651_people_transpire.h"

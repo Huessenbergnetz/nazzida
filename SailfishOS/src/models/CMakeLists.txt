@@ -5,4 +5,6 @@ target_sources(nazzida_exe
     PRIVATE
         licensesmodel.h
         licensesmodel.cpp
+        languagesmodel.h
+        languagesmodel.cpp
 )
