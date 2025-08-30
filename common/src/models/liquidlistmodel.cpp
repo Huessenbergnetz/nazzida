@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+ * SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -46,7 +46,8 @@ bool LiquidListModel::load()
     if (Q_UNLIKELY(!q.prepare(QStringLiteral("SELECT id, person_id, moment, in_or_out, amount, name, note FROM liquid WHERE person_id = :person_id AND moment >= :start AND moment < :end ORDER BY moment DESC")))) {
         setLastError(qtTrId("naz-err-failed-prepare-db-query").arg(q.lastError().text()));
         qCritical("Failed to prepare database query: %s", qUtf8Printable(q.lastError().text()));
-        return 0;
+        setInOperation(false);
+        return false;
     }
 
     q.bindValue(QStringLiteral(":person_id"), personId());
