@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+# SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 cmake_minimum_required(VERSION 3.16.0)
@@ -29,6 +29,7 @@ if (${TARGETSYSTEM} STREQUAL "sfos")
     set(HBNSC_WITH_OPENSSL OFF)
     set(HBNSC_WITH_FIRFUORIDA On)
     set(HBNSC_LICENSES "GPLv3;LGPLv2_1;BSD-3;CC-BY-4_0")
+    set(HBNSC_ICONSIZES "s;l")
     set(NAZZIDA_I18NDIR ${CMAKE_INSTALL_DATADIR}/${NAZZIDA_EXE_OUTPUT_NAME}/translations)
     set(NAZZIDA_QMLDIR ${CMAKE_INSTALL_DATADIR}/${NAZZIDA_EXE_OUTPUT_NAME}/qml)
 
