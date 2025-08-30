@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+ * SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -35,10 +35,13 @@
 #include "models/dailyliquidlistfiltermodel.h"
 #include "objects/liquid.h"
 #include "models/liquidlistfiltermodel.h"
+#include "objects/weight.h"
+#include "models/weightlistfiltermodel.h"
 
 #include "migrations/m20220127t134808_people.h"
 #include "migrations/m20220130t123658_liquid.h"
 #include "migrations/m20220218t081651_people_transpire.h"
+#include "migrations/m20250830t120537_weight.h"
 
 int main(int argc, char *argv[])
 {
@@ -118,6 +121,7 @@ int main(int argc, char *argv[])
                 new M20220127T134808_People(migrator.get());
                 new M20220130T123658_Liquid(migrator.get());
                 new M20220218T081651_People_transpire(migrator.get());
+                new M20250830T120537_Weight(migrator.get());
 
                 if (!migrator->migrate()) {
                     //: error message, %1 will be replaced by the migration error
@@ -159,6 +163,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<DailyLiquidListFilterModel>("harbour.nazzida", 1, 0, "DailyLiquidListFilterModel");
     qmlRegisterUncreatableType<Liquid>("harbour.nazzida", 1, 0, "Liquid", QStringLiteral("You can not create objects of type Liquid in QML!"));
     qmlRegisterType<LiquidListFilterModel>("harbour.nazzida", 1, 0, "LiquidListFilterModel");
+    qmlRegisterUncreatableType<Weight>("harbour.nazzida", 1, 0, "Weight", QStringLiteral("You can not create object of type Weight in QML!"));
+    qmlRegisterType<WeightListFilterModel>("harbour.nazzida", 1, 0, "WeightListFilterModel");
     qmlRegisterType<LanguagesModel>("harbour.nazzida", 1, 0, "LanguagesModel");
 
     std::unique_ptr<QQuickView> view(SailfishApp::createView());

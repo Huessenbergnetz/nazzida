@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+# SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 target_sources(nazzida_exe
@@ -19,4 +19,8 @@ target_sources(nazzida_exe
         peoplelistfiltermodel.cpp
         peoplelistmodel.h
         peoplelistmodel.cpp
+        weightlistmodel.h
+        weightlistmodel.cpp
+        weightlistfiltermodel.h
+        weightlistfiltermodel.cpp
 )

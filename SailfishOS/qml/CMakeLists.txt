@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+# SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 set(QMLSRCS
@@ -15,6 +15,9 @@ set(QMLSRCS
     pages/Liquids.qml
     pages/AddLiquid.qml
     pages/EditLiquid.qml
+    pages/Weights.qml
+    pages/AddWeight.qml
+    parts/DateTimeField.qml
     models/ChangelogModel.qml
 )
 
@@ -23,4 +26,4 @@ add_custom_target(qmlfiles
 )
 
 install(FILES harbour-nazzida.qml DESTINATION ${NAZZIDA_QMLDIR})
-install(DIRECTORY cover pages models DESTINATION ${NAZZIDA_QMLDIR})
+install(DIRECTORY cover pages models parts DESTINATION ${NAZZIDA_QMLDIR})

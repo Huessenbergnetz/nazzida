@@ -118,16 +118,12 @@ Page {
 
             menu: ContextMenu {
                 MenuItem {
-                    //: context menu item entry
-                    //% "Edit"
-                    text: qsTrId("naz-menu-edit-liquid")
+                    text: qsTrId("naz-contextmenu-edit")
                     onClicked: pageStack.animatorPush(Qt.resolvedUrl("EditLiquid.qml"), {person: liquidsPage.person, liquidsModel: liquidsModel, dailyLiquidsModel: liquidsPage.dailyLiquidsModel, modelIndex: index, moment: model.moment, inOrOut: model.inOrOut, amount: model.amount, name: model.name, note: model.note})
                 }
 
                 MenuItem {
-                    // context menu item entry
-                    //% "Delete"
-                    text: qsTrId("naz-menu-del-liquid")
+                    text: qsTrId("naz-contextmenu-del")
                     onClicked: removeLiquid()
                 }
             }

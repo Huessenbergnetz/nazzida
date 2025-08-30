@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+ * SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -38,6 +38,7 @@ Page {
 
             BackgroundItem {
                 width: parent.width
+                height: Theme.itemSizeMedium
                 contentHeight: Theme.itemSizeMedium
 
                 onClicked: pageStack.animatorPush(Qt.resolvedUrl("DailyLiquids.qml"), {person: sectionsPage.person})
@@ -58,13 +59,46 @@ Page {
                     anchors {
                         left: drinkingIcon.right
                         leftMargin: Theme.paddingLarge
-                        right: parent.ri
+                        right: parent.right
                         rightMargin: Theme.horizontalPageMargin
                         verticalCenter: drinkingIcon.verticalCenter
                     }
                     //: label on a list of different entries
                     //% "Fluid Balance Protocol"
                     text: qsTrId("naz-fluid-balance-protocol")
+                }
+            }
+
+            BackgroundItem {
+                width: parent.width
+                height: Theme.itemSizeMedium
+                contentHeight: Theme.itemSizeMedium
+
+                onClicked: pageStack.animatorPush(Qt.resolvedUrl("Weights.qml"), {person: sectionsPage.person})
+
+                Icon {
+                    id: scaleIcon
+                    anchors {
+                        left: parent.left
+                        leftMargin: Theme.horizontalPageMargin
+                    }
+                    source: "image://nazzida/icon-l-scale"
+                    width: Theme.iconSizeLarge
+                    height: Theme.iconSizeLarge
+                    highlighted: parent.highlighted
+                }
+
+                Label {
+                    anchors {
+                        left: scaleIcon.right
+                        leftMargin: Theme.paddingLarge
+                        right: parent.right
+                        rightMargin: Theme.horizontalPageMargin
+                        verticalCenter: scaleIcon.verticalCenter
+                    }
+                    //: label on a list of different entries
+                    //% "Weight Protocol"
+                    text: qsTrId("naz-weight-protocol")
                 }
             }
         }

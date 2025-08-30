@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+ * SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -188,7 +188,7 @@ Dialog {
                 width: parent.width
                 //: text area label
                 //% "Note (optional)"
-                label: qsTrId("naz-textarea-liquid-note-label"); placeholderText: label
+                label: qsTrId("naz-textarea-note-label"); placeholderText: label
                 EnterKey.enabled: addLiquidDialog.canAccept
                 EnterKey.iconSource: "image://theme/icon-m-enter-accept"
                 EnterKey.onClicked: addLiquidDialog.accept()

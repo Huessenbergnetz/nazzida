@@ -208,7 +208,7 @@ Dialog {
             TextArea {
                 id: noteArea
                 width: parent.width
-                label: qsTrId("naz-textarea-liquid-note-label"); placeholderText: label
+                label: qsTrId("naz-textarea-note-label"); placeholderText: label
                 text: editLiquidDialog.note
                 EnterKey.enabled: editLiquidDialog.canAccept
                 EnterKey.iconSource: "image://theme/icon-m-enter-accept"

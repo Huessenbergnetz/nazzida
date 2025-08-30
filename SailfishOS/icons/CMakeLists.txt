@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+# SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 include(HBNSfosGenerateIcons)
@@ -13,7 +13,8 @@ add_custom_target(nazzidaAppIcon ALL
 set(L_ICONS
     cup.svg
     peeing.svg
-    syringe.svg)
+    syringe.svg
+    scale.svg)
 
 hbn_sfos_add_icon(lIcons ${L_ICONS} SIZES "l")
 

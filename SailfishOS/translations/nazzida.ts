@@ -248,18 +248,9 @@
         <extracomment>text field label</extracomment>
         <translation type="unfinished"></translation>
     </message>
-    <message id="naz-textarea-liquid-note-label">
-        <source>Note (optional)</source>
-        <extracomment>text area label</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
     <message id="naz-remorse-delete-liquid">
         <source>Delete %1&#x202f;ml %2 from %3</source>
         <extracomment>remorse item text, %1 will be the liquid amout, %2 the liquid name, %3 will be the datetime the liquid has been consumed or excreted</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="naz-menu-del-liquid">
-        <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message id="naz-edit-input-output">
@@ -270,11 +261,6 @@
     <message id="naz-accept-edit-liquid">
         <source>Apply</source>
         <extracomment>Accept text on liquid edit dialog</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="naz-menu-edit-liquid">
-        <source>Edit</source>
-        <extracomment>context menu item entry</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message id="naz-name-day-total">
@@ -362,6 +348,67 @@
     <message id="nazzida-thanks-to-section">
         <source>Thanks to</source>
         <extracomment>the section a contributor belongs to</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-textarea-note-label">
+        <source>Note (optional)</source>
+        <extracomment>text area label</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-add-weight">
+        <source>Add weight</source>
+        <extracomment>Dialog title and pull down menu entry</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-textfield-weight-label">
+        <source>Weight in %1</source>
+        <extracomment>text field label, %1 will be replaced by the unit, like kg</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-weight-protocol">
+        <source>Weight Protocol</source>
+        <extracomment>label on a list of different entries</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-weight-with-unit">
+        <source>%1 %2</source>
+        <extracomment>weight with unit, %1 will be the weight like 70.3 and %2 will be the unit like kg</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-remorse-delete-weight">
+        <source>Delete %1 from %2</source>
+        <oldsource>Delete %1 from %3</oldsource>
+        <extracomment>remorse item text, %1 will be the weight amount like 70.5 kg, %2 will be the datetime the weight has been added</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-weights-list-empty-text">
+        <source>No weights added</source>
+        <extracomment>View placeholder text</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-weights-list-empty-hint">
+        <source>Pull down to add weights</source>
+        <extracomment>View placeholder hint</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-textfield-date">
+        <source>Date</source>
+        <extracomment>text field label</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-textfield-time">
+        <source>Time</source>
+        <extracomment>text field label</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-contextmenu-edit">
+        <source>Edit</source>
+        <extracomment>context menu item text</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-contextmenu-del">
+        <source>Delete</source>
+        <extracomment>context menu item text</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
