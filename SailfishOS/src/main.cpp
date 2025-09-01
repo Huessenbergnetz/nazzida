@@ -26,6 +26,7 @@
 #include <hbnsclicensemodel.h>
 
 #include "sfosconfig.h"
+#include "nazzidautils.h"
 #include "models/licensesmodel.h"
 #include "models/languagesmodel.h"
 
@@ -166,6 +167,7 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<Weight>("harbour.nazzida", 1, 0, "Weight", QStringLiteral("You can not create object of type Weight in QML!"));
     qmlRegisterType<WeightListFilterModel>("harbour.nazzida", 1, 0, "WeightListFilterModel");
     qmlRegisterType<LanguagesModel>("harbour.nazzida", 1, 0, "LanguagesModel");
+    qmlRegisterSingletonType<NazzidaUtils>("harbour.nazzida", 1, 0, "NazzidaUtils", NazzidaUtils::provider);
 
     std::unique_ptr<QQuickView> view(SailfishApp::createView());
 
