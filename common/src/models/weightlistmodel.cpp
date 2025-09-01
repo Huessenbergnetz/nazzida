@@ -10,6 +10,7 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QDebug>
 
 WeightListModel::WeightListModel(QObject *parent)
     : BaseListModel(parent)

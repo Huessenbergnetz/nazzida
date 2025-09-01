@@ -9,6 +9,7 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDateTime>
+#include <QDebug>
 
 LiquidListModel::LiquidListModel(QObject *parent) : BaseListModel(parent)
 {
@@ -24,13 +25,13 @@ bool LiquidListModel::load()
 {
     setInOperation(true);
 
-    qDebug("Loading liquids for person ID %i on %s", personId(), qUtf8Printable(day().toString()));
+    qDebug() << "Loading liquids for person ID" << personId() << "on" << day();
 
     {
         QSqlDatabase db = QSqlDatabase::database();
         if (!db.open()) {
             setLastError(qtTrId("naz-err-failed-open-db").arg(db.databaseName(), db.lastError().text()));
-            qCritical("Failed to open database %s: %s", qUtf8Printable(db.databaseName()), qUtf8Printable(db.lastError().text()));
+            qCritical().nospace() << "Failed to open database " << db.databaseName() << ": " << db.lastError();
             setInOperation(false);
             return false;
         }
@@ -38,14 +39,14 @@ bool LiquidListModel::load()
 
     clear();
 
-    const QDateTime start = QDateTime(day(), dayStarts());
-    const QDateTime end = QDateTime(day().addDays(1), dayStarts());
+    const auto start    = QDateTime(day(), dayStarts());
+    const auto end      = QDateTime(day().addDays(1), dayStarts());
 
     QSqlQuery q;
 
     if (Q_UNLIKELY(!q.prepare(QStringLiteral("SELECT id, person_id, moment, in_or_out, amount, name, note FROM liquid WHERE person_id = :person_id AND moment >= :start AND moment < :end ORDER BY moment DESC")))) {
         setLastError(qtTrId("naz-err-failed-prepare-db-query").arg(q.lastError().text()));
-        qCritical("Failed to prepare database query: %s", qUtf8Printable(q.lastError().text()));
+        qCritical() << "Failed to prepare database query:" << q.lastError();
         setInOperation(false);
         return false;
     }
@@ -56,7 +57,7 @@ bool LiquidListModel::load()
 
     if (Q_UNLIKELY(!q.exec())) {
         setLastError(qtTrId("naz-err-failed-execute-db-query").arg(q.lastError().text()));
-        qCritical("Failed to execute database query: %s", qUtf8Printable(q.lastError().text()));
+        qCritical() << "Failed to execute database query:" << q.lastError();
         setInOperation(false);
         return false;
     }
@@ -64,11 +65,15 @@ bool LiquidListModel::load()
     std::vector<Liquid> _liquids;
     int diff = 0;
     while (q.next()) {
-        const Liquid::InOrOut inOrOut = static_cast<Liquid::InOrOut>(q.value(3).toInt());
-        const int amount = q.value(4).toInt();
+        const auto inOrOut  = static_cast<Liquid::InOrOut>(q.value(3).toInt());
+        const auto amount   = q.value(4).toInt();
+        auto momentUtc      = q.value(2).toDateTime();
+        momentUtc.setTimeSpec(Qt::UTC);
+        const auto moment   = momentUtc.toLocalTime();
+
         _liquids.emplace_back(q.value(0).toInt(),
                               q.value(1).toInt(),
-                              q.value(2).toDateTime(),
+                              moment,
                               inOrOut,
                               amount,
                               q.value(5).toString(),
@@ -108,15 +113,15 @@ void LiquidListModel::clear()
 
 int LiquidListModel::add(int id, const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note)
 {
-    const QDate _day = moment.date();
-    const QTime _time = moment.time();
-    const QDate _liquidDay = _time >= dayStarts() ? _day : _day.addDays(-1);
+    const auto _day         = moment.date();
+    const auto _time        = moment.time();
+    const QDate _liquidDay  = _time >= dayStarts() ? _day : _day.addDays(-1);
 
     if (_liquidDay != day()) {
         return 0;
     }
 
-    const Liquid::InOrOut _inOrOut = static_cast<Liquid::InOrOut>(inOrOut);
+    const auto _inOrOut = static_cast<Liquid::InOrOut>(inOrOut);
 
     if (_inOrOut == Liquid::Out) {
         setDifference(difference() + (-1 * amount));
@@ -136,7 +141,7 @@ int LiquidListModel::add(int id, const QDateTime &moment, int inOrOut, int amoun
 
     endInsertRows();
 
-    qDebug("Created new liquid %i ml %s with ID %i for person ID %i", amount, qUtf8Printable(name), id, personId());
+    qDebug() << "Created new liquid" << amount << "ml" << name << "with ID" << id << "for person ID" << personId();
 
     return id;
 }
@@ -144,7 +149,7 @@ int LiquidListModel::add(int id, const QDateTime &moment, int inOrOut, int amoun
 bool LiquidListModel::remove(QModelIndex index)
 {
     if (!index.isValid() || (index.row() >= rowCount())) {
-        qWarning("%s", "Invalid index");
+        qWarning() << "Invalid" << index;
         return false;
     }
 
@@ -154,7 +159,7 @@ bool LiquidListModel::remove(QModelIndex index)
 
     if (Q_UNLIKELY(!q.prepare(QStringLiteral("DELETE FROM liquid WHERE id = :id")))) {
         setLastError(qtTrId("naz-err-failed-prepare-db-query").arg(q.lastError().text()));
-        qCritical("Failed to prepare database query: %s", qUtf8Printable(q.lastError().text()));
+        qCritical() << "Failed to prepare database query:" << q.lastError();
         return false;
     }
 
@@ -162,7 +167,7 @@ bool LiquidListModel::remove(QModelIndex index)
 
     if (Q_UNLIKELY(!q.exec())) {
         setLastError(qtTrId("naz-err-failed-execute-db-query").arg(q.lastError().text()));
-        qCritical("Failed to execute database query: %s", qUtf8Printable(q.lastError().text()));
+        qCritical() << "Failed to execute database query:" << q.lastError();
         return false;
     }
 
@@ -178,7 +183,7 @@ bool LiquidListModel::remove(QModelIndex index)
         setDifference(difference() - l.amount());
     }
 
-    qDebug("Removed Liquid %i ml %s with ID %i", l.amount(), qUtf8Printable(l.name()), l.id());
+    qDebug() << "Removed liquid" << l.amount() << "ml" << l.name() << "with ID" << l.id();
 
     return true;
 }
@@ -186,7 +191,7 @@ bool LiquidListModel::remove(QModelIndex index)
 bool LiquidListModel::edit(QModelIndex index, const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note)
 {
     if (!index.isValid() || index.row() >= rowCount()) {
-        qWarning("Invalid index: %i", index.row());
+        qWarning() << "Invalid" << index;
         return false;
     }
 
@@ -232,10 +237,11 @@ QModelIndex LiquidListModel::index(int row, int column, const QModelIndex &paren
 QVariant LiquidListModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid() || (index.row() >= rowCount())) {
+        qWarning() << "Invalid" << index;
         return QVariant();
     }
 
-    const auto l = m_liquids.at(index.row());
+    const Liquid l = m_liquids.at(index.row());
 
     switch(role) {
     case Id:
@@ -279,18 +285,19 @@ QHash<int, QByteArray> LiquidListModel::roleNames() const
 bool LiquidListModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if (!index.isValid() || (index.row() >= rowCount())) {
-        qWarning("Invalid index: %i", index.row());
+        qWarning() << "Invalid" << index;
         return false;
     }
 
     Liquid l = m_liquids.at(index.row());
     QString roleCol;
+    QVariant _value = value;
 
     switch(role) {
     case Id:
     case PersonId:
     {
-        qWarning("Can not change id or person id");
+        qWarning() << "Can not change id or person id";
         return false;
     }
     case Moment:
@@ -299,6 +306,7 @@ bool LiquidListModel::setData(const QModelIndex &index, const QVariant &value, i
             return true;
         }
         roleCol = QStringLiteral("moment");
+        _value = value.toDateTime().toUTC();
     }
         break;
     case InOrOut:
@@ -335,7 +343,7 @@ bool LiquidListModel::setData(const QModelIndex &index, const QVariant &value, i
         break;
     default:
     {
-        qWarning("Invalid role: %i", role);
+        qWarning() << "Invalid role:" << role;
         return false;
     }
     }
@@ -344,16 +352,16 @@ bool LiquidListModel::setData(const QModelIndex &index, const QVariant &value, i
 
     if (Q_UNLIKELY(!q.prepare(QStringLiteral("UPDATE liquid SET %1 = :value WHERE id = :id").arg(roleCol)))) {
         setLastError(qtTrId("naz-err-failed-prepare-db-query").arg(q.lastError().text()));
-        qCritical("Failed to prepare database query: %s", qUtf8Printable(q.lastError().text()));
+        qCritical() << "Failed to prepare database query:" << q.lastError();
         return false;
     }
 
-    q.bindValue(QStringLiteral(":value"), value);
+    q.bindValue(QStringLiteral(":value"), _value);
     q.bindValue(QStringLiteral(":id"), l.id());
 
     if (Q_UNLIKELY(!q.exec())) {
         setLastError(qtTrId("naz-err-failed-execute-db-query").arg(q.lastError().text()));
-        qCritical("Failed to execute database query: %s", qUtf8Printable(q.lastError().text()));
+        qCritical() << "Failed to execute database query:" << q.lastError();
         return false;
     }
 
@@ -375,7 +383,7 @@ bool LiquidListModel::setData(const QModelIndex &index, const QVariant &value, i
         break;
     default:
     {
-        qWarning("Invalid role %i", role);
+        qWarning() << "Invalid role:" << role;
         return false;
     }
     }
@@ -399,7 +407,7 @@ int LiquidListModel::personId() const
 void LiquidListModel::setPersonId(int id)
 {
     if (m_personId != id) {
-        qDebug("Changing personId from %i to %i", m_personId, id);
+        qDebug() << "Changin personId from" << m_personId << "to" << id;
         m_personId = id;
         emit personIdChanged(personId());
     }
@@ -413,7 +421,7 @@ QTime LiquidListModel::dayStarts() const
 void LiquidListModel::setDayStarts(QTime start)
 {
     if (m_dayStarts != start) {
-        qDebug("Changing dayStarts from \"%s\" to \"%s\"", qUtf8Printable(m_dayStarts.toString()), qUtf8Printable(start.toString()));
+        qDebug() << "Changing dayStart from" << m_dayStarts << "to" << start;
         m_dayStarts = start;
         emit dayStartsChanged(dayStarts());
     }
@@ -427,7 +435,7 @@ QDate LiquidListModel::day() const
 void LiquidListModel::setDay(QDate day)
 {
     if (m_day != day) {
-        qDebug("Changing day from \"%s\" to \"%s\"", qUtf8Printable(m_day.toString()), qUtf8Printable(day.toString()));
+        qDebug() << "Changing day from" << m_day << "to" << day;
         m_day = day;
         emit dayChanged(this->day());
     }
@@ -441,7 +449,7 @@ int LiquidListModel::difference() const
 void LiquidListModel::setDifference(int difference)
 {
     if (m_difference != difference) {
-        qDebug("Changing difference from %i to %i", m_difference, difference);
+        qDebug() << "Changing difference from" << m_difference << "to" << difference;
         m_difference = difference;
         emit differenceChanged(this->difference());
     }

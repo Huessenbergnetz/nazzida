@@ -59,14 +59,16 @@ bool DailyLiquidListModel::load()
     std::vector<DailyLiquids> _liquids;
 
     while (q.next()) {
-        const int id = q.value(0).toInt();
-        const int personId = q.value(1).toInt();
-        const QDateTime moment = q.value(2).toDateTime();
-        const Liquid::InOrOut inOrOut = static_cast<Liquid::InOrOut>(q.value(3).toInt());
-        const int amount = q.value(4).toInt();
+        const auto id       = q.value(0).toInt();
+        const auto personId = q.value(1).toInt();
+        auto momentUtc      = q.value(2).toDateTime();
+        momentUtc.setTimeSpec(Qt::UTC);
+        const auto moment   = momentUtc.toLocalTime();
+        const auto inOrOut  = static_cast<Liquid::InOrOut>(q.value(3).toInt());
+        const auto amount   = q.value(4).toInt();
 
-        const QDate day = moment.date();
-        const QTime time = moment.time();
+        const auto day  = moment.date();
+        const auto time = moment.time();
 
         QDate liquidDay; // the day the values belong to
         if (time >= dayStarts()) {
@@ -131,7 +133,7 @@ void DailyLiquidListModel::clear()
 
 int DailyLiquidListModel::add(const QDateTime &moment, int inOrOut, int amount, const QString &name, const QString &note)
 {
-    Liquid::InOrOut _inOrOut = static_cast<Liquid::InOrOut>(inOrOut);
+    const auto _inOrOut = static_cast<Liquid::InOrOut>(inOrOut);
 
     QSqlQuery q;
 
@@ -148,7 +150,7 @@ int DailyLiquidListModel::add(const QDateTime &moment, int inOrOut, int amount, 
     }
 
     q.bindValue(QStringLiteral(":person_id"), personId());
-    q.bindValue(QStringLiteral(":moment"), moment);
+    q.bindValue(QStringLiteral(":moment"), moment.toUTC());
     q.bindValue(QStringLiteral(":in_or_out"), _inOrOut);
     q.bindValue(QStringLiteral(":amount"), amount);
     q.bindValue(QStringLiteral(":name"), name);

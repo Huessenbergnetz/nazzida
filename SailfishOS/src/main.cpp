@@ -17,9 +17,12 @@
 #include <QSqlQuery>
 #include <QStandardPaths>
 #include <QDir>
+#include <QDebug>
 
 #include <sailfishapp.h>
 #include <memory>
+#include <vector>
+#include <utility>
 
 #include <hbnsc.h>
 #include <hbnsciconprovider.h>
@@ -43,6 +46,7 @@
 #include "migrations/m20220130t123658_liquid.h"
 #include "migrations/m20220218t081651_people_transpire.h"
 #include "migrations/m20250830t120537_weight.h"
+#include "migrations/m20250901t134046_sysinfo.h"
 
 int main(int argc, char *argv[])
 {
@@ -123,12 +127,54 @@ int main(int argc, char *argv[])
                 new M20220130T123658_Liquid(migrator.get());
                 new M20220218T081651_People_transpire(migrator.get());
                 new M20250830T120537_Weight(migrator.get());
+                new M20250901T134046_SysInfo(migrator.get());
 
                 if (!migrator->migrate()) {
                     //: error message, %1 will be replaced by the migration error
                     //% "Failed to perform database migrations: %1"
                     errorMessage = qtTrId("naz-err-failed-db-migrations").arg(migrator->lastError().text());
                     qCritical("%s", "Failed to perform database migrations.");
+                }
+            }
+
+            if (errorMessage.isEmpty()) {
+                QSqlQuery q(db);
+                if (!q.exec(QStringLiteral("SELECT value FROM sysinfo WHERE name = 'utctimes'"))) {
+                    //: error message, % 1 will be the database error message
+                    //% "Failed to query “sysinfo” table for “utctimes“ entry: %1"
+                    errorMessage = qtTrId("naz-err-failed-get-utctimes-sysinfo").arg(q.lastError().text());
+                    qCritical() << "Failed to query sysinfo table for utctimes enty:" << q.lastError().text();
+                } else {
+                    bool utctimes = false;
+                    if (q.next()) {
+                        utctimes = q.value(0).toInt() == 1;
+                    }
+                    if (!utctimes) {
+                        qInfo() << "Start converting datetimes in database to UTC";
+                        for (const QString &table : {QStringLiteral("liquid"), QStringLiteral("weight")}) {
+                            q.exec(QStringLiteral("SELECT id, moment FROM %1").arg(table));
+
+                            std::vector<std::pair<int, QDateTime>> data;
+
+                            while (q.next()) {
+                                data.emplace_back(q.value(0).toInt(), q.value(1).toDateTime());
+                            }
+
+                            if (!data.empty()) {
+                                q.prepare(QStringLiteral("UPDATE %1 SET moment = :moment WHERE id = :id").arg(table));
+                                for (const auto &p : data) {
+                                    qDebug() << "Converting" << table << "ID" << p.first << "moment from" << p.second << "to" << p.second.toUTC();
+                                    q.bindValue(":moment", p.second.toUTC());
+                                    q.bindValue(":id", p.first);
+                                    if (!q.exec()) {
+                                        qCritical() << "Failed to convert datetimes for table" << table << "with error:" << q.lastError().text();
+                                    }
+                                }
+                            }
+                        }
+                        q.exec("INSERT INTO sysinfo (name, value) VALUES ('utctimes', '1')");
+                        qInfo() << "Finished converting datetimes in database to UTC";
+                    }
                 }
             }
 

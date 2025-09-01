@@ -11,4 +11,6 @@ target_sources(nazzida_exe
         m20220218t081651_people_transpire.cpp
         m20250830t120537_weight.h
         m20250830t120537_weight.cpp
+        m20250901t134046_sysinfo.h
+        m20250901t134046_sysinfo.cpp
 )
