@@ -32,7 +32,10 @@ Dialog {
 
             DialogHeader {
                 flickable: addWeightFlick
+                // defined at Weights.qml
                 title: qsTrId("naz-add-weight")
+                // defined at AddPerson.qml
+                acceptText: qsTrId("naz-dialog-accept-add")
             }
 
             DateTimeField {

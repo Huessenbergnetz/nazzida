@@ -33,10 +33,10 @@ Dialog {
 
             DialogHeader {
                 flickable: addLiquidFlick
+                // defined at Liquids.qml
                 title: qsTrId("naz-add-input-output")
-                //: Accept text for add in- or output dialog
-                //% "Add"
-                acceptText: qsTrId("naz-accept-add-inoutput")
+                // defined at AddPerson.qml
+                acceptText: qsTrId("naz-dialog-accept-add")
             }
 
             Item {

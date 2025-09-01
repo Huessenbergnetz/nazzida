@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+ * SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -31,10 +31,11 @@ Dialog {
 
             DialogHeader {
                 flickable: addPersonFlick
+                // defined at FirstPage.qml
                 title: qsTrId("naz-title-add-person")
-                //: Accept text for add person dialog
+                //: Accept text for add dialogs
                 //% "Add"
-                acceptText: qsTrId("naz-accept-add-person")
+                acceptText: qsTrId("naz-dialog-accept-add")
             }
 
             TextField {
