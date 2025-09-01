@@ -26,7 +26,7 @@ Page {
                 //: Dialog title and pull down menu entry, means liquids
                 //% "Add In‐ or Output"
                 text: qsTrId("naz-add-input-output")
-                onClicked: pageStack.animatorPush(Qt.resolvedUrl("AddLiquid.qml"), {person: liquidsPage.person, liquidsModel: liquidsModel, dailyLiquidsModel: liquidsPage.dailyLiquidsModel})
+                onClicked: pageStack.animatorPush(Qt.resolvedUrl("AddLiquid.qml"), {person: liquidsPage.person, liquidsModel: liquidsModel, dailyLiquidsModel: liquidsPage.dailyLiquidsModel, moment: liquidsPage.day})
             }
         }
 
