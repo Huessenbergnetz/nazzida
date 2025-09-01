@@ -13,6 +13,12 @@ Page {
 
     Component.onCompleted: peopleListModel.load()
 
+    BusyIndicator {
+        size: BusyIndicatorSize.Large
+        anchors.centerIn: parent
+        running: peopleListModel.inOperation
+    }
+
     SilicaListView {
         id: peopleListView
         anchors.fill: parent
@@ -147,7 +153,7 @@ Page {
         }
 
         ViewPlaceholder {
-            enabled: peopleListView.count === 0
+            enabled: peopleListView.count === 0 && !peopleListModel.inOperation
             //: View placeholder text
             //% "No people added"
             text: qsTrId("naz-people-list-empty-text")
