@@ -41,6 +41,8 @@
 #include "models/liquidlistfiltermodel.h"
 #include "objects/weight.h"
 #include "models/weightlistfiltermodel.h"
+#include "objects/bloodpressure.h"
+#include "models/bloodpressurelistfiltermodel.h"
 
 #include "migrations/m20220127t134808_people.h"
 #include "migrations/m20220130t123658_liquid.h"
@@ -214,6 +216,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<LiquidListFilterModel>("harbour.nazzida", 1, 0, "LiquidListFilterModel");
     qmlRegisterUncreatableType<Weight>("harbour.nazzida", 1, 0, "Weight", QStringLiteral("You can not create object of type Weight in QML!"));
     qmlRegisterType<WeightListFilterModel>("harbour.nazzida", 1, 0, "WeightListFilterModel");
+    qmlRegisterUncreatableType<BloodPressure>("harbour.nazzida", 1, 0, "BloodPressure", QStringLiteral("You can not create object of type BloodPressure in QML!"));
+    qmlRegisterType<BloodPressureListFilterModel>("harbour.nazzida", 1, 0, "BloodPressureListFilterModel");
     qmlRegisterType<LanguagesModel>("harbour.nazzida", 1, 0, "LanguagesModel");
     qmlRegisterSingletonType<NazzidaUtils>("harbour.nazzida", 1, 0, "NazzidaUtils", NazzidaUtils::provider);
 
