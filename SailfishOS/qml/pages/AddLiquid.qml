@@ -6,7 +6,7 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 import harbour.nazzida 1.0
-
+import "../parts"
 
 Dialog {
     id: addLiquidDialog
@@ -88,75 +88,10 @@ Dialog {
                 }
             }
 
-            Item {
-                width: parent.width
-                height: Math.max(dateField.height, timeField.height)
-
-                TextField {
-                    id: dateField
-                    property int year: moment.getFullYear()
-                    property int month: moment.getMonth()
-                    property int day: moment.getDate()
-                    anchors {
-                        left: parent.left
-                    }
-                    width: parent.width/2 - Theme.horizontalPageMargin - Theme.paddingLarge/2
-                    text: Qt.formatDate(moment)
-                    readOnly: true
-                    //: text field label
-                    //% "Date"
-                    label: qsTrId("naz-textfield-inoutput-date"); placeholderText: label
-
-                    onClicked: {
-                        var dialog = pageStack.push(datePickerComp, {date: moment})
-
-                        dialog.accepted.connect(function() {
-                            dateField.text = dialog.dateText
-                            dateField.year = dialog.year
-                            dateField.month = dialog.month - 1
-                            dateField.day = dialog.day
-                            moment = new Date(dateField.year, dateField.month, dateField.day, timeField.hour, timeField.minute)
-                        })
-                    }
-
-                    Component {
-                        id: datePickerComp
-                        DatePickerDialog {}
-                    }
-                }
-
-                TextField {
-                    id: timeField
-                    property int hour: moment.getHours()
-                    property int minute: moment.getMinutes()
-                    anchors {
-                        left: dateField.right
-                        leftMargin: Theme.paddingLarge
-                        right: parent.right
-                        rightMargin: Theme.horizontalPageMargin
-                    }
-                    text: Qt.formatTime(moment)
-                    readOnly: true
-                    //: text field label
-                    //% "Time"
-                    label: qsTrId("naz-textfield-inoutput-time"); placeholderText: label
-
-                    onClicked: {
-                        var dialog = pageStack.push(timePickerComp, {hour: moment.getHours(), minute: moment.getMinutes()})
-
-                        dialog.accepted.connect(function() {
-                            timeField.text = dialog.timeText
-                            timeField.hour = dialog.hour
-                            timeField.minute = dialog.minute
-                            moment = new Date(dateField.year, dateField.month, dateField.day, timeField.hour, timeField.minute)
-                        })
-                    }
-
-                    Component {
-                        id: timePickerComp
-                        TimePickerDialog {}
-                    }
-                }
+            DateTimeField {
+                id: momentField
+                dateTime: addLiquidDialog.moment
+                onDateTimeChanged: addLiquidDialog.moment = dateTime
             }
 
             TextField {
