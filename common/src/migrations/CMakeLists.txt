@@ -13,4 +13,6 @@ target_sources(nazzida_exe
         m20250830t120537_weight.cpp
         m20250901t134046_sysinfo.h
         m20250901t134046_sysinfo.cpp
+        m20250901t151150_bloodpressure.h
+        m20250901t151150_bloodpressure.cpp
 )
