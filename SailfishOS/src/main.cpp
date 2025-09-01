@@ -47,6 +47,7 @@
 #include "migrations/m20220218t081651_people_transpire.h"
 #include "migrations/m20250830t120537_weight.h"
 #include "migrations/m20250901t134046_sysinfo.h"
+#include "migrations/m20250901t151150_bloodpressure.h"
 
 int main(int argc, char *argv[])
 {
@@ -128,6 +129,7 @@ int main(int argc, char *argv[])
                 new M20220218T081651_People_transpire(migrator.get());
                 new M20250830T120537_Weight(migrator.get());
                 new M20250901T134046_SysInfo(migrator.get());
+                new M20250901T151150_BloodPressure(migrator.get());
 
                 if (!migrator->migrate()) {
                     //: error message, %1 will be replaced by the migration error
