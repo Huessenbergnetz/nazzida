@@ -14,4 +14,7 @@ target_sources(nazzida_exe
         weight.h
         weight_p.h
         weight.cpp
+        bloodpressure.cpp
+        bloodpressure.h
+        bloodpressure_p.h
 )
