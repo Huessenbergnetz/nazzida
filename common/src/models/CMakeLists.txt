@@ -23,4 +23,8 @@ target_sources(nazzida_exe
         weightlistmodel.cpp
         weightlistfiltermodel.h
         weightlistfiltermodel.cpp
+        bloodpressurelistmodel.h
+        bloodpressurelistmodel.cpp
+        bloodpressurelistfiltermodel.h
+        bloodpressurelistfiltermodel.cpp
 )
