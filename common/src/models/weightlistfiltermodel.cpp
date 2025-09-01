@@ -66,3 +66,5 @@ bool WeightListFilterModel::lessThan(const QModelIndex &left, const QModelIndex 
 
     return lDt < rDt;
 }
+
+#include "moc_weightlistfiltermodel.cpp"

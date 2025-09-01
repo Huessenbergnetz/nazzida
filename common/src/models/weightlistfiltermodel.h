@@ -33,6 +33,9 @@ signals:
 
 protected:
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
+
+private:
+    Q_DISABLE_COPY(WeightListFilterModel)
 };
 
 #endif // WEIGHTLISTFILTERMODEL_H

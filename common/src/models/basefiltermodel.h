@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+ * SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -41,6 +41,8 @@ protected:
     BaseListModel* model() const;
 
 private:
+    Q_DISABLE_COPY(BaseFilterModel)
+
     BaseListModel *m_model = nullptr;
     Qt::SortOrder m_sortOrder = Qt::AscendingOrder;
 };

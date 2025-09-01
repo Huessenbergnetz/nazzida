@@ -49,6 +49,8 @@ signals:
     void personIdChanged(int personId);
 
 private:
+    Q_DISABLE_COPY(WeightListModel)
+
     std::vector<Weight> m_weights;
     int m_personId{0};
 };

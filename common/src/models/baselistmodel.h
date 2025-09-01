@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+ * SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -34,6 +34,8 @@ signals:
     void lastErrorChanged(const QString &lastError);
 
 private:
+    Q_DISABLE_COPY(BaseListModel)
+
     QString m_lastError;
     bool m_inOperation = false;
 };
