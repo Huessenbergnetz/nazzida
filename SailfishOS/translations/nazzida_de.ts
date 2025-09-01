@@ -30,11 +30,6 @@
         <extracomment>Page title and pull down menu enty</extracomment>
         <translation>Person hinzufügen</translation>
     </message>
-    <message id="naz-accept-add-person">
-        <source>Add</source>
-        <extracomment>Accept text for add person dialog</extracomment>
-        <translation>Hinzufügen</translation>
-    </message>
     <message id="naz-textfield-firstname">
         <source>First name</source>
         <extracomment>text field label</extracomment>
@@ -106,16 +101,6 @@
         <extracomment>remorse item text, %1 will be the first, %2 the second name</extracomment>
         <translation>Lösche %1 %2</translation>
     </message>
-    <message id="naz-menu-edit-person">
-        <source>Edit</source>
-        <extracomment>context menu item entry</extracomment>
-        <translation>Bearbeiten</translation>
-    </message>
-    <message id="naz-menu-del-person">
-        <source>Delete</source>
-        <extracomment>context menu item entry</extracomment>
-        <translation>Löschen</translation>
-    </message>
     <message id="naz-combo-label-sex">
         <source>Sex</source>
         <extracomment>ComboBox label</extracomment>
@@ -140,11 +125,6 @@
         <source>Edit %1 %2</source>
         <extracomment>dialog header title, %1 will be replaced by the first name, %2 by the last name</extracomment>
         <translation>Bearbeite %1 %2</translation>
-    </message>
-    <message id="naz-accept-edit-person">
-        <source>Apply</source>
-        <extracomment>Accept text on person edit dialog</extracomment>
-        <translation>Anwenden</translation>
     </message>
     <message id="naz-size-in-cm">
         <source>%1 cm</source>
@@ -193,11 +173,6 @@
         <extracomment>Dialog title and pull down menu entry, means liquids</extracomment>
         <translation>Ein‐ oder Ausfuhr hinzufügen</translation>
     </message>
-    <message id="naz-accept-add-inoutput">
-        <source>Add</source>
-        <extracomment>Accept text for add in- or output dialog</extracomment>
-        <translation>Hinzufügen</translation>
-    </message>
     <message id="naz-combo-label-inouttype">
         <source>In‐ or Output</source>
         <extracomment>label for a combobox on th add liquid dialog</extracomment>
@@ -217,16 +192,6 @@
         <source>Excretion</source>
         <extracomment>ComboBox item, excretion of body fluids</extracomment>
         <translation>Ausscheidung</translation>
-    </message>
-    <message id="naz-textfield-inoutput-date">
-        <source>Date</source>
-        <extracomment>text field label</extracomment>
-        <translation>Datum</translation>
-    </message>
-    <message id="naz-textfield-inoutput-time">
-        <source>Time</source>
-        <extracomment>text field label</extracomment>
-        <translation>Uhrzeit</translation>
     </message>
     <message id="naz-full-liquid-title">
         <source>%1 ml %2</source>
@@ -252,11 +217,6 @@
         <source>Edit In- or Output</source>
         <extracomment>dialog title</extracomment>
         <translation>Ein‐ oder Ausfuhr bearbeiten</translation>
-    </message>
-    <message id="naz-accept-edit-liquid">
-        <source>Apply</source>
-        <extracomment>Accept text on liquid edit dialog</extracomment>
-        <translation>Anwenden</translation>
     </message>
     <message id="naz-name-day-total">
         <source>%1 %2, %3, %4 ml</source>
@@ -405,6 +365,87 @@
         <source>Delete</source>
         <extracomment>context menu item text</extracomment>
         <translation>Löschen</translation>
+    </message>
+    <message id="naz-dialog-accept-add">
+        <source>Add</source>
+        <extracomment>Accept text for add dialogs</extracomment>
+        <translation>Hinzufügen</translation>
+    </message>
+    <message id="naz-dialog-accept-edit">
+        <source>Apply</source>
+        <extracomment>Accept text on edit dialog headers</extracomment>
+        <translation>Anwenden</translation>
+    </message>
+    <message id="naz-edit-weight">
+        <source>Edit Weight</source>
+        <extracomment>dialog title</extracomment>
+        <translation>Gewicht bearbeiten</translation>
+    </message>
+    <message id="naz-weight-bmi">
+        <source>BMI: %1 (%2)</source>
+        <oldsource>BMI: %1</oldsource>
+        <extracomment>%1 will be replaced by the body mass index like 22.1, %2 will be replaced by a BMI classification like Normal weight or Pre-obese</extracomment>
+        <translation>KMI: %1 (%2)</translation>
+    </message>
+    <message id="naz-bmi-general-underweight">
+        <source>Underweight</source>
+        <extracomment>BMI general classification</extracomment>
+        <translation>Untergewicht</translation>
+    </message>
+    <message id="naz-bmi-general-normal">
+        <source>Normal weight</source>
+        <extracomment>BMI general classification</extracomment>
+        <translation>Normalgewicht</translation>
+    </message>
+    <message id="naz-bmi-general-overweight">
+        <source>Overweight</source>
+        <extracomment>BMI general classification</extracomment>
+        <translation>Übergewicht</translation>
+    </message>
+    <message id="naz-bmi-general-obese">
+        <source>Obese</source>
+        <extracomment>BMI general classification</extracomment>
+        <translation>Adipositas</translation>
+    </message>
+    <message id="naz-bmi-detailed-severe-thinness">
+        <source>Severe thinness</source>
+        <extracomment>BMI deatiled classification</extracomment>
+        <translation>Starkes Untergewicht</translation>
+    </message>
+    <message id="naz-bmi-detailed-moderate-thinness">
+        <source>Moderate thinness</source>
+        <extracomment>BMI deatiled classification</extracomment>
+        <translation>Mäßiges Untergewicht</translation>
+    </message>
+    <message id="naz-bmi-detailed-mild-thinness">
+        <source>Mild thinness</source>
+        <extracomment>BMI deatiled classification</extracomment>
+        <translation>Leichtes Untergewicht</translation>
+    </message>
+    <message id="naz-bmi-detailed-normal">
+        <source>Normal weight</source>
+        <extracomment>BMI deatiled classification</extracomment>
+        <translation>Normalgewicht</translation>
+    </message>
+    <message id="naz-bmi-detailed-pre-obese">
+        <source>Pre-obese</source>
+        <extracomment>BMI deatiled classification</extracomment>
+        <translation>Präadipositas</translation>
+    </message>
+    <message id="naz-bmi-detailed-obese-1">
+        <source>Obese class I</source>
+        <extracomment>BMI deatiled classification</extracomment>
+        <translation>Adipositas Grad I</translation>
+    </message>
+    <message id="naz-bmi-detailed-obese-2">
+        <source>Obese class II</source>
+        <extracomment>BMI deatiled classification</extracomment>
+        <translation>Adipositas Grad II</translation>
+    </message>
+    <message id="naz-bmi-detailed-obese-3">
+        <source>Obese class III</source>
+        <extracomment>BMI deatiled classification</extracomment>
+        <translation>Adipositas Grad III</translation>
     </message>
 </context>
 </TS>
