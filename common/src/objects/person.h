@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+ * SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -74,6 +74,8 @@ private:
     int m_id = 0;
     int m_size = 0;
     int m_transpire = 500;
+
+    Q_DISABLE_COPY(Person)
 };
 
 #endif // PERSON_H
