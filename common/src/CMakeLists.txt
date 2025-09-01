@@ -5,6 +5,8 @@ target_sources(nazzida_exe
     PRIVATE
         configuration.h
         configuration.cpp
+        nazzidautils.h
+        nazzidautils.cpp
 )
 
 target_include_directories(nazzida_exe
