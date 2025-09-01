@@ -109,6 +109,14 @@ Page {
                     //: context menu item text
                     //% "Edit"
                     text: qsTrId("naz-contextmenu-edit")
+                    onClicked: pageStack.animatorPush(Qt.resolvedUrl("EditWeight.qml"),
+                                                      {person: weightsPage.person,
+                                                       weightModel: weightsModel,
+                                                       modelIndex: index,
+                                                       moment: model.moment,
+                                                       weight: model.weight,
+                                                       note: model.note}
+                                                      )
                 }
 
                 MenuItem {

@@ -17,6 +17,7 @@ set(QMLSRCS
     pages/EditLiquid.qml
     pages/Weights.qml
     pages/AddWeight.qml
+    pages/EditWeight.qml
     parts/DateTimeField.qml
     models/ChangelogModel.qml
 )
