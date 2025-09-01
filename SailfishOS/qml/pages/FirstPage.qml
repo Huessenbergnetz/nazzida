@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+ * SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -133,16 +133,14 @@ Page {
 
             menu: ContextMenu {
                 MenuItem {
-                    //: context menu item entry
-                    //% "Edit"
-                    text: qsTrId("naz-menu-edit-person")
+                    // defined in Weights.qml
+                    text: qsTrId("naz-contextmenu-edit")
                     onClicked: pageStack.animatorPush(Qt.resolvedUrl("EditPerson.qml"), {peopleModel: peopleListModel, person: model.item, modelIndex: index})
                 }
 
                 MenuItem {
-                    //: context menu item entry
-                    //% "Delete"
-                    text: qsTrId("naz-menu-del-person")
+                    // defined in Weights.qml
+                    text: qsTrId("naz-contextmenu-del")
                     onClicked: removeItem()
                 }
             }

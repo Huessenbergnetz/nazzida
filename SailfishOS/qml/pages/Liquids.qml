@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+ * SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -118,11 +118,13 @@ Page {
 
             menu: ContextMenu {
                 MenuItem {
+                    // defined in Weights.qml
                     text: qsTrId("naz-contextmenu-edit")
                     onClicked: pageStack.animatorPush(Qt.resolvedUrl("EditLiquid.qml"), {person: liquidsPage.person, liquidsModel: liquidsModel, dailyLiquidsModel: liquidsPage.dailyLiquidsModel, modelIndex: index, moment: model.moment, inOrOut: model.inOrOut, amount: model.amount, name: model.name, note: model.note})
                 }
 
                 MenuItem {
+                    // defined in Weights.qml
                     text: qsTrId("naz-contextmenu-del")
                     onClicked: removeLiquid()
                 }

@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+ * SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -35,9 +35,8 @@ Dialog {
                 //: dialog header title, %1 will be replaced by the first name, %2 by the last name
                 //% "Edit %1 %2"
                 title: qsTrId("naz-title-edit-person").arg(person.firstName).arg(person.lastName)
-                //: Accept text on person edit dialog
-                //% "Apply"
-                acceptText: qsTrId("naz-accept-edit-person")
+                // defined in EditWeight.qml
+                acceptText: qsTrId("naz-dialog-accept-edit")
             }
 
             TextField {

@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+ * SPDX-FileCopyrightText: (C) 2025 Matthias Fehring / www.huessenbergnetz.de
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -57,8 +57,7 @@ Dialog {
             TextArea {
                 id: noteArea
                 width: parent.width
-                //: text area label
-                //% "Note (optional)"
+                // defined in AddLiquid.qml
                 label: qsTrId("naz-textarea-note-label"); placeholderText: label
                 EnterKey.enabled: addWeightDialog.canAccept
                 EnterKey.iconSource: "image://theme/icon-m-enter-accept"

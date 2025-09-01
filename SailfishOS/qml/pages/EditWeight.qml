@@ -48,7 +48,7 @@ Dialog {
                  //: dialog title
                  //% "Edit Weight"
                  title: qsTrId("naz-edit-weight")
-                 //: Accept text on edit dialogs
+                 //: Accept text on edit dialog headers
                  //% "Apply"
                  acceptText: qsTrId("naz-dialog-accept-edit")
              }
@@ -74,6 +74,7 @@ Dialog {
              TextArea {
                  id: noteArea
                  width: parent.width
+                 // defined in AddLiquid.qml
                  label: qsTrId("naz-textarea-note-label"); placeholderText: label
                  EnterKey.enabled: editWeightDialog.canAccept
                  EnterKey.iconSource: "image://theme/icon-m-enter-accept"

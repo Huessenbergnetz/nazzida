@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+ * SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -51,9 +51,8 @@ Dialog {
                 //: dialog title
                 //% "Edit In- or Output"
                 title: qsTrId("naz-edit-input-output")
-                //: Accept text on liquid edit dialog
-                //% "Apply"
-                acceptText: qsTrId("naz-accept-edit-liquid")
+                // defined in EditWeight.qml
+                acceptText: qsTrId("naz-dialog-accept-edit")
             }
 
             Item {
@@ -208,6 +207,7 @@ Dialog {
             TextArea {
                 id: noteArea
                 width: parent.width
+                // defined in AddLiquid.qml
                 label: qsTrId("naz-textarea-note-label"); placeholderText: label
                 text: editLiquidDialog.note
                 EnterKey.enabled: editLiquidDialog.canAccept
