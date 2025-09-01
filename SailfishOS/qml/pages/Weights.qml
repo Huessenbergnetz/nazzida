@@ -45,7 +45,12 @@ Page {
 
         delegate: ListItem {
             id: weightItem
-            contentHeight: Theme.itemSizeMedium
+
+            property double bmi: NazzidaUtils.calcBmi(weightsPage.person, model.weight)
+            property int bmiDetailed: NazzidaUtils.bmiDetailed(weightsPage.person, bmi)
+            property bool isAdult: NazzidaUtils.ageAtMoment(weightsPage.person, model.moment) > 18
+
+            contentHeight: Theme.itemSizeLarge
             ListView.onRemove: animateRemoval(weightItem)
             ListView.onAdd: AddAnimation {
                 target: weightItem
@@ -56,8 +61,9 @@ Page {
                 anchors {
                     left: parent.left
                     leftMargin: Theme.horizontalPageMargin
+                    verticalCenter: parent.verticalCenter
                 }
-                source: "image://nazzida/icon-l-scale"
+                source: weightItem.isAdult ? "image://nazzida/icon-l-bmimeter-" + weightItem.bmiDetailed.toString() : "image://nazzida/icon-l-scale"
                 width: Theme.iconSizeLarge
                 height: Theme.iconSizeLarge
                 highlighted: weightItem.highlighted
@@ -69,6 +75,7 @@ Page {
                     leftMargin: Theme.paddingLarge
                     right: parent.right
                     rightMargin: Theme.horizontalPageMargin
+                    verticalCenter: parent.verticalCenter
                 }
 
                 Label {
@@ -84,6 +91,19 @@ Page {
                 Text {
                     id: weightMomentText
                     text: Qt.formatDateTime(model.moment)
+                    color: weightItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                    width: parent.width
+                    font.pixelSize: Theme.fontSizeSmall
+                }
+
+                Text {
+                    id: bmiText
+                    visible: weightItem.isAdult
+                    //: %1 will be replaced by the body mass index like 22.1,
+                    //: %2 will be replaced by a BMI classification like Normal weight
+                    //: or Pre-obese
+                    //% "BMI: %1 (%2)"
+                    text: qsTrId("naz-weight-bmi").arg(Number(weightItem.bmi).toLocaleString(Qt.locale(), 'f', 1)).arg(NazzidaUtils.bmiDetailedString(weightsPage.person, weightItem.bmi))
                     color: weightItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
                     width: parent.width
                     font.pixelSize: Theme.fontSizeSmall
