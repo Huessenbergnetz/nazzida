@@ -1,3 +1,9 @@
+Nazzida 1.1.0 - TBD
+- General
+  * new: add data model to store weights (#8)
+- Sailfish OS
+  * new: log weight (#8)
+
 Nazzida 1.0.2 - 2022-03-07
 - General
   * fixed: out of bounds crash when editing liquids time (#10)
