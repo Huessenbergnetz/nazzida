@@ -59,9 +59,12 @@ bool WeightListModel::load()
 
     std::vector<Weight> _weights;
     while (q.next()) {
+        auto momentUtc = q.value(2).toDateTime();
+        momentUtc.setTimeSpec(Qt::UTC);
+
         _weights.emplace_back(q.value(0).toInt(),
                               q.value(1).toInt(),
-                              q.value(2).toDateTime(),
+                              momentUtc.toLocalTime(),
                               q.value(3).toInt(),
                               q.value(4).toString());
     }
@@ -109,7 +112,7 @@ bool WeightListModel::add(const QDateTime &moment, int weight, const QString &no
     }
 
     q.bindValue(QStringLiteral(":person_id"), personId());
-    q.bindValue(QStringLiteral(":moment"), moment);
+    q.bindValue(QStringLiteral(":moment"), moment.toUTC());
     q.bindValue(QStringLiteral(":weight"), weight);
     q.bindValue(QStringLiteral(":note"), note);
 
@@ -133,7 +136,7 @@ bool WeightListModel::add(const QDateTime &moment, int weight, const QString &no
 bool WeightListModel::remove(QModelIndex index)
 {
     if (!index.isValid() || (index.row() >= rowCount())) {
-        qWarning("Invalid index");
+        qWarning() << "Invalid" << index;
         return false;
     }
 
@@ -245,6 +248,7 @@ bool WeightListModel::setData(const QModelIndex &index, const QVariant &value, i
     Weight w = m_weights.at(index.row());
 
     QString roleCol;
+    QVariant _value = value;
 
     switch(role) {
     case Id:
@@ -259,6 +263,7 @@ bool WeightListModel::setData(const QModelIndex &index, const QVariant &value, i
             return true;
         }
         roleCol = QStringLiteral("moment");
+        _value = value.toDateTime().toUTC();
     }
         break;
     case WeightValue:
@@ -287,15 +292,17 @@ bool WeightListModel::setData(const QModelIndex &index, const QVariant &value, i
     QSqlQuery q;
 
     if (Q_UNLIKELY(!q.prepare(QStringLiteral("UPDATE weight SET %1 = :value WHERE id = :id").arg(roleCol)))) {
+        // defined at peoplelistmodel.cpp
         setLastError(qtTrId("naz-err-failed-prepare-db-query").arg(q.lastError().text()));
         qCritical("Failed to prepare database query: %s", qUtf8Printable(q.lastError().text()));
         return false;
     }
 
-    q.bindValue(QStringLiteral(":value"), value);
+    q.bindValue(QStringLiteral(":value"), _value);
     q.bindValue(QStringLiteral(":id"), w.id());
 
     if (Q_UNLIKELY(!q.exec())) {
+        // defined at peoplelistmodel.cpp
         setLastError(qtTrId("naz-err-failed-execute-db-query").arg(q.lastError().text()));
         qCritical("Failed to execute database query: %s", qUtf8Printable(q.lastError().text()));
         return false;
@@ -337,3 +344,5 @@ void WeightListModel::setPersonId(int id)
         emit personIdChanged(personId());
     }
 }
+
+#include "moc_weightlistmodel.cpp"
