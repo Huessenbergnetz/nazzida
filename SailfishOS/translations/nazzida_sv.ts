@@ -511,11 +511,98 @@
     <message id="naz-reldate-today">
         <source>Today</source>
         <extracomment>relative date</extracomment>
-        <translation type="unfinished"/>
+        <translation>Idag</translation>
     </message>
     <message id="naz-reldate-yesterday">
         <source>Yesterday</source>
         <extracomment>relative date</extracomment>
+        <translation>Igår</translation>
+    </message>
+    <message id="naz-settings-bpclass-label">
+        <source>BP Classification</source>
+        <extracomment>ComboBox label on the settings page</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-bpclass-esc-desc">
+        <source>Blood pressure classification according to the European Society of Cardiology</source>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-bpclass-eshish-desc">
+        <source>Blood pressure classification according to the European Society of Hypertension/International Society of Hypertension</source>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-bpclass-accahh-desc">
+        <source>Blood pressure classification according to the American College of Cardiology/American Heart Association</source>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-settings-section-classifications">
+        <source>Classifications</source>
+        <extracomment>settings section header, means classification systems like those for blood pressure</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-bp-accahh-normal">
+        <source>Normal</source>
+        <extracomment>normal blood pressure according to ACC/AHH</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-bp-accahh-elevated">
+        <source>Elevated</source>
+        <extracomment>elevated blood pressure according to ACC/AHH</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-bp-accahh-hypertension-1">
+        <source>Hypertension, stage 1</source>
+        <extracomment>hypertension stage 1 according to ACC/AHH</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-bp-accahh-hypertension-2">
+        <source>Hypertension, stage 2</source>
+        <extracomment>hypertension stage 2 according to ACC/AHH</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-bp-esc-non-elevated">
+        <source>Non-elevated</source>
+        <extracomment>non-elevated blood pressure according to ESC</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-bp-esc-elevated">
+        <source>Elevated</source>
+        <extracomment>elevated blood pressure according to ESC</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-bp-esc-hypertension">
+        <source>Hypertension</source>
+        <extracomment>hypertension blood pressure according to ESC</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="baz-bp-eshish-optimal">
+        <source>Optimal</source>
+        <extracomment>optimal blood pressure according to ESH/ISH</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="baz-bp-eshish-normal">
+        <source>Normal</source>
+        <extracomment>normal blood pressure according to ESH/ISH</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="baz-bp-eshish-high-normal">
+        <source>High normal</source>
+        <extracomment>high normal blood pressure according to ESH/ISH</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="baz-bp-eshish-hypertension-1">
+        <source>Hypertension, grade 1</source>
+        <extracomment>hypertension grade 1 blood pressure accordinhg to ESH/ISH</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="baz-bp-eshish-hypertension-2">
+        <source>Hypertension, grade 2</source>
+        <extracomment>hypertension grade 2 blood pressure accordinhg to ESH/ISH</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="baz-bp-eshish-hypertension-3">
+        <source>Hypertension, grade 3</source>
+        <extracomment>hypertension grade 3 blood pressure accordinhg to ESH/ISH</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>

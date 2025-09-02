@@ -32,6 +32,7 @@
 #include "nazzidautils.h"
 #include "models/licensesmodel.h"
 #include "models/languagesmodel.h"
+#include "models/bpclasslistmodel.h"
 
 #include "objects/person.h"
 #include "models/peoplelistfiltermodel.h"
@@ -220,6 +221,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<BloodPressureListFilterModel>("harbour.nazzida", 1, 0, "BloodPressureListFilterModel");
     qmlRegisterType<LanguagesModel>("harbour.nazzida", 1, 0, "LanguagesModel");
     qmlRegisterSingletonType<NazzidaUtils>("harbour.nazzida", 1, 0, "NazzidaUtils", NazzidaUtils::provider);
+    qmlRegisterType<BpClassListModel>("harbour.nazzida", 1, 0, "BpClassListModel");
 
     std::unique_ptr<QQuickView> view(SailfishApp::createView());
 

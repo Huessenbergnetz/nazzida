@@ -79,7 +79,6 @@ Page {
 
                     Label {
                         id: sysDiaText
-//                        width: parent.width/2 - Theme.paddingSmall/2
                         //: list item label showing blood pressure,
                         //: %1 will be the systolisch pressure, %2 the
                         //: diastolic pressure, systolic/diastolic should
@@ -90,7 +89,6 @@ Page {
 
                     Label {
                         id: pulseText
-//                        width: parent.width/2 - Theme.paddingSmall/2
                         //: list item label schowing blood pulse,
                         //: %1 will be replaced by the pulse value
                         //: pulse should be abbreviated
@@ -103,6 +101,14 @@ Page {
                 Text {
                     id: bloodPressureMoment
                     text: Qt.formatDateTime(model.moment)
+                    color: bloodPressureItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                    width: parent.width
+                    font.pixelSize: Theme.fontSizeSmall
+                }
+
+                Text {
+                    id: bpClassification
+                    text: NazzidaUtils.bpClassString(bloodPressurePage.person, config.bpClass, model.systolic, model.diastolic)
                     color: bloodPressureItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
                     width: parent.width
                     font.pixelSize: Theme.fontSizeSmall

@@ -40,7 +40,6 @@ Page {
                 text: qsTrId("naz-settings-section-appearance")
             }
 
-
             ComboBox {
                 id: languagePicker
                 //: ComboBox label on the settings page
@@ -57,6 +56,39 @@ Page {
                 }
                 onCurrentIndexChanged: if (currentItem) { config.language = currentItem.value }
                 currentIndex: langModel.findIndex(config.language)
+            }
+
+            SectionHeader {
+                //: settings section header, means classification systems like
+                //: those for blood pressure
+                //% "Classifications"
+                text: qsTrId("naz-settings-section-classifications")
+            }
+
+            ComboBox {
+                id: bpClassPicker
+                //: ComboBox label on the settings page
+                //: BP is an abbreviation for blood pressure
+                //% "BP Classification"
+                label: qsTrId("naz-settings-bpclass-label")
+                menu: ContextMenu {
+                    Repeater {
+                        model: BpClassListModel { id: bpClassModel }
+                        MenuItem {
+                            readonly property int value: model.value
+                            readonly property string description: model.description
+                            text: model.name + " (" + model.year + ")"
+                        }
+                    }
+                }
+                onCurrentIndexChanged: {
+                    if (currentItem) {
+                        config.bpClass = currentItem.value
+                        description = currentItem.description
+                    }
+                }
+                currentIndex: bpClassModel.findIndex(config.bpClass)
+                description: currentItem.description
             }
         }
     }

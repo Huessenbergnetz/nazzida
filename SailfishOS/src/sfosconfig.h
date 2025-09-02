@@ -21,6 +21,9 @@ public:
     QString language() const override;
     void setLanguage(const QString &lang) override;
 
+    Configuration::BpClass bpClass() const override;
+    void setBpClass(Configuration::BpClass bpClass) override;
+
 private:
     QSettings *m_config;
 };
