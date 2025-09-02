@@ -22,6 +22,7 @@ class BloodPressure
     Q_PROPERTY(int diastolic READ diastolic CONSTANT)
     Q_PROPERTY(int pulse READ pulse CONSTANT)
     Q_PROPERTY(QString note READ note CONSTANT)
+    Q_PROPERTY(QString relDate READ relDate CONSTANT)
 public:
     BloodPressure();
     BloodPressure(int id, int personId, const QDateTime &moment, int systolic, int diastolic, int pulse, const QString &note);
@@ -46,6 +47,8 @@ public:
     int pulse() const;
 
     QString note() const;
+
+    QString relDate() const;
 
 private:
     friend class BloodPressureListModel;

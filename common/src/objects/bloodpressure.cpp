@@ -4,6 +4,7 @@
  */
 
 #include "bloodpressure_p.h"
+#include "../nazzidautils.h"
 
 BloodPressure::BloodPressure()
     : d(new BloodPressureData)
@@ -63,6 +64,11 @@ int BloodPressure::pulse() const
 QString BloodPressure::note() const
 {
     return d->note;
+}
+
+QString BloodPressure::relDate() const
+{
+    return NazzidaUtils::relDate(d->moment.date());
 }
 
 #include "moc_bloodpressure.cpp"
