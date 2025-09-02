@@ -409,42 +409,113 @@
     </message>
     <message id="naz-bmi-detailed-severe-thinness">
         <source>Severe thinness</source>
-        <extracomment>BMI deatiled classification</extracomment>
+        <extracomment>BMI detailed classification</extracomment>
         <translation type="unfinished"/>
     </message>
     <message id="naz-bmi-detailed-moderate-thinness">
         <source>Moderate thinness</source>
-        <extracomment>BMI deatiled classification</extracomment>
+        <extracomment>BMI detailed classification</extracomment>
         <translation type="unfinished"/>
     </message>
     <message id="naz-bmi-detailed-mild-thinness">
         <source>Mild thinness</source>
-        <extracomment>BMI deatiled classification</extracomment>
+        <extracomment>BMI detailed classification</extracomment>
         <translation type="unfinished"/>
     </message>
     <message id="naz-bmi-detailed-normal">
         <source>Normal weight</source>
-        <extracomment>BMI deatiled classification</extracomment>
+        <extracomment>BMI detailed classification</extracomment>
         <translation type="unfinished"/>
     </message>
     <message id="naz-bmi-detailed-pre-obese">
         <source>Pre-obese</source>
-        <extracomment>BMI deatiled classification</extracomment>
+        <extracomment>BMI detailed classification</extracomment>
         <translation type="unfinished"/>
     </message>
     <message id="naz-bmi-detailed-obese-1">
         <source>Obese class I</source>
-        <extracomment>BMI deatiled classification</extracomment>
+        <extracomment>BMI detailed classification</extracomment>
         <translation type="unfinished"/>
     </message>
     <message id="naz-bmi-detailed-obese-2">
         <source>Obese class II</source>
-        <extracomment>BMI deatiled classification</extracomment>
+        <extracomment>BMI detailed classification</extracomment>
         <translation type="unfinished"/>
     </message>
     <message id="naz-bmi-detailed-obese-3">
         <source>Obese class III</source>
-        <extracomment>BMI deatiled classification</extracomment>
+        <extracomment>BMI detailed classification</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-add-blood-pressure">
+        <source>Add blood pressure</source>
+        <extracomment>Dialog title and pull down menu entry</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-textfield-blood-pressure-systolic">
+        <source>Systolic mmHg</source>
+        <oldsource>Systolic pressure in mmHg</oldsource>
+        <extracomment>text field label for entering systolic blood pressure</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-textfield-blood-pressure-diastolic">
+        <source>Diastolic mmHg</source>
+        <oldsource>Diastolic pressure in mmHg</oldsource>
+        <extracomment>text field label for entering diastolic blood pressure</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-textfield-blood-pulse">
+        <source>Pulse in bpm</source>
+        <extracomment>text field label for entering blood pulse</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-blood-pressure-protocol">
+        <source>Blood Pressure Protocol</source>
+        <extracomment>labl on a list of different entries</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-blood-pressure-list-empty-text">
+        <source>No blood pressure added</source>
+        <extracomment>View placeholder text</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-blood-pressure-list-empty-hint">
+        <source>Pull down to add blood pressure</source>
+        <extracomment>View placeholder hint</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-edit-blood-pressure">
+        <source>Edit Blood Pressure</source>
+        <extracomment>dialog title</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-err-failed-get-utctimes-sysinfo">
+        <source>Failed to query “sysinfo” table for “utctimes“ entry: %1</source>
+        <extracomment>error message, % 1 will be the database error message</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-remorse-delete-blood-pressure">
+        <source>Delete %1/%2 from %3</source>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-blood-pressure-sysdia-abbr">
+        <source>Sys/Dia: %1/%2 mmHg</source>
+        <extracomment>list item label showing blood pressure, %1 will be the systolisch pressure, %2 the diastolic pressure, systolic/diastolic should be abbreviated</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-blood-pressure-pulse-abbr">
+        <source>Pul: %1 bpm</source>
+        <extracomment>list item label schowing blood pulse, %1 will be replaced by the pulse value pulse should be abbreviated</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-reldate-today">
+        <source>Today</source>
+        <extracomment>relative date</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-reldate-yesterday">
+        <source>Yesterday</source>
+        <extracomment>relative date</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>

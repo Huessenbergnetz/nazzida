@@ -369,82 +369,153 @@
     <message id="naz-dialog-accept-add">
         <source>Add</source>
         <extracomment>Accept text for add dialogs</extracomment>
-        <translation type="unfinished"/>
+        <translation>Lägg till</translation>
     </message>
     <message id="naz-dialog-accept-edit">
         <source>Apply</source>
         <extracomment>Accept text on edit dialog headers</extracomment>
-        <translation type="unfinished"/>
+        <translation>Tillämpa</translation>
     </message>
     <message id="naz-edit-weight">
         <source>Edit Weight</source>
         <extracomment>dialog title</extracomment>
-        <translation type="unfinished"/>
+        <translation>Redigera vikt</translation>
     </message>
     <message id="naz-weight-bmi">
         <source>BMI: %1 (%2)</source>
         <oldsource>BMI: %1</oldsource>
         <extracomment>%1 will be replaced by the body mass index like 22.1, %2 will be replaced by a BMI classification like Normal weight or Pre-obese</extracomment>
-        <translation type="unfinished"/>
+        <translation>BMI: %1 (%2)</translation>
     </message>
     <message id="naz-bmi-general-underweight">
         <source>Underweight</source>
         <extracomment>BMI general classification</extracomment>
-        <translation type="unfinished"/>
+        <translation>Undervikt</translation>
     </message>
     <message id="naz-bmi-general-normal">
         <source>Normal weight</source>
         <extracomment>BMI general classification</extracomment>
-        <translation type="unfinished"/>
+        <translation>Normal vikt</translation>
     </message>
     <message id="naz-bmi-general-overweight">
         <source>Overweight</source>
         <extracomment>BMI general classification</extracomment>
-        <translation type="unfinished"/>
+        <translation>Övervikt</translation>
     </message>
     <message id="naz-bmi-general-obese">
         <source>Obese</source>
         <extracomment>BMI general classification</extracomment>
-        <translation type="unfinished"/>
+        <translation>Överviktig</translation>
     </message>
     <message id="naz-bmi-detailed-severe-thinness">
         <source>Severe thinness</source>
-        <extracomment>BMI deatiled classification</extracomment>
-        <translation type="unfinished"/>
+        <extracomment>BMI detailed classification</extracomment>
+        <translation>Allvarlig undervikt</translation>
     </message>
     <message id="naz-bmi-detailed-moderate-thinness">
         <source>Moderate thinness</source>
-        <extracomment>BMI deatiled classification</extracomment>
-        <translation type="unfinished"/>
+        <extracomment>BMI detailed classification</extracomment>
+        <translation>Måttlig undervikt</translation>
     </message>
     <message id="naz-bmi-detailed-mild-thinness">
         <source>Mild thinness</source>
-        <extracomment>BMI deatiled classification</extracomment>
-        <translation type="unfinished"/>
+        <extracomment>BMI detailed classification</extracomment>
+        <translation>Liten undervikt</translation>
     </message>
     <message id="naz-bmi-detailed-normal">
         <source>Normal weight</source>
-        <extracomment>BMI deatiled classification</extracomment>
-        <translation type="unfinished"/>
+        <extracomment>BMI detailed classification</extracomment>
+        <translation>Normal vikt</translation>
     </message>
     <message id="naz-bmi-detailed-pre-obese">
         <source>Pre-obese</source>
-        <extracomment>BMI deatiled classification</extracomment>
-        <translation type="unfinished"/>
+        <extracomment>BMI detailed classification</extracomment>
+        <translation>Överviktsvarning</translation>
     </message>
     <message id="naz-bmi-detailed-obese-1">
         <source>Obese class I</source>
-        <extracomment>BMI deatiled classification</extracomment>
-        <translation type="unfinished"/>
+        <extracomment>BMI detailed classification</extracomment>
+        <translation>Övervikt klass 1</translation>
     </message>
     <message id="naz-bmi-detailed-obese-2">
         <source>Obese class II</source>
-        <extracomment>BMI deatiled classification</extracomment>
-        <translation type="unfinished"/>
+        <extracomment>BMI detailed classification</extracomment>
+        <translation>Övervikt klass 2</translation>
     </message>
     <message id="naz-bmi-detailed-obese-3">
         <source>Obese class III</source>
-        <extracomment>BMI deatiled classification</extracomment>
+        <extracomment>BMI detailed classification</extracomment>
+        <translation>Övervikt klass 3</translation>
+    </message>
+    <message id="naz-add-blood-pressure">
+        <source>Add blood pressure</source>
+        <extracomment>Dialog title and pull down menu entry</extracomment>
+        <translation>Lägg till blodtryck</translation>
+    </message>
+    <message id="naz-textfield-blood-pressure-systolic">
+        <source>Systolic mmHg</source>
+        <oldsource>Systolic pressure in mmHg</oldsource>
+        <extracomment>text field label for entering systolic blood pressure</extracomment>
+        <translation>Systolisk mmHg</translation>
+    </message>
+    <message id="naz-textfield-blood-pressure-diastolic">
+        <source>Diastolic mmHg</source>
+        <oldsource>Diastolic pressure in mmHg</oldsource>
+        <extracomment>text field label for entering diastolic blood pressure</extracomment>
+        <translation>Diastolisk mmHg</translation>
+    </message>
+    <message id="naz-textfield-blood-pulse">
+        <source>Pulse in bpm</source>
+        <extracomment>text field label for entering blood pulse</extracomment>
+        <translation>Puls i bpm</translation>
+    </message>
+    <message id="naz-blood-pressure-protocol">
+        <source>Blood Pressure Protocol</source>
+        <extracomment>labl on a list of different entries</extracomment>
+        <translation>Blodtrycksprotokoll</translation>
+    </message>
+    <message id="naz-blood-pressure-list-empty-text">
+        <source>No blood pressure added</source>
+        <extracomment>View placeholder text</extracomment>
+        <translation>Inget blodtryck tillagt</translation>
+    </message>
+    <message id="naz-blood-pressure-list-empty-hint">
+        <source>Pull down to add blood pressure</source>
+        <extracomment>View placeholder hint</extracomment>
+        <translation>Dra neråt för att lägga till blodtryck</translation>
+    </message>
+    <message id="naz-edit-blood-pressure">
+        <source>Edit Blood Pressure</source>
+        <extracomment>dialog title</extracomment>
+        <translation>Redigera blodtryck</translation>
+    </message>
+    <message id="naz-err-failed-get-utctimes-sysinfo">
+        <source>Failed to query “sysinfo” table for “utctimes“ entry: %1</source>
+        <extracomment>error message, % 1 will be the database error message</extracomment>
+        <translation>Kunde inte fråga &quot;sysinfo&quot;-tabellen för &quot;utctimes&quot;-posten: %1</translation>
+    </message>
+    <message id="naz-remorse-delete-blood-pressure">
+        <source>Delete %1/%2 from %3</source>
+        <translation>Ta bort %1/%2 från %3</translation>
+    </message>
+    <message id="naz-blood-pressure-sysdia-abbr">
+        <source>Sys/Dia: %1/%2 mmHg</source>
+        <extracomment>list item label showing blood pressure, %1 will be the systolisch pressure, %2 the diastolic pressure, systolic/diastolic should be abbreviated</extracomment>
+        <translation>Sys/Dia: %1/%2 mmHg</translation>
+    </message>
+    <message id="naz-blood-pressure-pulse-abbr">
+        <source>Pul: %1 bpm</source>
+        <extracomment>list item label schowing blood pulse, %1 will be replaced by the pulse value pulse should be abbreviated</extracomment>
+        <translation>Puls: %1 bpm</translation>
+    </message>
+    <message id="naz-reldate-today">
+        <source>Today</source>
+        <extracomment>relative date</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message id="naz-reldate-yesterday">
+        <source>Yesterday</source>
+        <extracomment>relative date</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
