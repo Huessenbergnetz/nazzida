@@ -60,6 +60,8 @@ QString NazzidaUtils::bmiGeneralString(Person *person, double bmi) const
         //% "Obese"
         return qtTrId("naz-bmi-general-obese");
     }
+
+    return QString();
 }
 
 NazzidaUtils::BmiDetailed NazzidaUtils::bmiDetailed(Person *person, double bmi) const
@@ -121,6 +123,8 @@ QString NazzidaUtils::bmiDetailedString(Person *person, double bmi) const
         //% "Obese class III"
         return qtTrId("naz-bmi-detailed-obese-3");
     }
+
+    return QString();
 }
 
 int NazzidaUtils::ageAtMoment(Person *person, const QDateTime &moment) const
@@ -163,6 +167,8 @@ QString NazzidaUtils::bpClassString(Person *person, int bpClass, int sys, int di
     case Configuration::EshIsh:
         return bpEshIshString(person, sys, dia);
     }
+
+    return QString();
 }
 
 QString NazzidaUtils::bpAccAhhString(Person *person, int sys, int dia) const
