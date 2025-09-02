@@ -25,4 +25,14 @@ void Configuration::setLanguage(const QString &language)
     Q_UNUSED(language)
 }
 
+Configuration::BpClass Configuration::bpClass() const
+{
+    return EshIsh;
+}
+
+void Configuration::setBpClass(BpClass bpClass)
+{
+    Q_UNUSED(bpClass);
+}
+
 #include "moc_configuration.cpp"

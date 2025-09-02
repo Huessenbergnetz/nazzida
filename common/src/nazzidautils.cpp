@@ -4,6 +4,7 @@
  */
 
 #include "nazzidautils.h"
+#include "configuration.h"
 
 #include <QLocale>
 
@@ -148,6 +149,99 @@ QString NazzidaUtils::relDate(QDate date)
         QLocale l;
         return l.toString(date, QLocale::ShortFormat);
     }
+}
+
+QString NazzidaUtils::bpClassString(Person *person, int bpClass, int sys, int dia) const
+{
+    const auto _bpClass = static_cast<Configuration::BpClass>(bpClass);
+
+    switch(_bpClass) {
+    case Configuration::AccAhh:
+        return bpAccAhhString(person, sys, dia);
+    case Configuration::Esc:
+        return bpEscString(person, sys, dia);
+    case Configuration::EshIsh:
+        return bpEshIshString(person, sys, dia);
+    }
+}
+
+QString NazzidaUtils::bpAccAhhString(Person *person, int sys, int dia) const
+{
+    Q_UNUSED(person)
+
+    if (sys < 120 && dia < 80) {
+        //: normal blood pressure according to ACC/AHH
+        //% "Normal"
+        return qtTrId("naz-bp-accahh-normal");
+    } else if ((sys >= 120 && sys < 130) && (dia < 80)) {
+        //: elevated blood pressure according to ACC/AHH
+        //% "Elevated"
+        return qtTrId("naz-bp-accahh-elevated");
+    } else if ((sys >= 130 && sys < 135) || (dia >= 80 && dia < 85)) {
+        //: hypertension stage 1 according to ACC/AHH
+        //% "Hypertension, stage 1"
+        return qtTrId("naz-bp-accahh-hypertension-1");
+    } else if (sys >= 130 || dia >= 85) {
+        //: hypertension stage 2 according to ACC/AHH
+        //% "Hypertension, stage 2"
+        return qtTrId("naz-bp-accahh-hypertension-2");
+    }
+
+    return QString();
+}
+
+QString NazzidaUtils::bpEscString(Person *person, int sys, int dia) const
+{
+    Q_UNUSED(person)
+
+    if (sys < 120 && dia < 70) {
+        //: non-elevated blood pressure according to ESC
+        //% "Non-elevated"
+        return qtTrId("naz-bp-esc-non-elevated");
+    } else if ((sys >= 120 && sys < 135) && (dia >= 70 && dia < 85)) {
+        //: elevated blood pressure according to ESC
+        //% "Elevated"
+        return qtTrId("naz-bp-esc-elevated");
+    } else if (sys >= 135 || dia >= 85) {
+        //: hypertension blood pressure according to ESC
+        //% "Hypertension"
+        return qtTrId("naz-bp-esc-hypertension");
+    }
+
+    return QString();
+}
+
+QString NazzidaUtils::bpEshIshString(Person *person, int sys, int dia) const
+{
+    Q_UNUSED(person)
+
+    if (sys < 120 && dia < 80) {
+        //: optimal blood pressure according to ESH/ISH
+        //% "Optimal"
+        return qtTrId("baz-bp-eshish-optimal");
+    } else if ((sys >= 120 && sys < 130) || (dia >= 80 && dia < 85)) {
+        //: normal blood pressure according to ESH/ISH
+        //% "Normal"
+        return qtTrId("baz-bp-eshish-normal");
+    } else if ((sys >= 130 && sys < 140) || (dia >= 85 && dia < 90)) {
+        //: high normal blood pressure according to ESH/ISH
+        //% "High normal"
+        return qtTrId("baz-bp-eshish-high-normal");
+    } else if ((sys >= 140 && sys < 160) || (dia >= 90 && dia < 100)) {
+        //: hypertension grade 1 blood pressure accordinhg to ESH/ISH
+        //% "Hypertension, grade 1"
+        return qtTrId("baz-bp-eshish-hypertension-1");
+    } else if ((sys >= 160 && sys < 180) || (dia >= 100 && dia < 110)) {
+        //: hypertension grade 2 blood pressure accordinhg to ESH/ISH
+        //% "Hypertension, grade 2"
+        return qtTrId("baz-bp-eshish-hypertension-2");
+    } else if (sys >= 180 || dia >= 110) {
+        //: hypertension grade 3 blood pressure accordinhg to ESH/ISH
+        //% "Hypertension, grade 3"
+        return qtTrId("baz-bp-eshish-hypertension-3");
+    }
+
+    return QString();
 }
 
 #include "moc_nazzidautils.cpp"

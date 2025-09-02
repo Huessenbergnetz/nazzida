@@ -41,6 +41,31 @@ public:
     };
     Q_ENUM(BmiDetailed)
 
+    enum BpAccAhh : int {
+        BpAccAhhNormal = 0,
+        BpAccAhhElevated = 1,
+        BpAccAhhHypertension1 = 2,
+        BpAccAhhHypertension2 = 3
+    };
+    Q_ENUM(BpAccAhh);
+
+    enum BpEsc : int {
+        EscNonElevated  = 0,
+        EscElevated     = 1,
+        EscHypertension = 2
+    };
+    Q_ENUM(BpEsc);
+
+    enum EshIsh : int {
+        EshIshOptimal = 0,
+        EshIshNormal = 1,
+        EshIshHighNormal = 2,
+        EshIshHypertension1 = 3,
+        EshIshHypertension2 = 4,
+        EshIshHypertension3 = 5
+    };
+    Q_ENUM(EshIsh);
+
     Q_INVOKABLE double calcBmi(Person *person, int weight) const;
 
     Q_INVOKABLE BmiGeneral bmiGeneral(Person *person, double bmi) const;
@@ -50,6 +75,11 @@ public:
     Q_INVOKABLE QString bmiDetailedString(Person *person, double bmi) const;
 
     Q_INVOKABLE int ageAtMoment(Person *person, const QDateTime &moment) const;
+
+    Q_INVOKABLE QString bpClassString(Person *person, int bpClass, int sys, int dia) const;
+    Q_INVOKABLE QString bpAccAhhString(Person *person, int sys, int dia) const;
+    Q_INVOKABLE QString bpEscString(Person *person, int sys, int dia) const;
+    Q_INVOKABLE QString bpEshIshString(Person *person, int sys, int dia) const;
 
     static QObject *provider(QQmlEngine *engine, QJSEngine *scriptEngine)
     {

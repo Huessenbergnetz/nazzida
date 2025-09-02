@@ -27,4 +27,6 @@ target_sources(nazzida_exe
         bloodpressurelistmodel.cpp
         bloodpressurelistfiltermodel.h
         bloodpressurelistfiltermodel.cpp
+        bpclasslistmodel.cpp
+        bpclasslistmodel.h
 )
