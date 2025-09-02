@@ -5,6 +5,8 @@
 
 #include "nazzidautils.h"
 
+#include <QLocale>
+
 #include <cmath>
 
 NazzidaUtils::NazzidaUtils(QObject *parent) : QObject(parent)
@@ -124,6 +126,28 @@ int NazzidaUtils::ageAtMoment(Person *person, const QDateTime &moment) const
 {
     const qint64 days = person->birthday().daysTo(moment.date());
     return std::abs(std::floor(days/365.25));
+}
+
+QString NazzidaUtils::relDate(QDate date)
+{
+    const auto today    = QDate::currentDate();
+    const qint64 daysTo = date.daysTo(today);
+
+    if (daysTo == 0) {
+        //: relative date
+        //% "Today"
+        return qtTrId("naz-reldate-today");
+    } else if (daysTo == 1) {
+        //: relative date
+        //% "Yesterday"
+        return qtTrId("naz-reldate-yesterday");
+    } else if (daysTo > 1 && daysTo < 7) {
+        QLocale l;
+        return l.dayName(date.dayOfWeek());
+    } else {
+        QLocale l;
+        return l.toString(date, QLocale::ShortFormat);
+    }
 }
 
 #include "moc_nazzidautils.cpp"

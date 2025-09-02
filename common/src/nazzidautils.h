@@ -58,6 +58,8 @@ public:
         return new NazzidaUtils();
     }
 
+    static QString relDate(QDate date);
+
 private:
     Q_DISABLE_COPY(NazzidaUtils)
 };
