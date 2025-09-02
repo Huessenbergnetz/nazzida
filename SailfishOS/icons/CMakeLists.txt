@@ -22,7 +22,8 @@ set(L_ICONS
     bmimeter-1.svg
     bmimeter-2.svg
     bmimeter-3.svg
-    bmimeter-4.svg)
+    bmimeter-4.svg
+    pressure-gauge.svg)
 
 hbn_sfos_add_icon(lIcons ${L_ICONS} SIZES "l")
 
