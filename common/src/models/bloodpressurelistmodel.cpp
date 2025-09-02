@@ -235,6 +235,8 @@ QVariant BloodPressureListModel::data(const QModelIndex &index, int role) const
         return bp.pulse();
     case Note:
         return bp.note();
+    case RelDate:
+        return bp.relDate();
     }
 
     return QVariant();
@@ -256,6 +258,7 @@ QHash<int, QByteArray> BloodPressureListModel::roleNames() const
     roles.insert(Diastolic, QByteArrayLiteral("diastolic"));
     roles.insert(Pulse, QByteArrayLiteral("pulse"));
     roles.insert(Note, QByteArrayLiteral("note"));
+    roles.insert(RelDate, QByteArrayLiteral("relDate"));
     return roles;
 }
 
@@ -274,7 +277,8 @@ bool BloodPressureListModel::setData(const QModelIndex &index, const QVariant &v
     switch(role) {
     case Id:
     case PersonId:
-        qWarning() << "Can not change id or personId";
+    case RelDate:
+        qWarning() << "Can not change id, personId or relDate";
         return false;
     case Moment:
     {
@@ -346,6 +350,7 @@ bool BloodPressureListModel::setData(const QModelIndex &index, const QVariant &v
     switch(role) {
     case Id:
     case PersonId:
+    case RelDate:
         qWarning() << "Invalid role:" << role;
         return false;
     case Moment:
@@ -367,7 +372,12 @@ bool BloodPressureListModel::setData(const QModelIndex &index, const QVariant &v
 
     m_bloodPressures[index.row()] = bp;
 
-    emit dataChanged(index, index, {role});
+    QVector<int> changedRoles({role});
+    if (role == Moment) {
+        changedRoles.append(RelDate);
+    }
+
+    emit dataChanged(index, index, {changedRoles});
 
     return true;
 }

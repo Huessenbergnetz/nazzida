@@ -26,7 +26,8 @@ public:
         Systolic,
         Diastolic,
         Pulse,
-        Note
+        Note,
+        RelDate
     };
     Q_ENUM(Roles)
 
