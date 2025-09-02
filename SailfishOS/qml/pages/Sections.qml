@@ -101,6 +101,38 @@ Page {
                     text: qsTrId("naz-weight-protocol")
                 }
             }
+
+            BackgroundItem {
+                width: parent.width
+                height: Theme.itemSizeMedium
+
+                onClicked: pageStack.animatorPush(Qt.resolvedUrl("BloodPressure.qml"), {person: sectionsPage.person})
+
+                Icon {
+                    id: bpIcon
+                    anchors {
+                        left: parent.left
+                        leftMargin: Theme.horizontalPageMargin
+                    }
+                    source: "image://nazzida/icon-l-pressure-gauge"
+                    width: Theme.iconSizeLarge
+                    height: Theme.iconSizeLarge
+                    highlighted: parent.highlighted
+                }
+
+                Label {
+                    anchors {
+                        left: bpIcon.right
+                        leftMargin: Theme.paddingLarge
+                        right: parent.right
+                        rightMargin: Theme.horizontalPageMargin
+                        verticalCenter: bpIcon.verticalCenter
+                    }
+                    //: labl on a list of different entries
+                    //% "Blood Pressure Protocol"
+                    text: qsTrId("naz-blood-pressure-protocol")
+                }
+            }
         }
     }
 }

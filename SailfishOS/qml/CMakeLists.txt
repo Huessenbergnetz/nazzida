@@ -18,6 +18,9 @@ set(QMLSRCS
     pages/Weights.qml
     pages/AddWeight.qml
     pages/EditWeight.qml
+    pages/BloodPressure.qml
+    pages/AddBloodPressure.qml
+    pages/EditBloodPressure.qml
     parts/DateTimeField.qml
     models/ChangelogModel.qml
 )
