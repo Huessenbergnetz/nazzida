@@ -26,7 +26,7 @@ Row {
         //: text field label
         //% "Date"
         label: qsTrId("naz-textfield-date")
-        value: Qt.formatDate(dateTime)
+        value: Qt.formatDate(dateTimeField.dateTime)
 
         onClicked: {
             var dialog = pageStack.push("Sailfish.Silica.DatePickerDialog", {date: dateTimeField.dateTime})
@@ -53,7 +53,7 @@ Row {
             var dialog = pageStack.push("Sailfish.Silica.TimePickerDialog", {hour: dateTimeField.hours, minute: dateTimeField.minutes})
 
             dialog.accepted.connect(function() {
-                timeField.text = dialog.timeText
+                timeField.value = dialog.timeText
                 dateTimeField.hours = dialog.hour
                 dateTimeField.minutes = dialog.minute
                 dateTimeField.dateTime = new Date(dateTimeField.year, dateTimeField.month, dateTimeField.day, dateTimeField.hours, dateTimeField.minutes)
