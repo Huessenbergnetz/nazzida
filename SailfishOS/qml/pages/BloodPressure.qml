@@ -120,7 +120,7 @@ Page {
             }
 
             function removeBloodPressure() {
-                var id = index;
+                var idx = index;
                 //% "Delete %1/%2 from %3"
                 removeRemorse.execute(bloodPressureItem, qsTrId("naz-remorse-delete-blood-pressure").arg(model.systolic).arg(model.diastolic).arg(bloodPressureMoment.text), function() {
                     bloodPressureModel.remove(bloodPressureModel.index(idx, 0))
