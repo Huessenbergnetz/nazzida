@@ -110,20 +110,6 @@ Page {
                 }
             }
 
-            RemorseItem {
-                id: removeRemorse
-            }
-
-            function removeWeight() {
-                var idx = index;
-                //: remorse item text, %1 will be the weight amount like 70.5 kg,
-                //: %2 will be the datetime the weight has been added
-                //% "Delete %1 from %2"
-                removeRemorse.execute(weightItem, qsTrId("naz-remorse-delete-weight").arg(weightText.text).arg("kg").arg(weightMomentText.text), function() {
-                    weightsModel.remove(weightsModel.index(idx, 0))
-                })
-            }
-
             menu: ContextMenu {
                 MenuItem {
                     //: context menu item text
@@ -143,7 +129,9 @@ Page {
                     //: context menu item text
                     //% "Delete"
                     text: qsTrId("naz-contextmenu-del")
-                    onClicked: removeWeight()
+                    onClicked: weightItem.remorseDelete(function() {
+                        weightsModel.remove(weightsModel.index(index, 0))
+                    })
                 }
             }
         }

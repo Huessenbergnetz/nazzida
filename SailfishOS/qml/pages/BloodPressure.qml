@@ -115,18 +115,6 @@ Page {
                 }
             }
 
-            RemorseItem {
-                id: removeRemorse
-            }
-
-            function removeBloodPressure() {
-                var idx = index;
-                //% "Delete %1/%2 from %3"
-                removeRemorse.execute(bloodPressureItem, qsTrId("naz-remorse-delete-blood-pressure").arg(model.systolic).arg(model.diastolic).arg(bloodPressureMoment.text), function() {
-                    bloodPressureModel.remove(bloodPressureModel.index(idx, 0))
-                })
-            }
-
             menu: ContextMenu {
                 MenuItem {
                     // defined in Weights.qml
@@ -145,7 +133,9 @@ Page {
                 MenuItem {
                     // defined in Weights.qml
                     text: qsTrId("naz-contextmenu-del")
-                    onClicked: removeBloodPressure()
+                    onClicked: bloodPressureItem.remorseDelete(function() {
+                        bloodPressureModel.remove(bloodPressureModel.index(index, 0))
+                    })
                 }
             }
         }
