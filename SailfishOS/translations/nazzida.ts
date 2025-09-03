@@ -335,12 +335,6 @@
         <extracomment>weight with unit, %1 will be the weight like 70.3 and %2 will be the unit like kg</extracomment>
         <translation type="unfinished"></translation>
     </message>
-    <message id="naz-remorse-delete-weight">
-        <source>Delete %1 from %2</source>
-        <oldsource>Delete %1 from %3</oldsource>
-        <extracomment>remorse item text, %1 will be the weight amount like 70.5 kg, %2 will be the datetime the weight has been added</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
     <message id="naz-weights-list-empty-text">
         <source>No weights added</source>
         <extracomment>View placeholder text</extracomment>
@@ -497,10 +491,6 @@
     <message id="naz-err-failed-get-utctimes-sysinfo">
         <source>Failed to query “sysinfo” table for “utctimes“ entry: %1</source>
         <extracomment>error message, % 1 will be the database error message</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="naz-remorse-delete-blood-pressure">
-        <source>Delete %1/%2 from %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message id="naz-blood-pressure-sysdia-abbr">

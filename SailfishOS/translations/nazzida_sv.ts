@@ -330,12 +330,6 @@
         <extracomment>weight with unit, %1 will be the weight like 70.3 and %2 will be the unit like kg</extracomment>
         <translation>%1 %2</translation>
     </message>
-    <message id="naz-remorse-delete-weight">
-        <source>Delete %1 from %2</source>
-        <oldsource>Delete %1 from %3</oldsource>
-        <extracomment>remorse item text, %1 will be the weight amount like 70.5 kg, %2 will be the datetime the weight has been added</extracomment>
-        <translation>Ta bort %1 från %2</translation>
-    </message>
     <message id="naz-weights-list-empty-text">
         <source>No weights added</source>
         <extracomment>View placeholder text</extracomment>
@@ -494,10 +488,6 @@
         <extracomment>error message, % 1 will be the database error message</extracomment>
         <translation>Kunde inte fråga &quot;sysinfo&quot;-tabellen för &quot;utctimes&quot;-posten: %1</translation>
     </message>
-    <message id="naz-remorse-delete-blood-pressure">
-        <source>Delete %1/%2 from %3</source>
-        <translation>Ta bort %1/%2 från %3</translation>
-    </message>
     <message id="naz-blood-pressure-sysdia-abbr">
         <source>Sys/Dia: %1/%2 mmHg</source>
         <extracomment>list item label showing blood pressure, %1 will be the systolisch pressure, %2 the diastolic pressure, systolic/diastolic should be abbreviated</extracomment>
@@ -520,7 +510,7 @@
     </message>
     <message id="naz-settings-bpclass-label">
         <source>BP Classification</source>
-        <extracomment>ComboBox label on the settings page</extracomment>
+        <extracomment>ComboBox label on the settings page BP is an abbreviation for blood pressure</extracomment>
         <translation type="unfinished"/>
     </message>
     <message id="naz-bpclass-esc-desc">
