@@ -1,6 +1,6 @@
 # Nazzida
 
-Nazzida is the old high german word for liquid. This applicaton helps you to manage a personal fluid balance protocol if you need to log your daily liquid input and output. It is based on the [Qt](https://www.qt.io/) application framework and is currently available for [Sailfish OS](https://sailfishos.org/).
+"Nazzida is the old high german word for liquid. This applicaton started as a personal fluid balance protocol to log your daily liquid input and output, but now can also log your weight and blood pressure. It is based on the [Qt](https://www.qt.io/) application framework and is currently available for [Sailfish OS](https://sailfishos.org/).
 
 ## Contributing
 
@@ -14,7 +14,7 @@ Nazzida is currently available for Sailfish OS. [Here](https://github.com/Huesse
 
 ```
 Nazzida - Fluid Balance Protocol
-Copyright (C) 2022 Hüssenbergnetz/Matthias Fehring
+Copyright (C) 2022-2025 Hüssenbergnetz/Matthias Fehring
 https://github.com/Huessenbergnetz/nazzida
 
 This program is free software: you can redistribute it and/or modify
