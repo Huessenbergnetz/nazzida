@@ -12,11 +12,11 @@ import "../models"
 AboutPage {
     allowedOrientations: defaultAllowedOrientations
     appTitle: "Nazzida"
-    //% "Nazzida is the old high german word for liquid. This applicaton helps you to manage a personal fluid balance protocol if you need to log your daily liquid input and output."
+    //% "Nazzida is the old high german word for liquid. This applicaton started as a personal fluid balance protocol to log your daily liquid input and output, but now can also log your weight and blood pressure."
     appDescription: qsTrId("naz-about-app-desc")
     appHomepage: "https://github.com/Huessenbergnetz/nazzida"
     appCopyrightYearFrom: "2022"
-    appCopyrightYearTo: "2022"
+    appCopyrightYearTo: "2025"
     appCopyrightHolder: "Matthias Fehring"
     appLicense: "GNU General Public License, Version 3"
     appLicenseFile: "GPLv3.qml"

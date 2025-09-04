@@ -10,7 +10,7 @@ Name:       harbour-nazzida
 %define __requires_exclude ^libFirfuoridaQt5|libHbnSfosComponentsQt5.*$
 # << macros
 
-Summary:    Personal Fluid Balance Protocol
+Summary:    Vital Signs Protocol
 Version:    1.0.2
 Release:    1
 Group:      Applications/Databases
@@ -33,7 +33,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  cmake
 
 %description
-Nazzida is the old high german word for liquid. This applicaton helps you to manage a personal fluid balance protocol if you need to log your daily liquid input and output.
+Nazzida is the old high german word for liquid. This applicaton helps you to log human vital signs like fluid balance, weight, and blood pressure.
 
 
 %prep
