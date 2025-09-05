@@ -13,7 +13,7 @@ Nazzida is currently available for Sailfish OS. [Here](https://github.com/Huesse
 ## License
 
 ```
-Nazzida - Fluid Balance Protocol
+Nazzida - Vital Signs Protocol
 Copyright (C) 2022-2025 Hüssenbergnetz/Matthias Fehring
 https://github.com/Huessenbergnetz/nazzida
 

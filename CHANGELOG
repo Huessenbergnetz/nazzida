@@ -2,6 +2,7 @@ Nazzida 1.1.0 - TBD
 - General
   * new: add data model to store weights (#8)
   * new: add data model to store blood pressure (#9)
+  * improved: store datetimes as UTC in database (#5)
 - Sailfish OS
   * new: log weight (#8)
   * new: log blood pressure (#9)
