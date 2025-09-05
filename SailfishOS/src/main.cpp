@@ -30,6 +30,7 @@
 
 #include "sfosconfig.h"
 #include "nazzidautils.h"
+#include "updater.h"
 #include "models/licensesmodel.h"
 #include "models/languagesmodel.h"
 #include "models/bpclasslistmodel.h"
@@ -68,23 +69,24 @@ int main(int argc, char *argv[])
 
     {
         const QLocale locale;
-        qDebug("Loading translations for locale %s", qUtf8Printable(locale.name()));
+        qDebug() << "Loading translations for" << locale;
         for (const QString &name : {QStringLiteral("hbnsc"), QStringLiteral("nazzida")}) {
             auto trans = new QTranslator(app.get());
             if (Q_LIKELY(trans->load(locale, name, QStringLiteral("_"), QStringLiteral(NAZZIDA_I18NDIR), QStringLiteral(".qm")))) {
                 if (Q_UNLIKELY(!app->installTranslator(trans))) {
-                    qWarning(R"(Can not install translator for component "%s" and locale "%s".)", qUtf8Printable(name), qUtf8Printable(locale.name()));
+                    qWarning() << "Can not install translator for component" << name << "on" << locale;
                 } else {
-                    qDebug("Loaded translations for %s", qUtf8Printable(name));
+                    qDebug() << "Loaded translations for" << name;
                 }
             } else {
-                qWarning(R"(Can not load translations for component "%s" and locale "%s".)", qUtf8Printable(name), qUtf8Printable(locale.name()));
+                qWarning() << "Can not load translations for component" << name << "on" << locale;
             }
         }
     }
 
     QString errorMessage;
     QString dbFile;
+    bool updateRequired{false};
 
     {
         QDir dataDir(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
@@ -94,7 +96,7 @@ int main(int argc, char *argv[])
                 //: error message, %1 will be the directory path
                 //% "Failed to create the data directory %1"
                 errorMessage = qtTrId("naz-err-failed-create-data-dir").arg(dataDir.absolutePath());
-                qCritical("Failed to create the data directory %s", qUtf8Printable(dataDir.absolutePath()));
+                qCritical() << "Failed to create the data directory" << dataDir.absolutePath();
             }
         }
 
@@ -104,14 +106,14 @@ int main(int argc, char *argv[])
             QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), QStringLiteral("initDbCon"));
             db.setDatabaseName(dbFile);
 
-            qDebug("Initializing database %s", qUtf8Printable(dbFile));
+            qDebug() << "Initializing SQLite database" << dbFile;
 
             if (!db.open()) {
                 //: error message, %1 will be the path to the database file, %2
                 //: will be the database error message
                 //% "Failed to open database %1: %2"
                 errorMessage = qtTrId("naz-err-failed-open-db").arg(dbFile, db.lastError().text());
-                qCritical("Failed to open database %s: %s", qUtf8Printable(dbFile), qUtf8Printable(db.lastError().text()));
+                qCritical().noquote().nospace() << "Failed to open SQLite database " << dbFile << ": " << db.lastError();
             }
 
             if (errorMessage.isEmpty()) {
@@ -121,7 +123,7 @@ int main(int argc, char *argv[])
                     //: error message, %1 will be the database error message
                     //% "Failed to enable foreign keys pragma: %1"
                     errorMessage = qtTrId("naz-err-failed-foreign-keys-pragma").arg(q.lastError().text());
-                    qCritical("Failed to enable foreign keys pragma: %s", qUtf8Printable(q.lastError().text()));
+                    qCritical() << "Failed to enable foreign keys pragma:" << q.lastError();
                 }
             }
 
@@ -138,49 +140,12 @@ int main(int argc, char *argv[])
                     //: error message, %1 will be replaced by the migration error
                     //% "Failed to perform database migrations: %1"
                     errorMessage = qtTrId("naz-err-failed-db-migrations").arg(migrator->lastError().text());
-                    qCritical("%s", "Failed to perform database migrations.");
+                    qCritical() << "Failed to perform database migrations";
                 }
             }
 
             if (errorMessage.isEmpty()) {
-                QSqlQuery q(db);
-                if (!q.exec(QStringLiteral("SELECT value FROM sysinfo WHERE name = 'utctimes'"))) {
-                    //: error message, % 1 will be the database error message
-                    //% "Failed to query “sysinfo” table for “utctimes“ entry: %1"
-                    errorMessage = qtTrId("naz-err-failed-get-utctimes-sysinfo").arg(q.lastError().text());
-                    qCritical() << "Failed to query sysinfo table for utctimes enty:" << q.lastError().text();
-                } else {
-                    bool utctimes = false;
-                    if (q.next()) {
-                        utctimes = q.value(0).toInt() == 1;
-                    }
-                    if (!utctimes) {
-                        qInfo() << "Start converting datetimes in database to UTC";
-                        for (const QString &table : {QStringLiteral("liquid"), QStringLiteral("weight")}) {
-                            q.exec(QStringLiteral("SELECT id, moment FROM %1").arg(table));
-
-                            std::vector<std::pair<int, QDateTime>> data;
-
-                            while (q.next()) {
-                                data.emplace_back(q.value(0).toInt(), q.value(1).toDateTime());
-                            }
-
-                            if (!data.empty()) {
-                                q.prepare(QStringLiteral("UPDATE %1 SET moment = :moment WHERE id = :id").arg(table));
-                                for (const auto &p : data) {
-                                    qDebug() << "Converting" << table << "ID" << p.first << "moment from" << p.second << "to" << p.second.toUTC();
-                                    q.bindValue(":moment", p.second.toUTC());
-                                    q.bindValue(":id", p.first);
-                                    if (!q.exec()) {
-                                        qCritical() << "Failed to convert datetimes for table" << table << "with error:" << q.lastError().text();
-                                    }
-                                }
-                            }
-                        }
-                        q.exec("INSERT INTO sysinfo (name, value) VALUES ('utctimes', '1')");
-                        qInfo() << "Finished converting datetimes in database to UTC";
-                    }
-                }
+                updateRequired = Updater::checkUpdatesRequired(QStringLiteral("initDbCon"), errorMessage);
             }
 
             db.close();
@@ -189,21 +154,21 @@ int main(int argc, char *argv[])
         QSqlDatabase::removeDatabase(QStringLiteral("initDbCon"));
     }
 
-    {
-        qDebug("Opening database %s", qUtf8Printable(dbFile));
+    if (errorMessage.isEmpty()) {
+        qDebug() << "Opening database" << dbFile;
         QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"));
         db.setDatabaseName(dbFile);
         if (!db.open()) {
             errorMessage = qtTrId("naz-err-failed-open-db").arg(dbFile, db.lastError().text());
-            qCritical("Failed to open database %s: %s", qUtf8Printable(dbFile), qUtf8Printable(db.lastError().text()));
+            qCritical().noquote().nospace() << "Failed to open database " << dbFile << ": " << db.lastError();
         }
 
         if (errorMessage.isEmpty()) {
-            qDebug("%s", "Enabling foreign_keys pragma");
+            qDebug() << "Enabling foreign_keys pragma";
             QSqlQuery q(db);
             if (!q.exec(QStringLiteral("PRAGMA foreign_keys = ON"))) {
                 errorMessage = qtTrId("naz-err-failed-foreign-keys-pragma").arg(q.lastError().text());
-                qCritical("Failed to enable foreign keys pragma: %s", qUtf8Printable(q.lastError().text()));
+                qCritical() << "Failed to enable foreign_keys pragma:" << q.lastError();
             }
         }
     }
@@ -222,6 +187,9 @@ int main(int argc, char *argv[])
     qmlRegisterType<LanguagesModel>("harbour.nazzida", 1, 0, "LanguagesModel");
     qmlRegisterSingletonType<NazzidaUtils>("harbour.nazzida", 1, 0, "NazzidaUtils", NazzidaUtils::provider);
     qmlRegisterType<BpClassListModel>("harbour.nazzida", 1, 0, "BpClassListModel");
+    if (updateRequired) {
+        qmlRegisterType<Updater>("harbour.nazzida", 1, 0, "Updater");
+    }
 
     std::unique_ptr<QQuickView> view(SailfishApp::createView());
 
@@ -229,6 +197,7 @@ int main(int argc, char *argv[])
     Hbnsc::BaseIconProvider::addProvider(view->engine(), QStringLiteral("nazzida"), {1.0,1.25,1.5,1.75,2.0});
 
     view->rootContext()->setContextProperty(QStringLiteral("config"), config);
+    view->rootContext()->setContextProperty(QStringLiteral("isUpdateRequired"), updateRequired);
     view->rootContext()->setContextProperty(QStringLiteral("startupError"), errorMessage);
     view->rootContext()->setContextProperty(QStringLiteral("coverIconPath"), Hbnsc::getLauncherIcon({86,108,128,150,172}));
 

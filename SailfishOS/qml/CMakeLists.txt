@@ -21,6 +21,8 @@ set(QMLSRCS
     pages/BloodPressure.qml
     pages/AddBloodPressure.qml
     pages/EditBloodPressure.qml
+    pages/UpdaterDialog.qml
+    pages/StartupError.qml
     parts/DateTimeField.qml
     models/ChangelogModel.qml
 )

@@ -18,8 +18,9 @@
         <translation>Über</translation>
     </message>
     <message id="naz-about-app-desc">
-        <source>Nazzida is the old high german word for liquid. This applicaton helps you to manage a personal fluid balance protocol if you need to log your daily liquid input and output.</source>
-        <translation>Nazzida ist das althochdeutsche Wort für Flüssigkeit. Diese Anwendung hilft Ihnen dabei, ein persönliches Trink‐ und Ausfuhrprotokoll zu führen.</translation>
+        <source>Nazzida is the old high german word for liquid. This applicaton started as a personal fluid balance protocol to log your daily liquid input and output, but now can also log your weight and blood pressure.</source>
+        <oldsource>Nazzida is the old high german word for liquid. This applicaton helps you to manage a personal fluid balance protocol if you need to log your daily liquid input and output.</oldsource>
+        <translation>Nazzida ist das althochdeutsche Wort für Flüssigkeit. Diese Anwendung wurde als persönliches Trink- und Ausfuhrprotokoll gestartet, unterstützt nun aber auch die Protokollierung Ihres Gewichts und Ihrer Blutdruckwerte.</translation>
     </message>
     <message id="naz-germany">
         <source>Germany</source>
@@ -594,6 +595,54 @@
         <source>Hypertension, grade 3</source>
         <extracomment>hypertension grade 3 blood pressure accordinhg to ESH/ISH</extracomment>
         <translation>Bluthochdruck 3. Grades</translation>
+    </message>
+    <message id="naz-label-startup-error">
+        <source>Startup error</source>
+        <extracomment>label on a page that show errors during startup</extracomment>
+        <translation>Fehler beim Starten</translation>
+    </message>
+    <message id="naz-title-updater">
+        <source>Update Nazzida</source>
+        <extracomment>dialog header title</extracomment>
+        <translation>Nazzida aktualisieren</translation>
+    </message>
+    <message id="naz-dialog-accept-next">
+        <source>Next</source>
+        <extracomment>Accept text for dialog</extracomment>
+        <translation>Weiter</translation>
+    </message>
+    <message id="naz-updater-description">
+        <source>Your database needs to be upgraded.</source>
+        <translation>Ihre Datenbank muss aktualisiert werden.</translation>
+    </message>
+    <message id="naz-updater-start-update">
+        <source>Start update</source>
+        <extracomment>button text</extracomment>
+        <translation>Aktualisierung starten</translation>
+    </message>
+    <message id="naz-updater-error">
+        <source>Update error</source>
+        <extracomment>label when error occured during db update</extracomment>
+        <translation>Fehler beim Aktualisieren</translation>
+    </message>
+    <message id="naz-updater-action-update-datetimes">
+        <source>Updating datetimes in database to UTC</source>
+        <extracomment>action description while updating database</extracomment>
+        <translation>Aktualisieren Datums- und Zeitangaben in der Datenbank auf UTC.</translation>
+    </message>
+    <message id="naz-updater-error-failed-db-exec">
+        <source>Failed to execute database query: %1</source>
+        <extracomment>error message, %1 will be replaced by the db error string</extracomment>
+        <translation>Kann Datenbankabfrage nicht ausführen: %1</translation>
+    </message>
+    <message id="naz-updater-error-failed-db-prepare">
+        <source>Failed to prepare database query: %1</source>
+        <translation>Kann Datenbankabfrage nicht vorbereiten: %1</translation>
+    </message>
+    <message id="naz-updater-successful">
+        <source>Update successful</source>
+        <extracomment>label when db update was successful</extracomment>
+        <translation>Aktualisierung erfolgreich</translation>
     </message>
 </context>
 </TS>

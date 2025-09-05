@@ -18,8 +18,9 @@
         <translation>Om</translation>
     </message>
     <message id="naz-about-app-desc">
-        <source>Nazzida is the old high german word for liquid. This applicaton helps you to manage a personal fluid balance protocol if you need to log your daily liquid input and output.</source>
-        <translation>Nazzida är det gamla högtyska ordet för vätska. Denna app hjälper dig att hantera ett personligt vätskebalansprotokoll om du behöver logga ditt dagliga vätskeintag och -utsöndring.</translation>
+        <source>Nazzida is the old high german word for liquid. This applicaton started as a personal fluid balance protocol to log your daily liquid input and output, but now can also log your weight and blood pressure.</source>
+        <oldsource>Nazzida is the old high german word for liquid. This applicaton helps you to manage a personal fluid balance protocol if you need to log your daily liquid input and output.</oldsource>
+        <translation>Nazzida är det gamla högtyska ordet för vätska. Denna app startade som ett sätt att hantera ett personligt vätskebalansprotokoll om du behöver logga ditt dagliga vätskeintag och -utsöndring. Nu kan appen även logga din vikt och ditt blodtryck.</translation>
     </message>
     <message id="naz-germany">
         <source>Germany</source>
@@ -511,88 +512,136 @@
     <message id="naz-settings-bpclass-label">
         <source>BP Classification</source>
         <extracomment>ComboBox label on the settings page BP is an abbreviation for blood pressure</extracomment>
-        <translation type="unfinished"/>
+        <translation>Blodtrycksklassificering </translation>
     </message>
     <message id="naz-bpclass-esc-desc">
         <source>Blood pressure classification according to the European Society of Cardiology</source>
-        <translation type="unfinished"/>
+        <translation>Blodtrycksklassificering enligt European Society of Cardiology</translation>
     </message>
     <message id="naz-bpclass-eshish-desc">
         <source>Blood pressure classification according to the European Society of Hypertension/International Society of Hypertension</source>
-        <translation type="unfinished"/>
+        <translation>Blodtrycksklassificering enligt European Society of Hypertension/International Society of Hypertension</translation>
     </message>
     <message id="naz-bpclass-accahh-desc">
         <source>Blood pressure classification according to the American College of Cardiology/American Heart Association</source>
-        <translation type="unfinished"/>
+        <translation>Blodtrycksklassificering enligt American College of Cardiology/American Heart Association</translation>
     </message>
     <message id="naz-settings-section-classifications">
         <source>Classifications</source>
         <extracomment>settings section header, means classification systems like those for blood pressure</extracomment>
-        <translation type="unfinished"/>
+        <translation>Klassificering</translation>
     </message>
     <message id="naz-bp-accahh-normal">
         <source>Normal</source>
         <extracomment>normal blood pressure according to ACC/AHH</extracomment>
-        <translation type="unfinished"/>
+        <translation>Normalt</translation>
     </message>
     <message id="naz-bp-accahh-elevated">
         <source>Elevated</source>
         <extracomment>elevated blood pressure according to ACC/AHH</extracomment>
-        <translation type="unfinished"/>
+        <translation>Förhöjt</translation>
     </message>
     <message id="naz-bp-accahh-hypertension-1">
         <source>Hypertension, stage 1</source>
         <extracomment>hypertension stage 1 according to ACC/AHH</extracomment>
-        <translation type="unfinished"/>
+        <translation>Hypertoni, steg 1</translation>
     </message>
     <message id="naz-bp-accahh-hypertension-2">
         <source>Hypertension, stage 2</source>
         <extracomment>hypertension stage 2 according to ACC/AHH</extracomment>
-        <translation type="unfinished"/>
+        <translation>Hypertoni, steg 2</translation>
     </message>
     <message id="naz-bp-esc-non-elevated">
         <source>Non-elevated</source>
         <extracomment>non-elevated blood pressure according to ESC</extracomment>
-        <translation type="unfinished"/>
+        <translation>Icke förhöjt</translation>
     </message>
     <message id="naz-bp-esc-elevated">
         <source>Elevated</source>
         <extracomment>elevated blood pressure according to ESC</extracomment>
-        <translation type="unfinished"/>
+        <translation>Förhöjt</translation>
     </message>
     <message id="naz-bp-esc-hypertension">
         <source>Hypertension</source>
         <extracomment>hypertension blood pressure according to ESC</extracomment>
-        <translation type="unfinished"/>
+        <translation>Hypertoni</translation>
     </message>
     <message id="baz-bp-eshish-optimal">
         <source>Optimal</source>
         <extracomment>optimal blood pressure according to ESH/ISH</extracomment>
-        <translation type="unfinished"/>
+        <translation>Optimalt</translation>
     </message>
     <message id="baz-bp-eshish-normal">
         <source>Normal</source>
         <extracomment>normal blood pressure according to ESH/ISH</extracomment>
-        <translation type="unfinished"/>
+        <translation>Normalt</translation>
     </message>
     <message id="baz-bp-eshish-high-normal">
         <source>High normal</source>
         <extracomment>high normal blood pressure according to ESH/ISH</extracomment>
-        <translation type="unfinished"/>
+        <translation>Högt normalt</translation>
     </message>
     <message id="baz-bp-eshish-hypertension-1">
         <source>Hypertension, grade 1</source>
         <extracomment>hypertension grade 1 blood pressure accordinhg to ESH/ISH</extracomment>
-        <translation type="unfinished"/>
+        <translation>Hypertoni, grad 1</translation>
     </message>
     <message id="baz-bp-eshish-hypertension-2">
         <source>Hypertension, grade 2</source>
         <extracomment>hypertension grade 2 blood pressure accordinhg to ESH/ISH</extracomment>
-        <translation type="unfinished"/>
+        <translation>Hypertoni, grad 2</translation>
     </message>
     <message id="baz-bp-eshish-hypertension-3">
         <source>Hypertension, grade 3</source>
         <extracomment>hypertension grade 3 blood pressure accordinhg to ESH/ISH</extracomment>
+        <translation>Hypertoni, grad 3</translation>
+    </message>
+    <message id="naz-label-startup-error">
+        <source>Startup error</source>
+        <extracomment>label on a page that show errors during startup</extracomment>
+        <translation>Uppstartsfel</translation>
+    </message>
+    <message id="naz-title-updater">
+        <source>Update Nazzida</source>
+        <extracomment>dialog header title</extracomment>
+        <translation>Uppdatera Nazzida</translation>
+    </message>
+    <message id="naz-dialog-accept-next">
+        <source>Next</source>
+        <extracomment>Accept text for dialog</extracomment>
+        <translation>Nästa</translation>
+    </message>
+    <message id="naz-updater-description">
+        <source>Your database needs to be upgraded.</source>
+        <translation>Din databas behöver uppgraderas</translation>
+    </message>
+    <message id="naz-updater-start-update">
+        <source>Start update</source>
+        <extracomment>button text</extracomment>
+        <translation>Starta uppdatering</translation>
+    </message>
+    <message id="naz-updater-error">
+        <source>Update error</source>
+        <extracomment>label when error occured during db update</extracomment>
+        <translation>Uppdateringsfel</translation>
+    </message>
+    <message id="naz-updater-action-update-datetimes">
+        <source>Updating datetimes in database to UTC</source>
+        <extracomment>action description while updating database</extracomment>
+        <translation>Uppdaterar datumtider i databas till UTC</translation>
+    </message>
+    <message id="naz-updater-error-failed-db-exec">
+        <source>Failed to execute database query: %1</source>
+        <extracomment>error message, %1 will be replaced by the db error string</extracomment>
+        <translation>Kunde inte exekvera databasbegäran: %1</translation>
+    </message>
+    <message id="naz-updater-error-failed-db-prepare">
+        <source>Failed to prepare database query: %1</source>
+        <translation>Kunde inte förbereda databasbegäran: %1</translation>
+    </message>
+    <message id="naz-updater-successful">
+        <source>Update successful</source>
+        <extracomment>label when db update was successful</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>

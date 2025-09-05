@@ -20,7 +20,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message id="naz-about-app-desc">
-        <source>Nazzida is the old high german word for liquid. This applicaton helps you to manage a personal fluid balance protocol if you need to log your daily liquid input and output.</source>
+        <source>Nazzida is the old high german word for liquid. This applicaton started as a personal fluid balance protocol to log your daily liquid input and output, but now can also log your weight and blood pressure.</source>
+        <oldsource>Nazzida is the old high german word for liquid. This applicaton helps you to manage a personal fluid balance protocol if you need to log your daily liquid input and output.</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message id="naz-germany">
@@ -598,6 +599,54 @@
     <message id="baz-bp-eshish-hypertension-3">
         <source>Hypertension, grade 3</source>
         <extracomment>hypertension grade 3 blood pressure accordinhg to ESH/ISH</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-label-startup-error">
+        <source>Startup error</source>
+        <extracomment>label on a page that show errors during startup</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-title-updater">
+        <source>Update Nazzida</source>
+        <extracomment>dialog header title</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-dialog-accept-next">
+        <source>Next</source>
+        <extracomment>Accept text for dialog</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-updater-description">
+        <source>Your database needs to be upgraded.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-updater-start-update">
+        <source>Start update</source>
+        <extracomment>button text</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-updater-error">
+        <source>Update error</source>
+        <extracomment>label when error occured during db update</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-updater-action-update-datetimes">
+        <source>Updating datetimes in database to UTC</source>
+        <extracomment>action description while updating database</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-updater-error-failed-db-exec">
+        <source>Failed to execute database query: %1</source>
+        <extracomment>error message, %1 will be replaced by the db error string</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-updater-error-failed-db-prepare">
+        <source>Failed to prepare database query: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="naz-updater-successful">
+        <source>Update successful</source>
+        <extracomment>label when db update was successful</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
