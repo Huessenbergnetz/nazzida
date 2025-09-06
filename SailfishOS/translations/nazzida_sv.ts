@@ -642,7 +642,7 @@
     <message id="naz-updater-successful">
         <source>Update successful</source>
         <extracomment>label when db update was successful</extracomment>
-        <translation type="unfinished"/>
+        <translation>Uppdatering slutförd</translation>
     </message>
 </context>
 </TS>
