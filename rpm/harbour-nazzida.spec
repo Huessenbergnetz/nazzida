@@ -11,7 +11,7 @@ Name:       harbour-nazzida
 # << macros
 
 Summary:    Vital Signs Protocol
-Version:    1.0.2
+Version:    1.1.0
 Release:    1
 Group:      Applications/Databases
 License:    GPL-3.0-or-later

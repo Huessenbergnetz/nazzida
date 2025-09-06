@@ -5,8 +5,8 @@ cmake_minimum_required(VERSION 3.16.0)
 cmake_policy(SET CMP0048 NEW)
 
 project(nazzida
-    VERSION 1.0.2
-    DESCRIPTION "Personal Fluid Balance Protocol"
+    VERSION 1.1.0
+    DESCRIPTION "Vital Signs Protocol"
     HOMEPAGE_URL "https://github.com/Huessenbergnetz/nazzida"
     LANGUAGES CXX)
 
@@ -42,7 +42,6 @@ if (${TARGETSYSTEM} STREQUAL "sfos")
         SOURCES
             rpm/harbour-nazzida.changes
             rpm/harbour-nazzida.spec
-            rpm/harbour-nazzida.yaml
     )
 endif (${TARGETSYSTEM} STREQUAL "sfos")
 

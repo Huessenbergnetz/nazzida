@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: (C) 2022 Matthias Fehring / www.huessenbergnetz.de
+ * SPDX-FileCopyrightText: (C) 2022-2025 Matthias Fehring / www.huessenbergnetz.de
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -14,6 +14,16 @@ import QtQuick 2.2
 */
 
 ListModel {
+    ListElement {
+        version: "1.1.0"
+        date: 1757142397000
+        entries: [
+            ListElement { type: 0; issue: "8"; description: "log weight" },
+            ListElement { type: 0; issue: "9"; description: "log blood pressure" },
+            ListElement { type: 1; issue: "5"; description: "store datetimes as UTC in database" }
+        ]
+    }
+
     ListElement {
         version: "1.0.2"
         date: 1646680364000
